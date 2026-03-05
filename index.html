@@ -315,15 +315,21 @@
 
     /* ===== MOBILE MENU ===== */
     .mobile-menu {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
       transform: scaleY(0);
       transform-origin: top;
       opacity: 0;
       overflow: hidden;
+      pointer-events: none;
       transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     }
     .mobile-menu.open {
       transform: scaleY(1);
       opacity: 1;
+      pointer-events: auto;
     }
     .mobile-nav {
       opacity: 0;
@@ -423,8 +429,8 @@
   <!-- NAVIGATION -->
   <!-- ============================================ -->
   <nav class="fixed top-0 left-0 right-0 z-50 transition-colors duration-500 nav-entrance" id="navbar">
-    <div class="max-w-7xl mx-auto px-6 lg:px-8 py-5 flex items-center justify-between">
-      <a href="#home" class="font-display text-2xl text-cream font-semibold tracking-tight">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8 py-3 lg:py-5 flex items-center justify-between">
+      <a href="#home" class="font-display text-xl lg:text-2xl text-cream font-semibold tracking-tight">
         HD Installation
       </a>
       <div class="hidden lg:flex items-center gap-10">
