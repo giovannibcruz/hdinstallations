@@ -1,0 +1,12 @@
+node_modules/
+temporary screenshots/
+.claude/
+.DS_Store
+hdinstalls-1.png
+website-references/
+hd-installations.md
+research.md
+serve.mjs
+screenshot.mjs
+package.json
+package-lock.json

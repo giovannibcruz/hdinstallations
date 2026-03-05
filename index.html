@@ -1,0 +1,1812 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HD Installation, Inc. — Professional Office Furniture Installation</title>
+  <meta name="description" content="HD Installation, Inc. (HDI) — 26+ years of expert office furniture installation across Southern California. Licensed, insured, and bonded.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            cream: '#F2EDE8',
+            'cream-dark': '#E8E1D9',
+            charcoal: '#1F1F1F',
+            'charcoal-light': '#2A2A2A',
+            gold: '#C9B968',
+            'gold-light': '#D4C67A',
+            'gold-pale': '#E8D98E',
+          },
+          fontFamily: {
+            display: ['"Roboto"', 'system-ui', 'sans-serif'],
+            body: ['"Roboto"', 'system-ui', 'sans-serif'],
+          },
+        }
+      }
+    }
+  </script>
+  <style>
+    /* ===== GRAIN TEXTURE ===== */
+    .grain::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      opacity: 0.04;
+      pointer-events: none;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+      background-repeat: repeat;
+      background-size: 256px 256px;
+    }
+
+    /* ===== HERO ENTRANCE ANIMATIONS ===== */
+    @keyframes navSlideDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .nav-entrance {
+      opacity: 0;
+      animation: navSlideDown 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.1s forwards;
+    }
+
+    /* ===== SCROLL EXPANSION HERO ===== */
+    .scroll-hero {
+      position: relative;
+      min-height: 100dvh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .scroll-hero-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+    .scroll-hero-bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+    .scroll-hero-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.35);
+    }
+    .scroll-hero-media {
+      position: absolute;
+      z-index: 1;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      border-radius: 1rem;
+      overflow: hidden;
+      box-shadow: 0 0 60px rgba(0,0,0,0.35);
+    }
+    .scroll-hero-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .scroll-hero-media-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.35);
+      border-radius: inherit;
+      pointer-events: none;
+      z-index: 1;
+    }
+    .scroll-hero-text {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      pointer-events: none;
+    }
+    .scroll-hero-hint {
+      position: absolute;
+      bottom: 2.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 3;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    @keyframes scrollPulse {
+      0%, 100% { opacity: 0.5; transform: translateY(0); }
+      50% { opacity: 1; transform: translateY(6px); }
+    }
+    .scroll-hero-hint svg {
+      animation: scrollPulse 2s ease-in-out infinite;
+    }
+    .hero-content-after {
+      position: relative;
+      z-index: 10;
+      opacity: 0;
+      transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .hero-content-after.visible {
+      opacity: 1;
+    }
+
+    /* ===== SCROLL REVEAL VARIANTS ===== */
+    .reveal {
+      opacity: 0;
+      transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reveal.fade-up { transform: translateY(48px); }
+    .reveal.fade-left { transform: translateX(-48px); }
+    .reveal.fade-right { transform: translateX(48px); }
+    .reveal.fade-scale { transform: scale(0.92); }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0) translateX(0) scale(1);
+    }
+
+    /* Stagger children — tighter timing for snappy cascade */
+    .stagger > .reveal:nth-child(1) { transition-delay: 0ms; }
+    .stagger > .reveal:nth-child(2) { transition-delay: 60ms; }
+    .stagger > .reveal:nth-child(3) { transition-delay: 120ms; }
+    .stagger > .reveal:nth-child(4) { transition-delay: 180ms; }
+    .stagger > .reveal:nth-child(5) { transition-delay: 240ms; }
+    .stagger > .reveal:nth-child(6) { transition-delay: 300ms; }
+    .stagger > .reveal:nth-child(7) { transition-delay: 360ms; }
+    .stagger > .reveal:nth-child(8) { transition-delay: 420ms; }
+    .stagger > .reveal:nth-child(9) { transition-delay: 480ms; }
+    .stagger > .reveal:nth-child(10) { transition-delay: 540ms; }
+    .stagger > .reveal:nth-child(11) { transition-delay: 600ms; }
+    .stagger > .reveal:nth-child(12) { transition-delay: 660ms; }
+
+    /* ===== NAVIGATION ===== */
+    .nav-scrolled {
+      background-color: rgba(31, 31, 31, 0.96);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      box-shadow: 0 4px 32px rgba(0,0,0,0.18);
+    }
+
+    /* ===== BUTTON EFFECTS ===== */
+    .btn-gold {
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .btn-gold::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(120deg, transparent 30%, rgba(255,255,255,0.25) 50%, transparent 70%);
+      transform: translateX(-100%);
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .btn-gold:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(201, 185, 104, 0.3);
+    }
+    .btn-gold:hover::before {
+      transform: translateX(100%);
+    }
+    .btn-gold:active {
+      transform: translateY(0);
+    }
+    .btn-dark {
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.3s;
+    }
+    .btn-dark::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(120deg, transparent 30%, rgba(255,255,255,0.08) 50%, transparent 70%);
+      transform: translateX(-100%);
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .btn-dark:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 24px rgba(31,31,31,0.2);
+      background-color: #2A2A2A;
+    }
+    .btn-dark:hover::before {
+      transform: translateX(100%);
+    }
+    .btn-dark:active {
+      transform: translateY(0);
+    }
+
+    /* ===== SHARED CARD SHADOW ===== */
+    .card-shadow {
+      box-shadow: 0 0 0 1px rgba(0,0,0,.03), 0 2px 4px rgba(0,0,0,.05), 0 12px 24px rgba(0,0,0,.05);
+    }
+
+    /* ===== BENTO SERVICE CARDS ===== */
+    .bento-card {
+      transition: box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    /* Hover effects only on devices that support hover */
+    @media (hover: hover) {
+      .bento-card:hover {
+        box-shadow: 0 0 0 1px rgba(0,0,0,.06), 0 4px 8px rgba(0,0,0,.08), 0 24px 48px rgba(0,0,0,.1) !important;
+      }
+    }
+
+    /* ===== SERVICES CAROUSEL ===== */
+    .services-track {
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      scroll-snap-type: x mandatory;
+      scroll-padding-left: 1.5rem;
+    }
+    .services-track::-webkit-scrollbar {
+      display: none;
+    }
+    #servicesTrack .bento-card {
+      scroll-snap-align: start;
+    }
+
+    /* ===== TESTIMONIAL TRANSITIONS ===== */
+    .testimonial-slide {
+      transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .testimonial-slide.slide-active {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    .testimonial-slide.slide-left {
+      opacity: 0;
+      transform: translateX(-40px);
+    }
+    .testimonial-slide.slide-right {
+      opacity: 0;
+      transform: translateX(40px);
+    }
+
+    /* ===== FORM FOCUS EFFECT ===== */
+    .form-field {
+      position: relative;
+    }
+    .form-input {
+      transition: border-color 0.3s, background-color 0.3s, box-shadow 0.3s;
+    }
+    .form-input:focus {
+      border-color: #C9B968;
+      background-color: white;
+      box-shadow: 0 0 0 3px rgba(201, 185, 104, 0.12);
+    }
+
+    /* ===== CUSTOM SELECT ===== */
+    select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%231F1F1F' viewBox='0 0 16 16'%3E%3Cpath d='M4.646 5.646a.5.5 0 01.708 0L8 8.293l2.646-2.647a.5.5 0 01.708.708l-3 3a.5.5 0 01-.708 0l-3-3a.5.5 0 010-.708z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 1rem center;
+      background-size: 16px;
+    }
+
+    /* ===== NAV LINK UNDERLINE ===== */
+    .nav-link {
+      position: relative;
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 100%;
+      height: 1.5px;
+      background-color: #C9B968;
+      transform: scaleX(0);
+      transform-origin: center;
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .nav-link:hover::after {
+      transform: scaleX(1);
+    }
+
+    /* ===== MOBILE MENU ===== */
+    .mobile-menu {
+      transform: scaleY(0);
+      transform-origin: top;
+      opacity: 0;
+      overflow: hidden;
+      transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .mobile-menu.open {
+      transform: scaleY(1);
+      opacity: 1;
+    }
+    .mobile-nav {
+      opacity: 0;
+      transform: translateX(-16px);
+      transition: opacity 0.4s, transform 0.4s;
+    }
+    .mobile-menu.open .mobile-nav:nth-child(1) { opacity: 1; transform: translateX(0); transition-delay: 0.05s; }
+    .mobile-menu.open .mobile-nav:nth-child(2) { opacity: 1; transform: translateX(0); transition-delay: 0.1s; }
+    .mobile-menu.open .mobile-nav:nth-child(3) { opacity: 1; transform: translateX(0); transition-delay: 0.15s; }
+    .mobile-menu.open .mobile-nav:nth-child(4) { opacity: 1; transform: translateX(0); transition-delay: 0.2s; }
+    .mobile-menu.open .mobile-nav:nth-child(5) { opacity: 1; transform: translateX(0); transition-delay: 0.25s; }
+    .mobile-menu.open .mobile-nav:nth-child(6) { opacity: 1; transform: translateX(0); transition-delay: 0.3s; }
+
+    /* ===== INFINITE IMAGE SLIDER ===== */
+    @keyframes slider-scroll-right {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    .slider-infinite-scroll {
+      animation: slider-scroll-right 35s linear infinite;
+    }
+    .slider-infinite-scroll:hover {
+      animation-play-state: paused;
+    }
+    .slider-scroll-container {
+      mask: linear-gradient(90deg, transparent 0%, black 6%, black 94%, transparent 100%);
+      -webkit-mask: linear-gradient(90deg, transparent 0%, black 6%, black 94%, transparent 100%);
+    }
+    .slider-image-item {
+      box-shadow: 0 12px 32px rgba(31,31,31,0.12);
+      transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .slider-image-item:hover {
+      transform: scale(1.04) translateY(-4px);
+      box-shadow: 0 20px 40px rgba(31,31,31,0.2);
+    }
+
+    /* ===== SCROLL PROGRESS BAR ===== */
+    .scroll-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3px;
+      background: linear-gradient(90deg, #C9B968, #E8D98E);
+      z-index: 100;
+      transform-origin: left;
+      transform: scaleX(0);
+    }
+
+    /* ===== TEAM SECTION ===== */
+    .team-portrait {
+      cursor: pointer;
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+    }
+    .team-portrait:hover {
+      transform: scale(1.05);
+    }
+    .team-portrait.active {
+      transform: scale(1.08);
+      box-shadow: 0 0 0 3px #C9B968;
+    }
+    .team-bio-panel {
+      display: grid;
+      grid-template-rows: 0fr;
+      transition: grid-template-rows 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .team-bio-panel.open {
+      grid-template-rows: 1fr;
+    }
+    .team-bio-panel > div {
+      overflow: hidden;
+    }
+    .team-bio-inner {
+      opacity: 0;
+      transform: translateY(-8px);
+      transition: opacity 0.3s ease 0.1s, transform 0.3s ease 0.1s;
+    }
+    .team-bio-panel.open .team-bio-inner {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ===== FOCUS-VISIBLE ===== */
+    a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible {
+      outline: 2px solid #C9B968;
+      outline-offset: 2px;
+    }
+
+  </style>
+</head>
+<body class="font-body bg-cream text-charcoal antialiased overflow-x-hidden">
+
+  <!-- Scroll Progress Bar -->
+  <div class="scroll-progress" id="scrollProgress"></div>
+
+  <!-- ============================================ -->
+  <!-- NAVIGATION -->
+  <!-- ============================================ -->
+  <nav class="fixed top-0 left-0 right-0 z-50 transition-colors duration-500 nav-entrance" id="navbar">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8 py-5 flex items-center justify-between">
+      <a href="#home" class="font-display text-2xl text-cream font-semibold tracking-tight">
+        HD Installation
+      </a>
+      <div class="hidden lg:flex items-center gap-10">
+        <a href="#home" class="nav-link text-cream/80 hover:text-gold text-sm font-medium tracking-wider uppercase">Home</a>
+        <a href="#services" class="nav-link text-cream/80 hover:text-gold text-sm font-medium tracking-wider uppercase">Services</a>
+        <a href="#experience" class="nav-link text-cream/80 hover:text-gold text-sm font-medium tracking-wider uppercase">About</a>
+        <a href="#projects" class="nav-link text-cream/80 hover:text-gold text-sm font-medium tracking-wider uppercase">Projects</a>
+        <a href="#testimonials" class="nav-link text-cream/80 hover:text-gold text-sm font-medium tracking-wider uppercase">Testimonials</a>
+        <a href="#contact" class="nav-link text-cream/80 hover:text-gold text-sm font-medium tracking-wider uppercase">Contact</a>
+      </div>
+      <button class="lg:hidden text-cream p-2" id="menuToggle" aria-label="Toggle menu">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <line x1="3" y1="6" x2="21" y2="6"/>
+          <line x1="3" y1="12" x2="21" y2="12"/>
+          <line x1="3" y1="18" x2="21" y2="18"/>
+        </svg>
+      </button>
+    </div>
+    <!-- Mobile Menu -->
+    <div class="lg:hidden mobile-menu bg-charcoal/96 backdrop-blur-lg border-t border-cream/10" id="mobileMenu">
+      <div class="max-w-7xl mx-auto px-6 py-8 flex flex-col gap-5">
+        <a href="#home" class="mobile-nav text-cream/80 hover:text-gold text-lg font-display">Home</a>
+        <a href="#services" class="mobile-nav text-cream/80 hover:text-gold text-lg font-display">Services</a>
+        <a href="#experience" class="mobile-nav text-cream/80 hover:text-gold text-lg font-display">About</a>
+        <a href="#projects" class="mobile-nav text-cream/80 hover:text-gold text-lg font-display">Projects</a>
+        <a href="#testimonials" class="mobile-nav text-cream/80 hover:text-gold text-lg font-display">Testimonials</a>
+        <a href="#contact" class="mobile-nav text-cream/80 hover:text-gold text-lg font-display">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ============================================ -->
+  <!-- HERO SECTION — Scroll Expansion -->
+  <!-- ============================================ -->
+  <section id="home" class="scroll-hero" data-scroll-hero>
+    <!-- Full-screen background (fades out as media expands) -->
+    <div class="scroll-hero-bg" id="heroBackground">
+      <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=1920&q=80&auto=format" alt="Background">
+      <div class="absolute inset-0 bg-gradient-to-b from-charcoal/30 via-transparent to-charcoal/40"></div>
+    </div>
+
+    <!-- Expanding media container -->
+    <div class="scroll-hero-media" id="heroMedia">
+      <img src="hdinstalls-1.png" alt="HD Installations office furniture project">
+      <div class="scroll-hero-media-overlay" id="heroMediaOverlay"></div>
+    </div>
+
+    <!-- Title text — splits apart on scroll -->
+    <div class="scroll-hero-text" id="heroText">
+      <h1 class="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-cream font-bold" style="letter-spacing: -0.03em; text-shadow: 0 2px 30px rgba(0,0,0,0.4);">
+        <span id="heroLine1" class="block">Deadlines Don't Move.</span>
+        <span id="heroLine2" class="block mt-2">Neither Do We.</span>
+      </h1>
+    </div>
+
+    <!-- Scroll hint -->
+    <div class="scroll-hero-hint" id="heroHint">
+      <span class="text-cream/60 text-xs tracking-[0.25em] uppercase font-medium">Scroll to Explore</span>
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(242,237,232,0.5)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="6 9 12 15 18 9"/>
+      </svg>
+    </div>
+
+    <!-- Content revealed after full expansion -->
+    <div class="hero-content-after absolute bottom-0 left-0 right-0" id="heroContentAfter">
+      <div class="bg-gradient-to-t from-charcoal/90 via-charcoal/50 to-transparent pt-40 pb-8">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+          <p class="text-cream/60 text-lg max-w-xl font-light" style="line-height: 1.75;">
+            Southern California's trusted office furniture installation team — delivering on time for over 26 years.
+          </p>
+          <a href="#contact" class="btn-gold inline-block mt-8 px-12 py-4 bg-gold-pale text-charcoal font-semibold text-sm tracking-[0.2em] uppercase active:bg-gold">
+            Request a Quote
+          </a>
+        </div>
+      </div>
+      <!-- Bottom Bar -->
+      <div class="relative border-t border-cream/15 bg-charcoal/60">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 py-5 flex flex-col items-center gap-4 sm:flex-row sm:justify-between">
+          <a href="tel:+15551234567" class="flex items-center gap-3 text-cream/60 hover:text-gold text-sm transition-colors duration-200">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
+            </svg>
+            +1 (555) 123-4567
+          </a>
+          <div class="flex items-center gap-6">
+            <a href="#" class="text-cream/40 hover:text-gold transition-colors duration-200" aria-label="Facebook">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+            </a>
+            <a href="#" class="text-cream/40 hover:text-gold transition-colors duration-200" aria-label="Instagram">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            </a>
+            <a href="#" class="text-cream/40 hover:text-gold transition-colors duration-200" aria-label="LinkedIn">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <!-- TRUST BAR -->
+  <!-- ============================================ -->
+  <section id="trust" class="py-10 lg:py-12 bg-cream border-b border-charcoal/6">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="flex flex-wrap items-center justify-center gap-8 md:gap-14 lg:gap-20 stagger">
+        <!-- CA Licensed -->
+        <div class="reveal fade-up flex items-center gap-3">
+          <svg class="w-8 h-8 text-gold flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          </svg>
+          <div>
+            <p class="text-sm font-semibold text-charcoal">CA Licensed</p>
+            <p class="text-xs text-charcoal/40">#1034386</p>
+          </div>
+        </div>
+        <!-- Insured & Bonded -->
+        <div class="reveal fade-up flex items-center gap-3">
+          <svg class="w-8 h-8 text-gold flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 12l2 2 4-4"/><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          </svg>
+          <div>
+            <p class="text-sm font-semibold text-charcoal">Insured &amp; Bonded</p>
+            <p class="text-xs text-charcoal/40">Full coverage</p>
+          </div>
+        </div>
+        <!-- DIR Registered -->
+        <div class="reveal fade-up flex items-center gap-3">
+          <svg class="w-8 h-8 text-gold flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><path d="M9 15l2 2 4-4"/>
+          </svg>
+          <div>
+            <p class="text-sm font-semibold text-charcoal">DIR Registered</p>
+            <p class="text-xs text-charcoal/40">Prevailing wage</p>
+          </div>
+        </div>
+        <!-- 26+ Years -->
+        <div class="reveal fade-up flex items-center gap-3">
+          <svg class="w-8 h-8 text-gold flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+          </svg>
+          <div>
+            <p class="text-sm font-semibold text-charcoal">26+ Years</p>
+            <p class="text-xs text-charcoal/40">In business</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <!-- PAIN POINTS -->
+  <!-- ============================================ -->
+  <section id="pain-points" class="py-24 lg:py-32 bg-cream">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="text-center reveal fade-up">
+        <h2 class="font-display text-4xl md:text-5xl lg:text-[3.4rem] leading-[1.12] max-w-3xl mx-auto" style="letter-spacing: -0.02em;">
+          Sound Familiar?
+        </h2>
+        <div class="w-16 h-0.5 bg-gold/50 mt-6 mx-auto"></div>
+        <p class="mt-6 text-charcoal/50 max-w-2xl mx-auto" style="line-height: 1.8;">These are the problems we hear about every week — and the reason most clients call us.</p>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-16 stagger">
+        <!-- Pain Point 1: Missed Deadlines -->
+        <div class="reveal fade-up bg-white rounded-xl p-8 card-shadow">
+          <svg class="w-10 h-10 text-gold/70 mb-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+          </svg>
+          <h3 class="font-display text-lg font-semibold text-charcoal">One Delay. Everything Stalls.</h3>
+          <p class="mt-3 text-sm text-charcoal/45" style="line-height: 1.7;">And your team is the one left waiting.</p>
+        </div>
+        <!-- Pain Point 2: Too Many Vendors -->
+        <div class="reveal fade-up bg-white rounded-xl p-8 card-shadow">
+          <svg class="w-10 h-10 text-gold/70 mb-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/>
+          </svg>
+          <h3 class="font-display text-lg font-semibold text-charcoal">You Shouldn't Have to Manage Your Own Install.</h3>
+          <p class="mt-3 text-sm text-charcoal/45" style="line-height: 1.7;">Juggling vendors, chasing updates, and hoping nothing falls through — that's not your job. It's ours.</p>
+        </div>
+        <!-- Pain Point 3: Team Overload -->
+        <div class="reveal fade-up bg-white rounded-xl p-8 card-shadow">
+          <svg class="w-10 h-10 text-gold/70 mb-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 18.7V21"/><path d="M18 18.7V21"/><path d="M12 12v9"/><path d="M3 8l9-5 9 5"/><path d="M3 8v4l9 5 9-5V8"/>
+          </svg>
+          <h3 class="font-display text-lg font-semibold text-charcoal">Your Team Is Already Stretched Thin.</h3>
+          <p class="mt-3 text-sm text-charcoal/45" style="line-height: 1.7;">We step in so your team doesn't have to stop everything else.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================ -->
+  <!-- SERVICES SECTION -->
+  <!-- ============================================ -->
+  <section id="services" class="py-24 lg:py-32 bg-cream">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <!-- Header -->
+      <div class="text-center mb-14 lg:mb-20 reveal fade-up">
+        <h2 class="font-display text-4xl md:text-5xl lg:text-[3.4rem] leading-[1.12] max-w-3xl mx-auto" style="letter-spacing: -0.02em;">
+          Discover Our Comprehensive Range of Professional Services
+        </h2>
+        <div class="w-16 h-0.5 bg-gold/50 mt-6 mx-auto"></div>
+      </div>
+
+      <!-- Arrow Navigation -->
+      <div class="flex justify-end gap-2 mb-8 reveal fade-up">
+        <button id="servicesPrev" class="w-10 h-10 rounded-full border border-charcoal/15 flex items-center justify-center hover:border-gold hover:text-gold transition-colors duration-300 disabled:opacity-30 disabled:cursor-not-allowed text-charcoal/40" aria-label="Previous">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+        </button>
+        <button id="servicesNext" class="w-10 h-10 rounded-full border border-charcoal/15 flex items-center justify-center hover:border-gold hover:text-gold transition-colors duration-300 disabled:opacity-30 disabled:cursor-not-allowed text-charcoal/40" aria-label="Next">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Services Carousel (full-width, bleeds past container) -->
+    <div class="relative">
+      <div id="servicesTrack" class="services-track flex gap-4 overflow-x-auto px-6 lg:px-8 scroll-smooth">
+
+        <!-- 1. Furniture Installation -->
+        <div class="bento-card group relative flex-shrink-0 w-[20rem] sm:w-[22rem] flex flex-col overflow-hidden rounded-xl bg-white card-shadow">
+          <div class="relative h-48 overflow-hidden">
+            <img src="services-pictures/furniture-installation.png" alt="Furniture Installation" class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-110" loading="lazy">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
+          </div>
+          <div class="z-10 flex flex-col gap-1.5 p-5">
+            <h3 class="text-lg font-semibold text-charcoal font-display">Furniture Installation</h3>
+            <p class="text-sm text-charcoal/45" style="line-height: 1.6;">Trained technicians install your furniture to manufacturer's specs, ensuring all components are functional and ready for day one.</p>
+          </div>
+        </div>
+
+        <!-- 2. Delivery Services -->
+        <div class="bento-card group relative flex-shrink-0 w-[20rem] sm:w-[22rem] flex flex-col overflow-hidden rounded-xl bg-white card-shadow">
+          <div class="relative h-48 overflow-hidden">
+            <img src="services-pictures/delivery-services.png" alt="Delivery Services" class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-110" loading="lazy">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
+          </div>
+          <div class="z-10 flex flex-col gap-1.5 p-5">
+            <h3 class="text-lg font-semibold text-charcoal font-display">Delivery Services</h3>
+            <p class="text-sm text-charcoal/45" style="line-height: 1.6;">Fleet of 26' bobtail trucks with liftgate, ready to deliver with experienced team drivers.</p>
+          </div>
+        </div>
+
+        <!-- 3. Project Management -->
+        <div class="bento-card group relative flex-shrink-0 w-[20rem] sm:w-[22rem] flex flex-col overflow-hidden rounded-xl bg-white card-shadow">
+          <div class="relative h-48 overflow-hidden">
+            <img src="services-pictures/project-management.png" alt="Project Management" class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-110" loading="lazy">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
+          </div>
+          <div class="z-10 flex flex-col gap-1.5 p-5">
+            <h3 class="text-lg font-semibold text-charcoal font-display">Project Management</h3>
+            <p class="text-sm text-charcoal/45" style="line-height: 1.6;">PM's with 30+ years of field experience handle site meetings, scheduling, and final walk-thru to ensure flawless execution.</p>
+          </div>
+        </div>
+
+        <!-- 4. Anti-Tip Services -->
+        <div class="bento-card group relative flex-shrink-0 w-[20rem] sm:w-[22rem] flex flex-col overflow-hidden rounded-xl bg-white card-shadow">
+          <div class="relative h-48 overflow-hidden">
+            <img src="services-pictures/anti-tip-services.png" alt="Anti-Tip Services" class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-110" loading="lazy">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
+          </div>
+          <div class="z-10 flex flex-col gap-1.5 p-5">
+            <h3 class="text-lg font-semibold text-charcoal font-display">Anti-Tip Services</h3>
+            <p class="text-sm text-charcoal/45" style="line-height: 1.6;">Safely fasten desks, files, bookcases, and storage — secured to wall or floor for earthquake safety.</p>
+          </div>
+        </div>
+
+        <!-- 5. Reconfiguration -->
+        <div class="bento-card group relative flex-shrink-0 w-[20rem] sm:w-[22rem] flex flex-col overflow-hidden rounded-xl bg-white card-shadow">
+          <div class="relative h-48 overflow-hidden">
+            <img src="services-pictures/reconfiguration.png" alt="Reconfiguration" class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-110" loading="lazy">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
+          </div>
+          <div class="z-10 flex flex-col gap-1.5 p-5">
+            <h3 class="text-lg font-semibold text-charcoal font-display">Reconfiguration</h3>
+            <p class="text-sm text-charcoal/45" style="line-height: 1.6;">Downsize or expand your office furniture. Our team has worked with all major manufacturers.</p>
+          </div>
+        </div>
+
+        <!-- 6. Service Calls & Maintenance -->
+        <div class="bento-card group relative flex-shrink-0 w-[20rem] sm:w-[22rem] flex flex-col justify-end overflow-hidden rounded-xl bg-white card-shadow" style="min-height: 16rem;">
+          <div class="absolute -right-8 -top-8 w-48 h-48 rounded-full bg-gold/[0.04]"></div>
+          <div class="pointer-events-none z-10 flex flex-col gap-1.5 p-6 bento-content">
+            <svg class="bento-icon h-10 w-10 text-charcoal/50 mb-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/>
+            </svg>
+            <h3 class="text-xl font-semibold text-charcoal font-display">Service Calls &amp; Maintenance</h3>
+            <p class="text-sm text-charcoal/45 max-w-xs" style="line-height: 1.6;">Available 24 hours. Technicians carry parts and hardware — most issues fixed on the first trip.</p>
+          </div>
+          <div class="bento-overlay pointer-events-none absolute inset-0"></div>
+        </div>
+
+        <!-- 7. Relocation & Move Services -->
+        <div class="bento-card group relative flex-shrink-0 w-[20rem] sm:w-[22rem] flex flex-col justify-end overflow-hidden rounded-xl bg-white card-shadow" style="min-height: 16rem;">
+          <div class="absolute -right-8 -top-8 w-48 h-48 rounded-full bg-gold/[0.04]"></div>
+          <div class="pointer-events-none z-10 flex flex-col gap-1.5 p-6 bento-content">
+            <svg class="bento-icon h-10 w-10 text-charcoal/50 mb-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
+            </svg>
+            <h3 class="text-xl font-semibold text-charcoal font-display">Relocation &amp; Move Services</h3>
+            <p class="text-sm text-charcoal/45 max-w-xs" style="line-height: 1.6;">Comprehensive moving plans from our PMs and move technicians — your office up and running, fast.</p>
+          </div>
+          <div class="bento-overlay pointer-events-none absolute inset-0"></div>
+        </div>
+
+        <!-- 8. Warehousing -->
+        <div class="bento-card group relative flex-shrink-0 w-[20rem] sm:w-[22rem] flex flex-col justify-end overflow-hidden rounded-xl bg-white card-shadow" style="min-height: 16rem;">
+          <div class="absolute -right-8 -top-8 w-48 h-48 rounded-full bg-gold/[0.04]"></div>
+          <div class="pointer-events-none z-10 flex flex-col gap-1.5 p-6 bento-content">
+            <svg class="bento-icon h-10 w-10 text-charcoal/50 mb-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 8.35V20a2 2 0 01-2 2H4a2 2 0 01-2-2V8.35A2 2 0 013.26 6.5l8-3.2a2 2 0 011.48 0l8 3.2A2 2 0 0122 8.35z"/><path d="M6 18h12"/><path d="M6 14h12"/>
+            </svg>
+            <h3 class="text-xl font-semibold text-charcoal font-display">Warehousing</h3>
+            <p class="text-sm text-charcoal/45 max-w-xs" style="line-height: 1.6;">20,000+ sq ft of 24-hour monitored storage. Product inventoried, palletized, wrapped, and tagged.</p>
+          </div>
+          <div class="bento-overlay pointer-events-none absolute inset-0"></div>
+        </div>
+
+        <!-- 9. Receiving Services -->
+        <div class="bento-card group relative flex-shrink-0 w-[20rem] sm:w-[22rem] flex flex-col justify-end overflow-hidden rounded-xl bg-white card-shadow" style="min-height: 16rem;">
+          <div class="absolute -right-8 -top-8 w-48 h-48 rounded-full bg-gold/[0.04]"></div>
+          <div class="pointer-events-none z-10 flex flex-col gap-1.5 p-6 bento-content">
+            <svg class="bento-icon h-10 w-10 text-charcoal/50 mb-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/>
+            </svg>
+            <h3 class="text-xl font-semibold text-charcoal font-display">Receiving Services</h3>
+            <p class="text-sm text-charcoal/45 max-w-xs" style="line-height: 1.6;">No warehouse? We receive, inspect every carton for damage, and report before signing for your goods.</p>
+          </div>
+          <div class="bento-overlay pointer-events-none absolute inset-0"></div>
+        </div>
+
+        <!-- 10. Decommissions -->
+        <div class="bento-card group relative flex-shrink-0 w-[20rem] sm:w-[22rem] flex flex-col justify-end overflow-hidden rounded-xl bg-white card-shadow" style="min-height: 16rem;">
+          <div class="absolute -right-8 -top-8 w-48 h-48 rounded-full bg-gold/[0.04]"></div>
+          <div class="pointer-events-none z-10 flex flex-col gap-1.5 p-6 bento-content">
+            <svg class="bento-icon h-10 w-10 text-charcoal/50 mb-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2"/><line x1="10" y1="11" x2="10" y2="17"/><line x1="14" y1="11" x2="14" y2="17"/>
+            </svg>
+            <h3 class="text-xl font-semibold text-charcoal font-display">Decommissions</h3>
+            <p class="text-sm text-charcoal/45 max-w-xs" style="line-height: 1.6;">Dismantling, removal, and recycling. In some cases, we can find a buyer for your old furniture.</p>
+          </div>
+          <div class="bento-overlay pointer-events-none absolute inset-0"></div>
+        </div>
+
+        <!-- 11. Fabric Cleaning -->
+        <div class="bento-card group relative flex-shrink-0 w-[20rem] sm:w-[22rem] flex flex-col justify-end overflow-hidden rounded-xl bg-white card-shadow" style="min-height: 16rem;">
+          <div class="absolute -right-8 -top-8 w-48 h-48 rounded-full bg-gold/[0.04]"></div>
+          <div class="pointer-events-none z-10 flex flex-col gap-1.5 p-6 bento-content">
+            <svg class="bento-icon h-10 w-10 text-charcoal/50 mb-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/>
+            </svg>
+            <h3 class="text-xl font-semibold text-charcoal font-display">Fabric Cleaning</h3>
+            <p class="text-sm text-charcoal/45 max-w-xs" style="line-height: 1.6;">Panel systems and seating cleaned to like-new condition. Thorough results you can see.</p>
+          </div>
+          <div class="bento-overlay pointer-events-none absolute inset-0"></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================ -->
+  <!-- OUR PROCESS -->
+  <!-- ============================================ -->
+  <section id="process" class="py-24 lg:py-32 bg-white">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="text-center reveal fade-up">
+        <h2 class="font-display text-4xl md:text-5xl lg:text-[3.4rem] leading-[1.12]" style="letter-spacing: -0.02em;">
+          [PROCESS HEADLINE]
+        </h2>
+        <div class="w-16 h-0.5 bg-gold/50 mt-6 mx-auto"></div>
+        <p class="mt-6 text-charcoal/50 max-w-2xl mx-auto" style="line-height: 1.8;">[Supporting subtext about how simple it is to work with HDI]</p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-10 lg:gap-16 mt-16 lg:mt-20 stagger">
+        <!-- Step 1 -->
+        <div class="reveal fade-up text-center">
+          <div class="w-16 h-16 rounded-full bg-gold/10 flex items-center justify-center mx-auto mb-6">
+            <span class="font-display text-2xl font-bold text-gold">01</span>
+          </div>
+          <h3 class="font-display text-xl font-semibold text-charcoal">[Step 1 Title]</h3>
+          <p class="mt-3 text-sm text-charcoal/45 max-w-xs mx-auto" style="line-height: 1.7;">[Copy about initial consultation, scoping, site assessment]</p>
+        </div>
+        <!-- Step 2 -->
+        <div class="reveal fade-up text-center">
+          <div class="w-16 h-16 rounded-full bg-gold/10 flex items-center justify-center mx-auto mb-6">
+            <span class="font-display text-2xl font-bold text-gold">02</span>
+          </div>
+          <h3 class="font-display text-xl font-semibold text-charcoal">[Step 2 Title]</h3>
+          <p class="mt-3 text-sm text-charcoal/45 max-w-xs mx-auto" style="line-height: 1.7;">[Copy about execution, installation, project management]</p>
+        </div>
+        <!-- Step 3 -->
+        <div class="reveal fade-up text-center">
+          <div class="w-16 h-16 rounded-full bg-gold/10 flex items-center justify-center mx-auto mb-6">
+            <span class="font-display text-2xl font-bold text-gold">03</span>
+          </div>
+          <h3 class="font-display text-xl font-semibold text-charcoal">[Step 3 Title]</h3>
+          <p class="mt-3 text-sm text-charcoal/45 max-w-xs mx-auto" style="line-height: 1.7;">[Copy about final walkthrough, sign-off, punch list]</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <!-- EXPERIENCE -->
+  <!-- ============================================ -->
+  <section id="experience" class="py-24 lg:py-32 bg-cream">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-16 lg:gap-28 items-center">
+        <!-- Text Content -->
+        <div class="reveal fade-up">
+          <h2 class="font-display text-4xl md:text-5xl lg:text-[3.4rem] leading-[1.12]" style="letter-spacing: -0.02em;">
+            [EXPERIENCE HEADLINE]
+          </h2>
+          <div class="w-16 h-0.5 bg-gold/50 mt-6"></div>
+          <p class="mt-8 text-charcoal/60 max-w-lg" style="line-height: 1.8;">
+            [Narrative copy — company story, philosophy, "we sell service not furniture" messaging]
+          </p>
+          <p class="mt-5 text-charcoal/60 max-w-lg" style="line-height: 1.8;">
+            [Second paragraph — team expertise, what sets HDI apart]
+          </p>
+        </div>
+
+        <!-- Stats Grid -->
+        <div class="reveal fade-right">
+          <div class="grid grid-cols-2 gap-8">
+            <div class="bg-white rounded-xl p-8 text-center card-shadow">
+              <div class="font-display text-4xl lg:text-5xl font-bold tracking-tight" style="letter-spacing: -0.02em;">
+                <span class="counter" data-target="26">0</span><span class="text-gold">+</span>
+              </div>
+              <div class="text-xs text-charcoal/45 mt-3 uppercase tracking-[0.2em] font-medium">Years Experience</div>
+            </div>
+            <div class="bg-white rounded-xl p-8 text-center card-shadow">
+              <div class="font-display text-4xl lg:text-5xl font-bold tracking-tight" style="letter-spacing: -0.02em;">
+                <span class="counter" data-target="1200" data-format="comma">0</span><span class="text-gold">+</span>
+              </div>
+              <div class="text-xs text-charcoal/45 mt-3 uppercase tracking-[0.2em] font-medium">Projects Completed</div>
+            </div>
+            <div class="bg-white rounded-xl p-8 text-center card-shadow">
+              <div class="font-display text-4xl lg:text-5xl font-bold tracking-tight" style="letter-spacing: -0.02em;">
+                20k<span class="text-gold">+</span>
+              </div>
+              <div class="text-xs text-charcoal/45 mt-3 uppercase tracking-[0.2em] font-medium">Sq Ft Warehouse</div>
+            </div>
+            <div class="bg-white rounded-xl p-8 text-center card-shadow">
+              <div class="font-display text-4xl lg:text-5xl font-bold tracking-tight" style="letter-spacing: -0.02em;">
+                <span class="counter" data-target="30">0</span><span class="text-gold">+</span>
+              </div>
+              <div class="text-xs text-charcoal/45 mt-3 uppercase tracking-[0.2em] font-medium">Years PM Experience</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <!-- MEET THE TEAM -->
+  <!-- ============================================ -->
+  <section id="team" class="py-24 lg:py-32 bg-white">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="text-center reveal fade-up">
+        <h2 class="font-display text-4xl md:text-5xl lg:text-[3.4rem] leading-[1.12]" style="letter-spacing: -0.02em;">
+          Meet Our Team
+        </h2>
+        <div class="w-16 h-0.5 bg-gold/50 mt-6 mx-auto"></div>
+        <p class="mt-6 text-charcoal/50 max-w-2xl mx-auto" style="line-height: 1.8;">The people behind every on-time delivery, clean install, and seamless move.</p>
+      </div>
+
+      <!-- Portraits -->
+      <div class="flex flex-wrap justify-center gap-10 md:gap-14 mt-16 reveal fade-up">
+        <button class="team-portrait-btn flex flex-col items-center gap-3 group" data-member="0" aria-expanded="false">
+          <img src="https://placehold.co/200x200" alt="Team Member 1" class="team-portrait w-24 h-24 md:w-28 md:h-28 rounded-full object-cover card-shadow" loading="lazy">
+          <span class="text-sm font-medium text-charcoal/70 group-hover:text-charcoal transition-colors">[Name]</span>
+          <span class="text-xs text-charcoal/40">[Title]</span>
+        </button>
+        <button class="team-portrait-btn flex flex-col items-center gap-3 group" data-member="1" aria-expanded="false">
+          <img src="https://placehold.co/200x200" alt="Team Member 2" class="team-portrait w-24 h-24 md:w-28 md:h-28 rounded-full object-cover card-shadow" loading="lazy">
+          <span class="text-sm font-medium text-charcoal/70 group-hover:text-charcoal transition-colors">[Name]</span>
+          <span class="text-xs text-charcoal/40">[Title]</span>
+        </button>
+        <button class="team-portrait-btn flex flex-col items-center gap-3 group" data-member="2" aria-expanded="false">
+          <img src="https://placehold.co/200x200" alt="Team Member 3" class="team-portrait w-24 h-24 md:w-28 md:h-28 rounded-full object-cover card-shadow" loading="lazy">
+          <span class="text-sm font-medium text-charcoal/70 group-hover:text-charcoal transition-colors">[Name]</span>
+          <span class="text-xs text-charcoal/40">[Title]</span>
+        </button>
+        <button class="team-portrait-btn flex flex-col items-center gap-3 group" data-member="3" aria-expanded="false">
+          <img src="https://placehold.co/200x200" alt="Team Member 4" class="team-portrait w-24 h-24 md:w-28 md:h-28 rounded-full object-cover card-shadow" loading="lazy">
+          <span class="text-sm font-medium text-charcoal/70 group-hover:text-charcoal transition-colors">[Name]</span>
+          <span class="text-xs text-charcoal/40">[Title]</span>
+        </button>
+      </div>
+
+      <!-- Expandable Bio Panel -->
+      <div class="team-bio-panel mt-10 max-w-2xl mx-auto" id="teamBioPanel" role="region" aria-live="polite">
+        <div>
+          <div class="team-bio-inner bg-cream/60 rounded-xl p-8 text-center">
+            <h3 class="font-display text-xl font-semibold text-charcoal" id="teamBioName"></h3>
+            <p class="text-sm text-gold mt-1 font-medium" id="teamBioTitle"></p>
+            <p class="mt-4 text-charcoal/55 text-sm" style="line-height: 1.8;" id="teamBioDesc"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <!-- PROJECTS / GALLERY -->
+  <!-- ============================================ -->
+  <section id="projects" class="py-24 lg:py-32 bg-cream overflow-hidden">
+    <!-- Title -->
+    <div class="max-w-7xl mx-auto px-6 lg:px-8 text-center">
+      <div class="reveal fade-up">
+        <h2 class="font-display text-4xl md:text-5xl lg:text-[3.4rem] leading-[1.12]" style="letter-spacing: -0.02em;">
+          Our Recent Projects
+        </h2>
+        <div class="w-16 h-0.5 bg-gold/50 mt-6 mx-auto"></div>
+      </div>
+    </div>
+
+    <!-- Infinite Auto-Scrolling Image Slider -->
+    <div class="mt-16 lg:mt-20 reveal fade-up">
+      <div class="slider-scroll-container w-full">
+        <div class="slider-infinite-scroll flex gap-5 w-max">
+          <!-- First set of images -->
+          <div class="slider-image-item flex-shrink-0 w-56 h-56 md:w-72 md:h-72 lg:w-80 lg:h-80 rounded-xl overflow-hidden">
+            <div class="relative w-full h-full">
+              <img src="https://images.unsplash.com/photo-1518495973542-4542c06a5843?q=80&w=1974&auto=format&fit=crop" alt="Project 1" class="w-full h-full object-cover" loading="lazy">
+              <div class="absolute inset-0 bg-gradient-to-t from-charcoal/60 via-transparent to-transparent"></div>
+            </div>
+          </div>
+          <div class="slider-image-item flex-shrink-0 w-56 h-56 md:w-72 md:h-72 lg:w-80 lg:h-80 rounded-xl overflow-hidden">
+            <div class="relative w-full h-full">
+              <img src="https://images.unsplash.com/photo-1472396961693-142e6e269027?q=80&w=2152&auto=format&fit=crop" alt="Project 2" class="w-full h-full object-cover" loading="lazy">
+              <div class="absolute inset-0 bg-gradient-to-t from-charcoal/60 via-transparent to-transparent"></div>
+            </div>
+          </div>
+          <div class="slider-image-item flex-shrink-0 w-56 h-56 md:w-72 md:h-72 lg:w-80 lg:h-80 rounded-xl overflow-hidden">
+            <div class="relative w-full h-full">
+              <img src="https://images.unsplash.com/photo-1505142468610-359e7d316be0?q=80&w=2126&auto=format&fit=crop" alt="Project 3" class="w-full h-full object-cover" loading="lazy">
+              <div class="absolute inset-0 bg-gradient-to-t from-charcoal/60 via-transparent to-transparent"></div>
+            </div>
+          </div>
+          <div class="slider-image-item flex-shrink-0 w-56 h-56 md:w-72 md:h-72 lg:w-80 lg:h-80 rounded-xl overflow-hidden">
+            <div class="relative w-full h-full">
+              <img src="https://images.unsplash.com/photo-1482881497185-d4a9ddbe4151?q=80&w=1965&auto=format&fit=crop" alt="Project 4" class="w-full h-full object-cover" loading="lazy">
+              <div class="absolute inset-0 bg-gradient-to-t from-charcoal/60 via-transparent to-transparent"></div>
+            </div>
+          </div>
+          <div class="slider-image-item flex-shrink-0 w-56 h-56 md:w-72 md:h-72 lg:w-80 lg:h-80 rounded-xl overflow-hidden">
+            <div class="relative w-full h-full">
+              <img src="https://plus.unsplash.com/premium_photo-1673264933212-d78737f38e48?q=80&w=1974&auto=format&fit=crop" alt="Project 5" class="w-full h-full object-cover" loading="lazy">
+              <div class="absolute inset-0 bg-gradient-to-t from-charcoal/60 via-transparent to-transparent"></div>
+            </div>
+          </div>
+          <div class="slider-image-item flex-shrink-0 w-56 h-56 md:w-72 md:h-72 lg:w-80 lg:h-80 rounded-xl overflow-hidden">
+            <div class="relative w-full h-full">
+              <img src="https://plus.unsplash.com/premium_photo-1711434824963-ca894373272e?q=80&w=2030&auto=format&fit=crop" alt="Project 6" class="w-full h-full object-cover" loading="lazy">
+              <div class="absolute inset-0 bg-gradient-to-t from-charcoal/60 via-transparent to-transparent"></div>
+            </div>
+          </div>
+          <div class="slider-image-item flex-shrink-0 w-56 h-56 md:w-72 md:h-72 lg:w-80 lg:h-80 rounded-xl overflow-hidden">
+            <div class="relative w-full h-full">
+              <img src="https://plus.unsplash.com/premium_photo-1675705721263-0bbeec261c49?q=80&w=1940&auto=format&fit=crop" alt="Project 7" class="w-full h-full object-cover" loading="lazy">
+              <div class="absolute inset-0 bg-gradient-to-t from-charcoal/60 via-transparent to-transparent"></div>
+            </div>
+          </div>
+          <div class="slider-image-item flex-shrink-0 w-56 h-56 md:w-72 md:h-72 lg:w-80 lg:h-80 rounded-xl overflow-hidden">
+            <div class="relative w-full h-full">
+              <img src="https://images.unsplash.com/photo-1524799526615-766a9833dec0?q=80&w=1935&auto=format&fit=crop" alt="Project 8" class="w-full h-full object-cover" loading="lazy">
+              <div class="absolute inset-0 bg-gradient-to-t from-charcoal/60 via-transparent to-transparent"></div>
+            </div>
+          </div>
+          <!-- Duplicated set for seamless loop -->
+          <div class="slider-image-item flex-shrink-0 w-56 h-56 md:w-72 md:h-72 lg:w-80 lg:h-80 rounded-xl overflow-hidden">
+            <div class="relative w-full h-full">
+              <img src="https://images.unsplash.com/photo-1518495973542-4542c06a5843?q=80&w=1974&auto=format&fit=crop" alt="Project 1" class="w-full h-full object-cover" loading="lazy">
+              <div class="absolute inset-0 bg-gradient-to-t from-charcoal/60 via-transparent to-transparent"></div>
+            </div>
+          </div>
+          <div class="slider-image-item flex-shrink-0 w-56 h-56 md:w-72 md:h-72 lg:w-80 lg:h-80 rounded-xl overflow-hidden">
+            <div class="relative w-full h-full">
+              <img src="https://images.unsplash.com/photo-1472396961693-142e6e269027?q=80&w=2152&auto=format&fit=crop" alt="Project 2" class="w-full h-full object-cover" loading="lazy">
+              <div class="absolute inset-0 bg-gradient-to-t from-charcoal/60 via-transparent to-transparent"></div>
+            </div>
+          </div>
+          <div class="slider-image-item flex-shrink-0 w-56 h-56 md:w-72 md:h-72 lg:w-80 lg:h-80 rounded-xl overflow-hidden">
+            <div class="relative w-full h-full">
+              <img src="https://images.unsplash.com/photo-1505142468610-359e7d316be0?q=80&w=2126&auto=format&fit=crop" alt="Project 3" class="w-full h-full object-cover" loading="lazy">
+              <div class="absolute inset-0 bg-gradient-to-t from-charcoal/60 via-transparent to-transparent"></div>
+            </div>
+          </div>
+          <div class="slider-image-item flex-shrink-0 w-56 h-56 md:w-72 md:h-72 lg:w-80 lg:h-80 rounded-xl overflow-hidden">
+            <div class="relative w-full h-full">
+              <img src="https://images.unsplash.com/photo-1482881497185-d4a9ddbe4151?q=80&w=1965&auto=format&fit=crop" alt="Project 4" class="w-full h-full object-cover" loading="lazy">
+              <div class="absolute inset-0 bg-gradient-to-t from-charcoal/60 via-transparent to-transparent"></div>
+            </div>
+          </div>
+          <div class="slider-image-item flex-shrink-0 w-56 h-56 md:w-72 md:h-72 lg:w-80 lg:h-80 rounded-xl overflow-hidden">
+            <div class="relative w-full h-full">
+              <img src="https://plus.unsplash.com/premium_photo-1673264933212-d78737f38e48?q=80&w=1974&auto=format&fit=crop" alt="Project 5" class="w-full h-full object-cover" loading="lazy">
+              <div class="absolute inset-0 bg-gradient-to-t from-charcoal/60 via-transparent to-transparent"></div>
+            </div>
+          </div>
+          <div class="slider-image-item flex-shrink-0 w-56 h-56 md:w-72 md:h-72 lg:w-80 lg:h-80 rounded-xl overflow-hidden">
+            <div class="relative w-full h-full">
+              <img src="https://plus.unsplash.com/premium_photo-1711434824963-ca894373272e?q=80&w=2030&auto=format&fit=crop" alt="Project 6" class="w-full h-full object-cover" loading="lazy">
+              <div class="absolute inset-0 bg-gradient-to-t from-charcoal/60 via-transparent to-transparent"></div>
+            </div>
+          </div>
+          <div class="slider-image-item flex-shrink-0 w-56 h-56 md:w-72 md:h-72 lg:w-80 lg:h-80 rounded-xl overflow-hidden">
+            <div class="relative w-full h-full">
+              <img src="https://plus.unsplash.com/premium_photo-1675705721263-0bbeec261c49?q=80&w=1940&auto=format&fit=crop" alt="Project 7" class="w-full h-full object-cover" loading="lazy">
+              <div class="absolute inset-0 bg-gradient-to-t from-charcoal/60 via-transparent to-transparent"></div>
+            </div>
+          </div>
+          <div class="slider-image-item flex-shrink-0 w-56 h-56 md:w-72 md:h-72 lg:w-80 lg:h-80 rounded-xl overflow-hidden">
+            <div class="relative w-full h-full">
+              <img src="https://images.unsplash.com/photo-1524799526615-766a9833dec0?q=80&w=1935&auto=format&fit=crop" alt="Project 8" class="w-full h-full object-cover" loading="lazy">
+              <div class="absolute inset-0 bg-gradient-to-t from-charcoal/60 via-transparent to-transparent"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <!-- TESTIMONIALS -->
+  <!-- ============================================ -->
+  <section id="testimonials" class="py-24 lg:py-32 bg-white">
+    <div class="max-w-4xl mx-auto px-6 lg:px-8 text-center">
+      <h2 class="font-display text-4xl md:text-5xl lg:text-[3.4rem] reveal fade-up" style="letter-spacing: -0.02em;">
+        What Our Clients Say
+      </h2>
+
+      <!-- Navigation -->
+      <div class="flex items-center justify-center gap-5 mt-10 reveal fade-up">
+        <button
+          id="prevTestimonial"
+          class="w-11 h-11 rounded-full border border-charcoal/15 flex items-center justify-center hover:border-gold hover:text-gold transition-colors duration-300 active:scale-95"
+          aria-label="Previous testimonial"
+        >
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <span class="text-sm text-charcoal/40 font-medium tabular-nums w-8" id="testimonialCounter">1/3</span>
+        <button
+          id="nextTestimonial"
+          class="w-11 h-11 rounded-full border border-charcoal/15 flex items-center justify-center hover:border-gold hover:text-gold transition-colors duration-300 active:scale-95"
+          aria-label="Next testimonial"
+        >
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+      </div>
+
+      <!-- Testimonial Slides -->
+      <div class="relative mt-12 min-h-[340px] sm:min-h-[300px]" id="testimonialContainer">
+        <div class="testimonial-slide slide-active absolute inset-0 flex flex-col items-center justify-center" data-slide="0">
+          <blockquote class="font-display text-xl sm:text-2xl md:text-3xl italic text-charcoal/80 max-w-2xl px-4" style="line-height: 1.55;">
+            Exceptional experience with HDI. From start to finish, the team was professional and attentive. Our office turned out exactly as we envisioned, and the project was completed on time. Highly recommend!
+          </blockquote>
+          <div class="mt-10">
+            <img src="https://placehold.co/64x64/d4c67a/1f1f1f?text=JR" alt="James Rivera" class="w-14 h-14 rounded-full mx-auto ring-2 ring-gold/20 ring-offset-2 ring-offset-white" loading="lazy">
+            <p class="mt-4 font-semibold text-charcoal">James Rivera</p>
+            <p class="text-charcoal/35 text-sm mt-1">Facilities Manager, TechCorp</p>
+          </div>
+        </div>
+        <div class="testimonial-slide slide-right absolute inset-0 flex flex-col items-center justify-center" data-slide="1">
+          <blockquote class="font-display text-xl sm:text-2xl md:text-3xl italic text-charcoal/80 max-w-2xl px-4" style="line-height: 1.55;">
+            HDI handled our entire office relocation seamlessly. Their project management team kept everything on schedule, and the furniture was installed perfectly. Outstanding service!
+          </blockquote>
+          <div class="mt-10">
+            <img src="https://placehold.co/64x64/d4c67a/1f1f1f?text=SL" alt="Sarah Lawson" class="w-14 h-14 rounded-full mx-auto ring-2 ring-gold/20 ring-offset-2 ring-offset-white" loading="lazy">
+            <p class="mt-4 font-semibold text-charcoal">Sarah Lawson</p>
+            <p class="text-charcoal/35 text-sm mt-1">Office Manager, Pacific Solutions</p>
+          </div>
+        </div>
+        <div class="testimonial-slide slide-right absolute inset-0 flex flex-col items-center justify-center" data-slide="2">
+          <blockquote class="font-display text-xl sm:text-2xl md:text-3xl italic text-charcoal/80 max-w-2xl px-4" style="line-height: 1.55;">
+            We've used HDI for multiple projects over the past decade. Their consistency and attention to detail is unmatched. The anti-tip service gave us peace of mind for our entire building.
+          </blockquote>
+          <div class="mt-10">
+            <img src="https://placehold.co/64x64/d4c67a/1f1f1f?text=MC" alt="Michael Chen" class="w-14 h-14 rounded-full mx-auto ring-2 ring-gold/20 ring-offset-2 ring-offset-white" loading="lazy">
+            <p class="mt-4 font-semibold text-charcoal">Michael Chen</p>
+            <p class="text-charcoal/35 text-sm mt-1">Operations Director, Inland Group</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <!-- SAFETY & COMPLIANCE -->
+  <!-- ============================================ -->
+  <section id="safety" class="py-20 lg:py-24 bg-cream border-t border-charcoal/6">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="text-center reveal fade-up">
+        <h2 class="font-display text-3xl md:text-4xl lg:text-[2.8rem] leading-[1.12]" style="letter-spacing: -0.02em;">
+          [SAFETY HEADLINE]
+        </h2>
+        <div class="w-16 h-0.5 bg-gold/50 mt-6 mx-auto"></div>
+      </div>
+
+      <div class="flex flex-wrap items-center justify-center gap-8 md:gap-12 lg:gap-16 mt-14 stagger">
+        <!-- CA License -->
+        <div class="reveal fade-up flex flex-col items-center text-center gap-3">
+          <div class="w-14 h-14 rounded-full bg-gold/10 flex items-center justify-center">
+            <svg class="w-7 h-7 text-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            </svg>
+          </div>
+          <p class="text-sm font-semibold text-charcoal">CA License D34</p>
+          <p class="text-xs text-charcoal/40">#1034386</p>
+        </div>
+        <!-- DIR Registered -->
+        <div class="reveal fade-up flex flex-col items-center text-center gap-3">
+          <div class="w-14 h-14 rounded-full bg-gold/10 flex items-center justify-center">
+            <svg class="w-7 h-7 text-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><path d="M9 15l2 2 4-4"/>
+            </svg>
+          </div>
+          <p class="text-sm font-semibold text-charcoal">DIR Registered</p>
+          <p class="text-xs text-charcoal/40">Prevailing wage projects</p>
+        </div>
+        <!-- Insured & Bonded -->
+        <div class="reveal fade-up flex flex-col items-center text-center gap-3">
+          <div class="w-14 h-14 rounded-full bg-gold/10 flex items-center justify-center">
+            <svg class="w-7 h-7 text-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 12l2 2 4-4"/><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            </svg>
+          </div>
+          <p class="text-sm font-semibold text-charcoal">Insured &amp; Bonded</p>
+          <p class="text-xs text-charcoal/40">Full coverage</p>
+        </div>
+        <!-- Safety Trained -->
+        <div class="reveal fade-up flex flex-col items-center text-center gap-3">
+          <div class="w-14 h-14 rounded-full bg-gold/10 flex items-center justify-center">
+            <svg class="w-7 h-7 text-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/>
+            </svg>
+          </div>
+          <p class="text-sm font-semibold text-charcoal">Safety-Trained Crews</p>
+          <p class="text-xs text-charcoal/40">Certified technicians</p>
+        </div>
+        <!-- 24/7 Available -->
+        <div class="reveal fade-up flex flex-col items-center text-center gap-3">
+          <div class="w-14 h-14 rounded-full bg-gold/10 flex items-center justify-center">
+            <svg class="w-7 h-7 text-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+            </svg>
+          </div>
+          <p class="text-sm font-semibold text-charcoal">24/7 Available</p>
+          <p class="text-xs text-charcoal/40">Emergency service</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <!-- SERVICE AREAS -->
+  <!-- ============================================ -->
+  <section id="service-areas" class="py-24 lg:py-32 bg-white">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8 text-center">
+      <div class="reveal fade-up">
+        <h2 class="font-display text-4xl md:text-5xl lg:text-[3.4rem] leading-[1.12]" style="letter-spacing: -0.02em;">
+          [SERVICE AREAS HEADLINE]
+        </h2>
+        <div class="w-16 h-0.5 bg-gold/50 mt-6 mx-auto"></div>
+        <p class="mt-6 text-charcoal/50 max-w-2xl mx-auto" style="line-height: 1.8;">[Supporting subtext — serving all of Southern California]</p>
+      </div>
+
+      <div class="flex flex-wrap items-center justify-center gap-6 md:gap-10 mt-14 stagger">
+        <div class="reveal fade-up">
+          <div class="px-8 py-5 bg-cream rounded-xl card-shadow">
+            <p class="font-display text-lg font-semibold text-charcoal">Orange County</p>
+          </div>
+        </div>
+        <div class="reveal fade-up">
+          <div class="px-8 py-5 bg-cream rounded-xl card-shadow">
+            <p class="font-display text-lg font-semibold text-charcoal">Los Angeles</p>
+          </div>
+        </div>
+        <div class="reveal fade-up">
+          <div class="px-8 py-5 bg-cream rounded-xl card-shadow">
+            <p class="font-display text-lg font-semibold text-charcoal">Inland Empire</p>
+          </div>
+        </div>
+        <div class="reveal fade-up">
+          <div class="px-8 py-5 bg-cream rounded-xl card-shadow">
+            <p class="font-display text-lg font-semibold text-charcoal">San Bernardino</p>
+          </div>
+        </div>
+        <div class="reveal fade-up">
+          <div class="px-8 py-5 bg-cream rounded-xl card-shadow">
+            <p class="font-display text-lg font-semibold text-charcoal">Riverside County</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <!-- CONTACT / FINAL CTA -->
+  <!-- ============================================ -->
+  <section id="contact" class="py-24 lg:py-32 bg-cream">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="reveal fade-up bg-white rounded-2xl overflow-hidden grid lg:grid-cols-5" style="box-shadow: 0 8px 48px rgba(31,31,31,0.07), 0 2px 12px rgba(31,31,31,0.04);">
+        <!-- Image Side -->
+        <div class="lg:col-span-2 relative min-h-[300px] lg:min-h-0">
+          <img src="https://placehold.co/600x800/6b655d/a39c91?text=HDI+Team" alt="HD Installation team" class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-110" loading="lazy">
+          <div class="absolute inset-0 bg-gradient-to-t from-charcoal/50 to-charcoal/10"></div>
+          <div class="absolute inset-0 bg-gold/8 mix-blend-multiply"></div>
+          <!-- Decorative badge -->
+          <div class="absolute bottom-8 left-8 bg-white/95 backdrop-blur-sm rounded-lg px-5 py-3 shadow-lg">
+            <p class="font-display text-lg font-semibold text-charcoal">26+ Years</p>
+            <p class="text-charcoal/50 text-xs mt-0.5">of Trusted Service</p>
+          </div>
+        </div>
+
+        <!-- Form Side -->
+        <div class="lg:col-span-3 p-8 sm:p-10 lg:p-16">
+          <h2 class="font-display text-3xl md:text-4xl lg:text-[2.6rem]" style="letter-spacing: -0.02em;">
+            Have Questions?<br>Get In Touch
+          </h2>
+          <p class="mt-4 text-charcoal/45 text-sm" style="line-height: 1.7;">We'd love to hear about your project. Fill out the form below and we'll get back to you promptly.</p>
+
+          <form class="mt-10 space-y-6" onsubmit="event.preventDefault(); alert('Thank you! Your message has been received. We will get back to you shortly.');">
+            <div class="grid sm:grid-cols-2 gap-6">
+              <div class="form-field">
+                <label for="name" class="block text-xs font-medium text-charcoal/50 uppercase tracking-[0.15em] mb-2.5">Full Name</label>
+                <input
+                  type="text" id="name" name="name" placeholder="John Smith"
+                  class="form-input w-full px-4 py-3.5 bg-cream/50 border border-charcoal/8 rounded-lg text-sm font-body placeholder:text-charcoal/25 outline-none"
+                >
+              </div>
+              <div class="form-field">
+                <label for="phone" class="block text-xs font-medium text-charcoal/50 uppercase tracking-[0.15em] mb-2.5">Phone</label>
+                <input
+                  type="tel" id="phone" name="phone" placeholder="(555) 123-4567"
+                  class="form-input w-full px-4 py-3.5 bg-cream/50 border border-charcoal/8 rounded-lg text-sm font-body placeholder:text-charcoal/25 outline-none"
+                >
+              </div>
+            </div>
+            <div class="form-field">
+              <label for="email" class="block text-xs font-medium text-charcoal/50 uppercase tracking-[0.15em] mb-2.5">Email Address</label>
+              <input
+                type="email" id="email" name="email" placeholder="john@company.com"
+                class="form-input w-full px-4 py-3.5 bg-cream/50 border border-charcoal/8 rounded-lg text-sm font-body placeholder:text-charcoal/25 outline-none"
+              >
+            </div>
+            <div class="form-field">
+              <label for="service" class="block text-xs font-medium text-charcoal/50 uppercase tracking-[0.15em] mb-2.5">Service Needed</label>
+              <select
+                id="service" name="service"
+                class="form-input w-full px-4 py-3.5 bg-cream/50 border border-charcoal/8 rounded-lg text-sm font-body text-charcoal/60 outline-none appearance-none pr-10"
+              >
+                <option value="">Select a service...</option>
+                <option value="furniture-installation">Furniture Installation</option>
+                <option value="delivery">Delivery Services</option>
+                <option value="project-management">Project Management</option>
+                <option value="anti-tip">Furniture Anti-Tip Services</option>
+                <option value="reconfiguration">Reconfiguration</option>
+                <option value="service-calls">Service Calls / Maintenance</option>
+                <option value="relocation">Relocation / Move Services</option>
+                <option value="warehousing">Warehousing</option>
+                <option value="receiving">Receiving Services</option>
+                <option value="decommissions">Decommissions</option>
+                <option value="fabric-cleaning">Fabric Cleaning</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+            <div class="form-field">
+              <label for="message" class="block text-xs font-medium text-charcoal/50 uppercase tracking-[0.15em] mb-2.5">Message</label>
+              <textarea
+                id="message" name="message" rows="4" placeholder="Tell us about your project..."
+                class="form-input w-full px-4 py-3.5 bg-cream/50 border border-charcoal/8 rounded-lg text-sm font-body placeholder:text-charcoal/25 outline-none resize-none"
+              ></textarea>
+            </div>
+            <button
+              type="submit"
+              class="btn-dark w-full sm:w-auto px-14 py-4 bg-charcoal text-cream text-sm font-medium tracking-[0.15em] uppercase"
+            >
+              Contact Us
+            </button>
+          </form>
+
+          <!-- Contact Info -->
+          <div class="mt-12 pt-8 border-t border-charcoal/6 grid sm:grid-cols-3 gap-8 text-sm">
+            <div>
+              <p class="text-charcoal/35 text-xs uppercase tracking-[0.15em] font-medium">Phone</p>
+              <p class="mt-1.5 text-charcoal/65">+1 (555) 123-4567</p>
+            </div>
+            <div>
+              <p class="text-charcoal/35 text-xs uppercase tracking-[0.15em] font-medium">Email</p>
+              <p class="mt-1.5 text-charcoal/65">info@hdinstallation.com</p>
+            </div>
+            <div>
+              <p class="text-charcoal/35 text-xs uppercase tracking-[0.15em] font-medium">Service Areas</p>
+              <p class="mt-1.5 text-charcoal/65">OC · LA · IE · San Bernardino · Riverside</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <!-- FOOTER -->
+  <!-- ============================================ -->
+  <footer class="bg-charcoal py-20 lg:py-24">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8 text-center">
+      <a href="#home" class="font-display text-3xl text-gold-pale font-semibold tracking-tight inline-block">
+        HD Installation
+      </a>
+
+      <nav class="mt-12 flex flex-wrap items-center justify-center gap-x-1 gap-y-3 text-sm">
+        <a href="#home" class="text-cream/45 hover:text-cream px-4 transition-colors duration-200">Home</a>
+        <span class="text-cream/15 hidden sm:inline">|</span>
+        <a href="#services" class="text-cream/45 hover:text-cream px-4 transition-colors duration-200">Services</a>
+        <span class="text-cream/15 hidden sm:inline">|</span>
+        <a href="#experience" class="text-cream/45 hover:text-cream px-4 transition-colors duration-200">About</a>
+        <span class="text-cream/15 hidden sm:inline">|</span>
+        <a href="#projects" class="text-cream/45 hover:text-cream px-4 transition-colors duration-200">Projects</a>
+        <span class="text-cream/15 hidden sm:inline">|</span>
+        <a href="#testimonials" class="text-cream/45 hover:text-cream px-4 transition-colors duration-200">Testimonials</a>
+        <span class="text-cream/15 hidden sm:inline">|</span>
+        <a href="#contact" class="text-cream/45 hover:text-cream px-4 transition-colors duration-200">Contact</a>
+      </nav>
+
+      <div class="flex items-center justify-center gap-7 mt-12">
+        <a href="#" class="text-cream/35 hover:text-gold transition-colors duration-200" aria-label="Facebook">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+        </a>
+        <a href="#" class="text-cream/35 hover:text-gold transition-colors duration-200" aria-label="Instagram">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </a>
+        <a href="#" class="text-cream/35 hover:text-gold transition-colors duration-200" aria-label="LinkedIn">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        </a>
+      </div>
+
+      <p class="mt-10 text-cream/20 text-xs leading-relaxed max-w-lg mx-auto">
+        CA Contractor License D34 Prefabricated — License #1034386<br>
+        Registered with the DIR to perform CA prevailing wage projects
+      </p>
+      <p class="mt-5 text-cream/25 text-sm">
+        &copy; 2026 HD Installation, Inc. All Rights Reserved.
+      </p>
+    </div>
+  </footer>
+
+  <!-- ============================================ -->
+  <!-- JAVASCRIPT -->
+  <!-- ============================================ -->
+  <script>
+    // ===== SERVICES CAROUSEL =====
+    (function() {
+      const track = document.getElementById('servicesTrack');
+      const prev = document.getElementById('servicesPrev');
+      const next = document.getElementById('servicesNext');
+      if (!track || !prev || !next) return;
+
+      const scrollAmount = 380;
+
+      prev.addEventListener('click', () => {
+        track.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+      });
+      next.addEventListener('click', () => {
+        track.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+      });
+
+      function updateArrows() {
+        prev.disabled = track.scrollLeft <= 0;
+        next.disabled = track.scrollLeft >= track.scrollWidth - track.clientWidth - 1;
+      }
+      track.addEventListener('scroll', updateArrows);
+      updateArrows();
+    })();
+
+    // ===== SCROLL REVEAL =====
+    const revealEls = document.querySelectorAll('.reveal');
+    const revealObs = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+    revealEls.forEach(el => {
+      // Default to fade-up if no variant specified
+      if (!el.classList.contains('fade-left') && !el.classList.contains('fade-right') && !el.classList.contains('fade-scale') && !el.classList.contains('fade-up')) {
+        el.classList.add('fade-up');
+      }
+      revealObs.observe(el);
+    });
+
+    // ===== SCROLL PROGRESS BAR + STICKY NAV (single listener, rAF batched) =====
+    const progressBar = document.getElementById('scrollProgress');
+    const navbar = document.getElementById('navbar');
+    let scrollRafPending = false;
+    window.addEventListener('scroll', () => {
+      if (scrollRafPending) return;
+      scrollRafPending = true;
+      requestAnimationFrame(() => {
+        const scrolled = window.scrollY / (document.body.scrollHeight - window.innerHeight);
+        progressBar.style.transform = `scaleX(${scrolled})`;
+        navbar.classList.toggle('nav-scrolled', window.scrollY > 80);
+        scrollRafPending = false;
+      });
+    }, { passive: true });
+
+
+    // ===== SCROLL EXPANSION HERO =====
+    (function() {
+      const heroSection = document.querySelector('[data-scroll-hero]');
+      if (!heroSection) return;
+
+      const heroMedia = document.getElementById('heroMedia');
+      const heroBackground = document.getElementById('heroBackground');
+      const heroLine1 = document.getElementById('heroLine1');
+      const heroLine2 = document.getElementById('heroLine2');
+      const heroHint = document.getElementById('heroHint');
+      const heroContentAfter = document.getElementById('heroContentAfter');
+      const heroMediaOverlay = document.getElementById('heroMediaOverlay');
+
+      let scrollProgress = 0;
+      let mediaFullyExpanded = false;
+      let touchStartY = 0;
+      let heroRafPending = false;
+      let cachedMobile = window.innerWidth < 768;
+
+      // Cache mobile breakpoint, update on resize
+      window.addEventListener('resize', () => { cachedMobile = window.innerWidth < 768; }, { passive: true });
+
+      // Set maxWidth/maxHeight once (no need to set every frame)
+      heroMedia.style.maxWidth = '100vw';
+      heroMedia.style.maxHeight = '100vh';
+
+      function updateHero() {
+        const p = scrollProgress;
+
+        // Media sizing — starts small, expands to viewport
+        const startW = cachedMobile ? 280 : 340;
+        const startH = cachedMobile ? 380 : 440;
+        const endW = window.innerWidth;
+        const endH = window.innerHeight;
+        const w = startW + p * (endW - startW);
+        const h = startH + p * (endH - startH);
+
+        heroMedia.style.width = w + 'px';
+        heroMedia.style.height = h + 'px';
+
+        // Border radius shrinks to 0
+        const radius = Math.max(0, 16 * (1 - p));
+        heroMedia.style.borderRadius = radius + 'px';
+        heroMedia.style.setProperty('--radius', radius + 'px');
+
+        // Darken overlay fades out
+        const overlayOpacity = Math.max(0, 0.35 - p * 0.35);
+        heroMediaOverlay.style.opacity = overlayOpacity / 0.35;
+
+        // Background fades out
+        heroBackground.style.opacity = 1 - p;
+
+        // Text splits apart
+        const textShift = p * (cachedMobile ? 120 : 100);
+        heroLine1.style.transform = 'translateX(-' + textShift + 'vw)';
+        heroLine2.style.transform = 'translateX(' + textShift + 'vw)';
+
+        // Hint fades out
+        heroHint.style.opacity = Math.max(0, 1 - p * 4);
+
+        // Box shadow fades
+        const shadowOpacity = Math.max(0, 0.35 * (1 - p));
+        heroMedia.style.boxShadow = '0 0 60px rgba(0,0,0,' + shadowOpacity + ')';
+
+        // After-content appears
+        if (p >= 1) {
+          heroContentAfter.classList.add('visible');
+        } else if (p < 0.85) {
+          heroContentAfter.classList.remove('visible');
+        }
+      }
+
+      function scheduleHeroUpdate() {
+        if (!heroRafPending) {
+          heroRafPending = true;
+          requestAnimationFrame(() => {
+            updateHero();
+            heroRafPending = false;
+          });
+        }
+      }
+
+      function removeHeroListeners() {
+        window.removeEventListener('wheel', handleWheel);
+        window.removeEventListener('touchstart', handleTouchStart);
+        window.removeEventListener('touchmove', handleTouchMove);
+        window.removeEventListener('touchend', handleTouchEnd);
+        window.removeEventListener('scroll', handleScroll);
+      }
+
+      function addHeroListeners() {
+        window.addEventListener('wheel', handleWheel, { passive: false });
+        window.addEventListener('touchstart', handleTouchStart, { passive: false });
+        window.addEventListener('touchmove', handleTouchMove, { passive: false });
+        window.addEventListener('touchend', handleTouchEnd);
+        window.addEventListener('scroll', handleScroll, { passive: true });
+      }
+
+      function handleWheel(e) {
+        if (mediaFullyExpanded && e.deltaY < 0 && window.scrollY <= 5) {
+          mediaFullyExpanded = false;
+          document.body.style.overflow = '';
+          e.preventDefault();
+        } else if (!mediaFullyExpanded) {
+          e.preventDefault();
+          const delta = e.deltaY * 0.0009;
+          scrollProgress = Math.min(Math.max(scrollProgress + delta, 0), 1);
+
+          if (scrollProgress >= 1) {
+            mediaFullyExpanded = true;
+            // Remove listeners once expanded — re-added if user navigates home
+            removeHeroListeners();
+          }
+
+          scheduleHeroUpdate();
+        }
+      }
+
+      function handleTouchStart(e) {
+        touchStartY = e.touches[0].clientY;
+      }
+
+      function handleTouchMove(e) {
+        if (!touchStartY) return;
+        const touchY = e.touches[0].clientY;
+        const deltaY = touchStartY - touchY;
+
+        if (mediaFullyExpanded && deltaY < -20 && window.scrollY <= 5) {
+          mediaFullyExpanded = false;
+          document.body.style.overflow = '';
+          e.preventDefault();
+        } else if (!mediaFullyExpanded) {
+          e.preventDefault();
+          const factor = deltaY < 0 ? 0.008 : 0.005;
+          scrollProgress = Math.min(Math.max(scrollProgress + deltaY * factor, 0), 1);
+
+          if (scrollProgress >= 1) {
+            mediaFullyExpanded = true;
+            removeHeroListeners();
+          }
+
+          scheduleHeroUpdate();
+          touchStartY = touchY;
+        }
+      }
+
+      function handleTouchEnd() {
+        touchStartY = 0;
+      }
+
+      function handleScroll() {
+        if (!mediaFullyExpanded) {
+          window.scrollTo(0, 0);
+        }
+      }
+
+      // Force-expand hero to full state (used by nav links)
+      function forceExpand() {
+        scrollProgress = 1;
+        mediaFullyExpanded = true;
+        updateHero();
+        removeHeroListeners();
+      }
+
+      // Collapse hero back to initial state
+      function collapseHero() {
+        scrollProgress = 0;
+        mediaFullyExpanded = false;
+        updateHero();
+        window.scrollTo(0, 0);
+        addHeroListeners();
+      }
+
+      // Expose for nav integration
+      window._scrollHero = { forceExpand, collapseHero, isExpanded: () => mediaFullyExpanded };
+
+      addHeroListeners();
+
+      // Initialize
+      updateHero();
+    })();
+
+    // ===== MOBILE MENU =====
+    const menuToggle = document.getElementById('menuToggle');
+    const mobileMenu = document.getElementById('mobileMenu');
+    let menuOpen = false;
+    menuToggle.addEventListener('click', () => {
+      menuOpen = !menuOpen;
+      mobileMenu.classList.toggle('open', menuOpen);
+    });
+    document.querySelectorAll('#mobileMenu .mobile-nav').forEach(link => {
+      link.addEventListener('click', () => {
+        menuOpen = false;
+        mobileMenu.classList.remove('open');
+      });
+    });
+
+    // ===== COUNTER ANIMATION =====
+    const counters = document.querySelectorAll('.counter');
+    const counterObs = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const el = entry.target;
+          const target = parseInt(el.dataset.target);
+          const useComma = el.dataset.format === 'comma';
+          const duration = 2000;
+          const startTime = performance.now();
+
+          function step(now) {
+            const elapsed = now - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            // Ease-out cubic
+            const eased = 1 - Math.pow(1 - progress, 3);
+            const current = Math.round(eased * target);
+            el.textContent = useComma ? current.toLocaleString() : current;
+            if (progress < 1) requestAnimationFrame(step);
+          }
+          requestAnimationFrame(step);
+          counterObs.unobserve(el);
+        }
+      });
+    }, { threshold: 0.5 });
+    counters.forEach(c => counterObs.observe(c));
+
+    // ===== TESTIMONIAL CAROUSEL =====
+    const slides = document.querySelectorAll('.testimonial-slide');
+    const counter = document.getElementById('testimonialCounter');
+    const prevBtn = document.getElementById('prevTestimonial');
+    const nextBtn = document.getElementById('nextTestimonial');
+    let currentSlide = 0;
+    const totalSlides = slides.length;
+
+    function showSlide(newIndex, direction) {
+      const oldSlide = slides[currentSlide];
+      const newSlide = slides[newIndex];
+
+      // Move old slide out
+      oldSlide.classList.remove('slide-active');
+      oldSlide.classList.add(direction === 'next' ? 'slide-left' : 'slide-right');
+
+      // Move new slide in
+      newSlide.classList.remove('slide-left', 'slide-right');
+      newSlide.classList.add('slide-active');
+
+      currentSlide = newIndex;
+      counter.textContent = `${currentSlide + 1}/${totalSlides}`;
+    }
+
+    prevBtn.addEventListener('click', () => {
+      const next = (currentSlide - 1 + totalSlides) % totalSlides;
+      showSlide(next, 'prev');
+    });
+    nextBtn.addEventListener('click', () => {
+      const next = (currentSlide + 1) % totalSlides;
+      showSlide(next, 'next');
+    });
+
+    // Auto-rotate
+    let autoRotate = setInterval(() => {
+      showSlide((currentSlide + 1) % totalSlides, 'next');
+    }, 6000);
+
+    // Pause on hover
+    const testimonialSection = document.getElementById('testimonials');
+    testimonialSection.addEventListener('mouseenter', () => clearInterval(autoRotate));
+    testimonialSection.addEventListener('mouseleave', () => {
+      clearInterval(autoRotate);
+      autoRotate = setInterval(() => {
+        showSlide((currentSlide + 1) % totalSlides, 'next');
+      }, 6000);
+    });
+
+    // ===== SMOOTH SCROLL =====
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const href = this.getAttribute('href');
+        const target = document.querySelector(href);
+        if (!target) return;
+        e.preventDefault();
+
+        // Clicking "Home" collapses the hero back
+        if (href === '#home' && window._scrollHero) {
+          window._scrollHero.collapseHero();
+          return;
+        }
+
+        // For any other section, force-expand hero first, then scroll
+        const offset = 80;
+        if (window._scrollHero && !window._scrollHero.isExpanded()) {
+          window._scrollHero.forceExpand();
+          // Small delay so the DOM updates before calculating scroll position
+          requestAnimationFrame(() => {
+            const top = target.getBoundingClientRect().top + window.scrollY - offset;
+            window.scrollTo({ top, behavior: 'smooth' });
+          });
+        } else {
+          const top = target.getBoundingClientRect().top + window.scrollY - offset;
+          window.scrollTo({ top, behavior: 'smooth' });
+        }
+      });
+    });
+
+    // ===== PAUSE INFINITE SLIDER WHEN OFFSCREEN =====
+    const sliderTrack = document.querySelector('.slider-infinite-scroll');
+    if (sliderTrack) {
+      const sliderObs = new IntersectionObserver(([entry]) => {
+        sliderTrack.style.animationPlayState = entry.isIntersecting ? 'running' : 'paused';
+      });
+      sliderObs.observe(sliderTrack);
+    }
+
+    // ===== TEAM SECTION — ACCORDION BIO =====
+    (() => {
+      const teamData = [
+        { name: '[Team Member 1]', title: '[Title / Role]', bio: '[Brief description of what this person does at HDI and their experience.]' },
+        { name: '[Team Member 2]', title: '[Title / Role]', bio: '[Brief description of what this person does at HDI and their experience.]' },
+        { name: '[Team Member 3]', title: '[Title / Role]', bio: '[Brief description of what this person does at HDI and their experience.]' },
+        { name: '[Team Member 4]', title: '[Title / Role]', bio: '[Brief description of what this person does at HDI and their experience.]' },
+      ];
+
+      const buttons = document.querySelectorAll('.team-portrait-btn');
+      const panel = document.getElementById('teamBioPanel');
+      const bioName = document.getElementById('teamBioName');
+      const bioTitle = document.getElementById('teamBioTitle');
+      const bioDesc = document.getElementById('teamBioDesc');
+      if (!panel || !buttons.length) return;
+
+      let activeIndex = -1;
+
+      buttons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const idx = parseInt(btn.dataset.member, 10);
+          const portrait = btn.querySelector('.team-portrait');
+
+          if (idx === activeIndex) {
+            // Collapse
+            panel.classList.remove('open');
+            portrait.classList.remove('active');
+            btn.setAttribute('aria-expanded', 'false');
+            activeIndex = -1;
+            return;
+          }
+
+          // Deactivate previous
+          buttons.forEach(b => {
+            b.querySelector('.team-portrait').classList.remove('active');
+            b.setAttribute('aria-expanded', 'false');
+          });
+
+          // Activate new
+          portrait.classList.add('active');
+          btn.setAttribute('aria-expanded', 'true');
+          activeIndex = idx;
+
+          // Update bio content
+          const member = teamData[idx];
+          if (member) {
+            bioName.textContent = member.name;
+            bioTitle.textContent = member.title;
+            bioDesc.textContent = member.bio;
+          }
+
+          panel.classList.add('open');
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
