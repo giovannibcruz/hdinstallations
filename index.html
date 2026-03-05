@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en" class="scroll-smooth overflow-x-hidden">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -420,7 +420,7 @@
 
   </style>
 </head>
-<body class="font-body bg-cream text-charcoal antialiased overflow-x-hidden">
+<body class="font-body bg-cream text-charcoal antialiased overflow-x-hidden" style="overscroll-behavior-x: none;">
 
   <!-- Scroll Progress Bar -->
   <div class="scroll-progress" id="scrollProgress"></div>
@@ -1470,7 +1470,7 @@
       window.addEventListener('resize', () => { cachedMobile = window.innerWidth < 768; }, { passive: true });
 
       // Set maxWidth/maxHeight once (no need to set every frame)
-      heroMedia.style.maxWidth = '100vw';
+      heroMedia.style.maxWidth = '100%';
       heroMedia.style.maxHeight = '100vh';
 
       function updateHero() {
