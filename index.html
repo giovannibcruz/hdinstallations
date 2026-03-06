@@ -1407,6 +1407,9 @@
       let scrollProgress = 0;
       let mediaFullyExpanded = false;
       let touchStartY = 0;
+      let touchLastY = 0;
+      let touchVelocity = 0;
+      let momentumRaf = 0;
       let heroRafPending = false;
       let cachedMobile = window.innerWidth < 768;
       let vw = window.innerWidth;
@@ -1419,11 +1422,13 @@
         vh = window.innerHeight;
       }, { passive: true });
 
+      // Lock body scroll while hero is active (no scroll-to-0 hack)
+      document.body.style.overflow = 'hidden';
+
       function updateHero() {
         const p = scrollProgress;
 
-        // Use clip-path: inset() for the "expanding window" effect
-        // At p=0: large inset (small visible area); at p=1: inset(0) (full viewport)
+        // clip-path for the "expanding window" effect
         const startW = cachedMobile ? 280 : 340;
         const startH = cachedMobile ? 380 : 440;
         const insetX = ((vw - startW) / 2) * (1 - p);
@@ -1431,19 +1436,15 @@
         const radius = Math.max(0, 16 * (1 - p));
         heroMedia.style.clipPath = `inset(${insetY}px ${insetX}px ${insetY}px ${insetX}px round ${radius}px)`;
 
-        // Darken overlay fades out (opacity only — GPU composited)
+        // Opacity-only animations (GPU composited)
         heroMediaOverlay.style.opacity = 1 - p;
-
-        // Background fades out (opacity only)
         heroBackground.style.opacity = 1 - p;
+        heroHint.style.opacity = Math.max(0, 1 - p * 4);
 
         // Text splits apart (transform only)
         const textShift = p * (cachedMobile ? 120 : 100);
         heroLine1.style.transform = 'translateX(-' + textShift + 'vw)';
         heroLine2.style.transform = 'translateX(' + textShift + 'vw)';
-
-        // Hint fades out (opacity only)
-        heroHint.style.opacity = Math.max(0, 1 - p * 4);
 
         // After-content appears
         if (p >= 1) {
@@ -1463,94 +1464,134 @@
         }
       }
 
+      function unlockScroll() {
+        document.body.style.overflow = '';
+      }
+
+      function lockScroll() {
+        document.body.style.overflow = 'hidden';
+        window.scrollTo(0, 0);
+      }
+
+      function completeExpansion() {
+        mediaFullyExpanded = true;
+        cancelAnimationFrame(momentumRaf);
+        unlockScroll();
+        removeHeroListeners();
+      }
+
       function removeHeroListeners() {
         window.removeEventListener('wheel', handleWheel);
         window.removeEventListener('touchstart', handleTouchStart);
         window.removeEventListener('touchmove', handleTouchMove);
         window.removeEventListener('touchend', handleTouchEnd);
-        window.removeEventListener('scroll', handleScroll);
       }
 
       function addHeroListeners() {
         window.addEventListener('wheel', handleWheel, { passive: false });
-        window.addEventListener('touchstart', handleTouchStart, { passive: false });
+        window.addEventListener('touchstart', handleTouchStart, { passive: true });
         window.addEventListener('touchmove', handleTouchMove, { passive: false });
-        window.addEventListener('touchend', handleTouchEnd);
-        window.addEventListener('scroll', handleScroll, { passive: true });
+        window.addEventListener('touchend', handleTouchEnd, { passive: true });
       }
 
       function handleWheel(e) {
         if (mediaFullyExpanded && e.deltaY < 0 && window.scrollY <= 5) {
           mediaFullyExpanded = false;
-          document.body.style.overflow = '';
+          lockScroll();
           e.preventDefault();
         } else if (!mediaFullyExpanded) {
           e.preventDefault();
-          const delta = e.deltaY * 0.0009;
-          scrollProgress = Math.min(Math.max(scrollProgress + delta, 0), 1);
-
-          if (scrollProgress >= 1) {
-            mediaFullyExpanded = true;
-            // Remove listeners once expanded — re-added if user navigates home
-            removeHeroListeners();
-          }
-
+          scrollProgress = Math.min(Math.max(scrollProgress + e.deltaY * 0.0009, 0), 1);
+          if (scrollProgress >= 1) completeExpansion();
           scheduleHeroUpdate();
         }
       }
 
       function handleTouchStart(e) {
+        cancelAnimationFrame(momentumRaf);
         touchStartY = e.touches[0].clientY;
+        touchLastY = touchStartY;
+        touchVelocity = 0;
       }
 
       function handleTouchMove(e) {
-        if (!touchStartY) return;
         const touchY = e.touches[0].clientY;
-        const deltaY = touchStartY - touchY;
+        const deltaY = touchLastY - touchY;
 
         if (mediaFullyExpanded && deltaY < -20 && window.scrollY <= 5) {
           mediaFullyExpanded = false;
-          document.body.style.overflow = '';
-          e.preventDefault();
+          lockScroll();
         } else if (!mediaFullyExpanded) {
           e.preventDefault();
-          const factor = deltaY < 0 ? 0.008 : 0.005;
-          scrollProgress = Math.min(Math.max(scrollProgress + deltaY * factor, 0), 1);
+          // Uniform sensitivity — 0.004 per px for smooth, predictable feel
+          scrollProgress = Math.min(Math.max(scrollProgress + deltaY * 0.004, 0), 1);
+          touchVelocity = deltaY * 0.004;
 
-          if (scrollProgress >= 1) {
-            mediaFullyExpanded = true;
-            removeHeroListeners();
-          }
-
+          if (scrollProgress >= 1) completeExpansion();
           scheduleHeroUpdate();
-          touchStartY = touchY;
         }
+
+        touchLastY = touchY;
       }
 
       function handleTouchEnd() {
+        // Momentum: carry the velocity forward with friction
+        const friction = 0.92;
+        function momentumStep() {
+          if (Math.abs(touchVelocity) < 0.001 || scrollProgress <= 0 || scrollProgress >= 1) {
+            // Snap to nearest end if close
+            if (scrollProgress > 0.7) {
+              animateTo(1);
+            } else if (scrollProgress < 0.15 && scrollProgress > 0) {
+              animateTo(0);
+            }
+            return;
+          }
+          touchVelocity *= friction;
+          scrollProgress = Math.min(Math.max(scrollProgress + touchVelocity, 0), 1);
+          if (scrollProgress >= 1) { completeExpansion(); updateHero(); return; }
+          updateHero();
+          momentumRaf = requestAnimationFrame(momentumStep);
+        }
+        momentumRaf = requestAnimationFrame(momentumStep);
         touchStartY = 0;
+        touchLastY = 0;
       }
 
-      function handleScroll() {
-        if (!mediaFullyExpanded) {
-          window.scrollTo(0, 0);
+      // Smooth snap animation to target (0 or 1)
+      function animateTo(target) {
+        cancelAnimationFrame(momentumRaf);
+        const start = scrollProgress;
+        const startTime = performance.now();
+        const duration = 400;
+        function step(now) {
+          const t = Math.min((now - startTime) / duration, 1);
+          const eased = 1 - Math.pow(1 - t, 3); // ease-out cubic
+          scrollProgress = start + (target - start) * eased;
+          updateHero();
+          if (t < 1) {
+            momentumRaf = requestAnimationFrame(step);
+          } else if (target >= 1) {
+            completeExpansion();
+          }
         }
+        momentumRaf = requestAnimationFrame(step);
       }
 
       // Force-expand hero to full state (used by nav links)
       function forceExpand() {
         scrollProgress = 1;
-        mediaFullyExpanded = true;
+        completeExpansion();
         updateHero();
-        removeHeroListeners();
       }
 
       // Collapse hero back to initial state
       function collapseHero() {
         scrollProgress = 0;
         mediaFullyExpanded = false;
+        cancelAnimationFrame(momentumRaf);
         updateHero();
-        window.scrollTo(0, 0);
+        lockScroll();
         addHeroListeners();
       }
 
