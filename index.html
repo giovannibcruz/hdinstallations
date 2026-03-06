@@ -1424,6 +1424,11 @@
   <!-- JAVASCRIPT -->
   <!-- ============================================ -->
   <script>
+    // ===== SCROLL TO TOP ON REFRESH =====
+    if (history.scrollRestoration) history.scrollRestoration = 'manual';
+    window.scrollTo(0, 0);
+    if (window.location.hash) history.replaceState(null, '', window.location.pathname);
+
     // ===== SERVICES CAROUSEL =====
     (function() {
       const track = document.getElementById('servicesTrack');
