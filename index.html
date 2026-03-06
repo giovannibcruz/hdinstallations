@@ -246,23 +246,12 @@
       scroll-snap-align: start;
     }
 
-    /* ===== TESTIMONIAL SCROLLING COLUMNS ===== */
-    @keyframes scroll-up {
-      0% { transform: translateY(0); }
-      100% { transform: translateY(-50%); }
+    /* ===== TESTIMONIAL CARDS ===== */
+    .testimonial-card {
+      transition: box-shadow 0.3s ease;
     }
-    .testimonial-col {
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
-      padding-bottom: 1.5rem;
-      will-change: transform;
-    }
-    .testimonial-col-1 { animation: scroll-up 25s linear infinite; }
-    .testimonial-col-2 { animation: scroll-up 30s linear infinite; }
-    .testimonial-col-3 { animation: scroll-up 22s linear infinite; }
-    .testimonials-grid:hover .testimonial-col {
-      animation-play-state: paused;
+    .testimonial-card:hover {
+      box-shadow: 0 8px 30px rgba(201, 185, 104, 0.1), 0 2px 8px rgba(0, 0, 0, 0.04);
     }
 
     /* ===== FORM FOCUS EFFECT ===== */
@@ -1079,145 +1068,136 @@
         <div class="w-16 h-0.5 bg-gold/50 mt-6 mx-auto"></div>
       </div>
 
-      <!-- Scrolling Columns -->
-      <div class="testimonials-grid flex justify-center gap-6 max-h-[700px] overflow-hidden" style="-webkit-mask-image: linear-gradient(to bottom, transparent, black 20%, black 80%, transparent); mask-image: linear-gradient(to bottom, transparent, black 20%, black 80%, transparent);">
+      <!-- Testimonial Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
 
-        <!-- Column 1 -->
-        <div class="testimonial-col testimonial-col-1 max-w-xs w-full">
-          <!-- Card 1 -->
-          <div class="bg-cream rounded-2xl p-8 card-shadow">
-            <p class="text-sm text-charcoal/70" style="line-height: 1.7;">"Exceptional experience with HDI. From start to finish, the team was professional and attentive. Our office turned out exactly as we envisioned, and the project was completed on time. Highly recommend!"</p>
-            <div class="flex items-center gap-3 mt-6">
+        <!-- Card 1 -->
+        <div class="reveal fade-up testimonial-card relative overflow-hidden rounded-2xl border border-gold/10 bg-cream p-6 md:p-8">
+          <div class="absolute right-6 top-6 text-6xl font-serif text-charcoal/10 leading-none select-none">"</div>
+          <div class="flex flex-col gap-4 justify-between h-full">
+            <div class="flex gap-1">
+              <svg class="w-4 h-4 fill-gold text-gold" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="w-4 h-4 fill-gold text-gold" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="w-4 h-4 fill-gold text-gold" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="w-4 h-4 fill-gold text-gold" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="w-4 h-4 fill-gold text-gold" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            </div>
+            <p class="text-base text-charcoal/60" style="line-height: 1.7;">Exceptional experience with HDI. From start to finish, the team was professional and attentive. Our office turned out exactly as we envisioned, and the project was completed on time. Highly recommend!</p>
+            <div class="flex items-center gap-4">
               <img src="https://placehold.co/40x40/d4c67a/1f1f1f?text=JR" alt="James Rivera" class="w-10 h-10 rounded-full ring-2 ring-gold/20" loading="lazy">
               <div>
                 <div class="font-display font-semibold text-charcoal text-sm">James Rivera</div>
-                <div class="text-xs text-charcoal/40 tracking-wide">Facilities Manager, TechCorp</div>
-              </div>
-            </div>
-          </div>
-          <!-- Card 2 -->
-          <div class="bg-cream rounded-2xl p-8 card-shadow">
-            <p class="text-sm text-charcoal/70" style="line-height: 1.7;">"Our office layout needed to change fast. HDI came in, assessed what we had, and reconfigured our existing furniture to fit the new floor plan. No new purchases needed — just smart, efficient work."</p>
-            <div class="flex items-center gap-3 mt-6">
-              <img src="https://placehold.co/40x40/d4c67a/1f1f1f?text=LT" alt="Linda Tran" class="w-10 h-10 rounded-full ring-2 ring-gold/20" loading="lazy">
-              <div>
-                <div class="font-display font-semibold text-charcoal text-sm">Linda Tran</div>
-                <div class="text-xs text-charcoal/40 tracking-wide">Office Manager, Westline Properties</div>
-              </div>
-            </div>
-          </div>
-          <!-- Duplicated for seamless loop -->
-          <div class="bg-cream rounded-2xl p-8 card-shadow">
-            <p class="text-sm text-charcoal/70" style="line-height: 1.7;">"Exceptional experience with HDI. From start to finish, the team was professional and attentive. Our office turned out exactly as we envisioned, and the project was completed on time. Highly recommend!"</p>
-            <div class="flex items-center gap-3 mt-6">
-              <img src="https://placehold.co/40x40/d4c67a/1f1f1f?text=JR" alt="James Rivera" class="w-10 h-10 rounded-full ring-2 ring-gold/20" loading="lazy">
-              <div>
-                <div class="font-display font-semibold text-charcoal text-sm">James Rivera</div>
-                <div class="text-xs text-charcoal/40 tracking-wide">Facilities Manager, TechCorp</div>
-              </div>
-            </div>
-          </div>
-          <div class="bg-cream rounded-2xl p-8 card-shadow">
-            <p class="text-sm text-charcoal/70" style="line-height: 1.7;">"Our office layout needed to change fast. HDI came in, assessed what we had, and reconfigured our existing furniture to fit the new floor plan. No new purchases needed — just smart, efficient work."</p>
-            <div class="flex items-center gap-3 mt-6">
-              <img src="https://placehold.co/40x40/d4c67a/1f1f1f?text=LT" alt="Linda Tran" class="w-10 h-10 rounded-full ring-2 ring-gold/20" loading="lazy">
-              <div>
-                <div class="font-display font-semibold text-charcoal text-sm">Linda Tran</div>
-                <div class="text-xs text-charcoal/40 tracking-wide">Office Manager, Westline Properties</div>
+                <div class="text-xs text-charcoal/40 tracking-wide">Facilities Manager @ TechCorp</div>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- Column 2 -->
-        <div class="testimonial-col testimonial-col-2 max-w-xs w-full hidden md:flex">
-          <!-- Card 3 -->
-          <div class="bg-cream rounded-2xl p-8 card-shadow">
-            <p class="text-sm text-charcoal/70" style="line-height: 1.7;">"HDI handled our entire office relocation seamlessly. Their project management team kept everything on schedule, and the furniture was installed perfectly. We were up and running faster than expected."</p>
-            <div class="flex items-center gap-3 mt-6">
-              <img src="https://placehold.co/40x40/d4c67a/1f1f1f?text=SL" alt="Sarah Lawson" class="w-10 h-10 rounded-full ring-2 ring-gold/20" loading="lazy">
-              <div>
-                <div class="font-display font-semibold text-charcoal text-sm">Sarah Lawson</div>
-                <div class="text-xs text-charcoal/40 tracking-wide">Office Manager, Pacific Solutions</div>
-              </div>
+        <!-- Card 2 -->
+        <div class="reveal fade-up testimonial-card relative overflow-hidden rounded-2xl border border-gold/10 bg-cream p-6 md:p-8">
+          <div class="absolute right-6 top-6 text-6xl font-serif text-charcoal/10 leading-none select-none">"</div>
+          <div class="flex flex-col gap-4 justify-between h-full">
+            <div class="flex gap-1">
+              <svg class="w-4 h-4 fill-gold text-gold" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="w-4 h-4 fill-gold text-gold" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="w-4 h-4 fill-gold text-gold" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="w-4 h-4 fill-gold text-gold" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="w-4 h-4 fill-gold text-gold" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
             </div>
-          </div>
-          <!-- Card 4 -->
-          <div class="bg-cream rounded-2xl p-8 card-shadow">
-            <p class="text-sm text-charcoal/70" style="line-height: 1.7;">"After the recent earthquakes, we needed every bookcase and filing cabinet secured. HDI's anti-tip team came through quickly and gave us complete peace of mind across all three of our floors."</p>
-            <div class="flex items-center gap-3 mt-6">
-              <img src="https://placehold.co/40x40/d4c67a/1f1f1f?text=KW" alt="Karen Wells" class="w-10 h-10 rounded-full ring-2 ring-gold/20" loading="lazy">
+            <p class="text-base text-charcoal/60" style="line-height: 1.7;">Our office layout needed to change fast. HDI came in, assessed what we had, and reconfigured our existing furniture to fit the new floor plan. No new purchases needed — just smart, efficient work.</p>
+            <div class="flex items-center gap-4">
+              <img src="https://placehold.co/40x40/d4c67a/1f1f1f?text=LT" alt="Linda Tran" class="w-10 h-10 rounded-full ring-2 ring-gold/20" loading="lazy">
               <div>
-                <div class="font-display font-semibold text-charcoal text-sm">Karen Wells</div>
-                <div class="text-xs text-charcoal/40 tracking-wide">Director of Facilities, Summit Financial</div>
-              </div>
-            </div>
-          </div>
-          <!-- Duplicated for seamless loop -->
-          <div class="bg-cream rounded-2xl p-8 card-shadow">
-            <p class="text-sm text-charcoal/70" style="line-height: 1.7;">"HDI handled our entire office relocation seamlessly. Their project management team kept everything on schedule, and the furniture was installed perfectly. We were up and running faster than expected."</p>
-            <div class="flex items-center gap-3 mt-6">
-              <img src="https://placehold.co/40x40/d4c67a/1f1f1f?text=SL" alt="Sarah Lawson" class="w-10 h-10 rounded-full ring-2 ring-gold/20" loading="lazy">
-              <div>
-                <div class="font-display font-semibold text-charcoal text-sm">Sarah Lawson</div>
-                <div class="text-xs text-charcoal/40 tracking-wide">Office Manager, Pacific Solutions</div>
-              </div>
-            </div>
-          </div>
-          <div class="bg-cream rounded-2xl p-8 card-shadow">
-            <p class="text-sm text-charcoal/70" style="line-height: 1.7;">"After the recent earthquakes, we needed every bookcase and filing cabinet secured. HDI's anti-tip team came through quickly and gave us complete peace of mind across all three of our floors."</p>
-            <div class="flex items-center gap-3 mt-6">
-              <img src="https://placehold.co/40x40/d4c67a/1f1f1f?text=KW" alt="Karen Wells" class="w-10 h-10 rounded-full ring-2 ring-gold/20" loading="lazy">
-              <div>
-                <div class="font-display font-semibold text-charcoal text-sm">Karen Wells</div>
-                <div class="text-xs text-charcoal/40 tracking-wide">Director of Facilities, Summit Financial</div>
+                <div class="font-display font-semibold text-charcoal text-sm">Linda Tran</div>
+                <div class="text-xs text-charcoal/40 tracking-wide">Office Manager @ Westline Properties</div>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- Column 3 -->
-        <div class="testimonial-col testimonial-col-3 max-w-xs w-full hidden lg:flex">
-          <!-- Card 5 -->
-          <div class="bg-cream rounded-2xl p-8 card-shadow">
-            <p class="text-sm text-charcoal/70" style="line-height: 1.7;">"We've used HDI for multiple projects over the past decade. Their consistency and attention to detail is unmatched. You don't stay with a vendor that long unless they deliver every single time."</p>
-            <div class="flex items-center gap-3 mt-6">
+        <!-- Card 3 -->
+        <div class="reveal fade-up testimonial-card relative overflow-hidden rounded-2xl border border-gold/10 bg-cream p-6 md:p-8">
+          <div class="absolute right-6 top-6 text-6xl font-serif text-charcoal/10 leading-none select-none">"</div>
+          <div class="flex flex-col gap-4 justify-between h-full">
+            <div class="flex gap-1">
+              <svg class="w-4 h-4 fill-gold text-gold" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="w-4 h-4 fill-gold text-gold" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="w-4 h-4 fill-gold text-gold" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="w-4 h-4 fill-gold text-gold" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="w-4 h-4 fill-gold text-gold" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            </div>
+            <p class="text-base text-charcoal/60" style="line-height: 1.7;">HDI handled our entire office relocation seamlessly. Their project management team kept everything on schedule, and the furniture was installed perfectly. We were up and running faster than expected.</p>
+            <div class="flex items-center gap-4">
+              <img src="https://placehold.co/40x40/d4c67a/1f1f1f?text=SL" alt="Sarah Lawson" class="w-10 h-10 rounded-full ring-2 ring-gold/20" loading="lazy">
+              <div>
+                <div class="font-display font-semibold text-charcoal text-sm">Sarah Lawson</div>
+                <div class="text-xs text-charcoal/40 tracking-wide">Office Manager @ Pacific Solutions</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="reveal fade-up testimonial-card relative overflow-hidden rounded-2xl border border-gold/10 bg-cream p-6 md:p-8">
+          <div class="absolute right-6 top-6 text-6xl font-serif text-charcoal/10 leading-none select-none">"</div>
+          <div class="flex flex-col gap-4 justify-between h-full">
+            <div class="flex gap-1">
+              <svg class="w-4 h-4 fill-gold text-gold" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="w-4 h-4 fill-gold text-gold" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="w-4 h-4 fill-gold text-gold" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="w-4 h-4 fill-gold text-gold" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="w-4 h-4 fill-gold text-gold" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            </div>
+            <p class="text-base text-charcoal/60" style="line-height: 1.7;">After the recent earthquakes, we needed every bookcase and filing cabinet secured. HDI's anti-tip team came through quickly and gave us complete peace of mind across all three of our floors.</p>
+            <div class="flex items-center gap-4">
+              <img src="https://placehold.co/40x40/d4c67a/1f1f1f?text=KW" alt="Karen Wells" class="w-10 h-10 rounded-full ring-2 ring-gold/20" loading="lazy">
+              <div>
+                <div class="font-display font-semibold text-charcoal text-sm">Karen Wells</div>
+                <div class="text-xs text-charcoal/40 tracking-wide">Director of Facilities @ Summit Financial</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 5 -->
+        <div class="reveal fade-up testimonial-card relative overflow-hidden rounded-2xl border border-gold/10 bg-cream p-6 md:p-8">
+          <div class="absolute right-6 top-6 text-6xl font-serif text-charcoal/10 leading-none select-none">"</div>
+          <div class="flex flex-col gap-4 justify-between h-full">
+            <div class="flex gap-1">
+              <svg class="w-4 h-4 fill-gold text-gold" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="w-4 h-4 fill-gold text-gold" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="w-4 h-4 fill-gold text-gold" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="w-4 h-4 fill-gold text-gold" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="w-4 h-4 fill-gold text-gold" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            </div>
+            <p class="text-base text-charcoal/60" style="line-height: 1.7;">We've used HDI for multiple projects over the past decade. Their consistency and attention to detail is unmatched. You don't stay with a vendor that long unless they deliver every single time.</p>
+            <div class="flex items-center gap-4">
               <img src="https://placehold.co/40x40/d4c67a/1f1f1f?text=MC" alt="Michael Chen" class="w-10 h-10 rounded-full ring-2 ring-gold/20" loading="lazy">
               <div>
                 <div class="font-display font-semibold text-charcoal text-sm">Michael Chen</div>
-                <div class="text-xs text-charcoal/40 tracking-wide">Operations Director, Inland Group</div>
+                <div class="text-xs text-charcoal/40 tracking-wide">Operations Director @ Inland Group</div>
               </div>
             </div>
           </div>
-          <!-- Card 6 -->
-          <div class="bg-cream rounded-2xl p-8 card-shadow">
-            <p class="text-sm text-charcoal/70" style="line-height: 1.7;">"The furniture for our new clinic arrived in perfect condition — every piece accounted for, wrapped, and on schedule. HDI's delivery crew was careful with everything, and that attention to detail carried through the entire install."</p>
-            <div class="flex items-center gap-3 mt-6">
+        </div>
+
+        <!-- Card 6 -->
+        <div class="reveal fade-up testimonial-card relative overflow-hidden rounded-2xl border border-gold/10 bg-cream p-6 md:p-8">
+          <div class="absolute right-6 top-6 text-6xl font-serif text-charcoal/10 leading-none select-none">"</div>
+          <div class="flex flex-col gap-4 justify-between h-full">
+            <div class="flex gap-1">
+              <svg class="w-4 h-4 fill-gold text-gold" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="w-4 h-4 fill-gold text-gold" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="w-4 h-4 fill-gold text-gold" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="w-4 h-4 fill-gold text-gold" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="w-4 h-4 fill-gold text-gold" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            </div>
+            <p class="text-base text-charcoal/60" style="line-height: 1.7;">The furniture for our new clinic arrived in perfect condition — every piece accounted for, wrapped, and on schedule. HDI's delivery crew was careful with everything, and that attention to detail carried through the entire install.</p>
+            <div class="flex items-center gap-4">
               <img src="https://placehold.co/40x40/d4c67a/1f1f1f?text=PG" alt="Patricia Gomez" class="w-10 h-10 rounded-full ring-2 ring-gold/20" loading="lazy">
               <div>
                 <div class="font-display font-semibold text-charcoal text-sm">Patricia Gomez</div>
-                <div class="text-xs text-charcoal/40 tracking-wide">HR Director, CalBridge Health</div>
-              </div>
-            </div>
-          </div>
-          <!-- Duplicated for seamless loop -->
-          <div class="bg-cream rounded-2xl p-8 card-shadow">
-            <p class="text-sm text-charcoal/70" style="line-height: 1.7;">"We've used HDI for multiple projects over the past decade. Their consistency and attention to detail is unmatched. You don't stay with a vendor that long unless they deliver every single time."</p>
-            <div class="flex items-center gap-3 mt-6">
-              <img src="https://placehold.co/40x40/d4c67a/1f1f1f?text=MC" alt="Michael Chen" class="w-10 h-10 rounded-full ring-2 ring-gold/20" loading="lazy">
-              <div>
-                <div class="font-display font-semibold text-charcoal text-sm">Michael Chen</div>
-                <div class="text-xs text-charcoal/40 tracking-wide">Operations Director, Inland Group</div>
-              </div>
-            </div>
-          </div>
-          <div class="bg-cream rounded-2xl p-8 card-shadow">
-            <p class="text-sm text-charcoal/70" style="line-height: 1.7;">"The furniture for our new clinic arrived in perfect condition — every piece accounted for, wrapped, and on schedule. HDI's delivery crew was careful with everything, and that attention to detail carried through the entire install."</p>
-            <div class="flex items-center gap-3 mt-6">
-              <img src="https://placehold.co/40x40/d4c67a/1f1f1f?text=PG" alt="Patricia Gomez" class="w-10 h-10 rounded-full ring-2 ring-gold/20" loading="lazy">
-              <div>
-                <div class="font-display font-semibold text-charcoal text-sm">Patricia Gomez</div>
-                <div class="text-xs text-charcoal/40 tracking-wide">HR Director, CalBridge Health</div>
+                <div class="text-xs text-charcoal/40 tracking-wide">HR Director @ CalBridge Health</div>
               </div>
             </div>
           </div>
@@ -1234,10 +1214,10 @@
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
       <div class="text-center reveal fade-up">
         <h2 class="font-display text-4xl md:text-5xl lg:text-[3.4rem] leading-[1.12]" style="letter-spacing: -0.02em;">
-          Where We Work
+          Areas We Serve
         </h2>
         <div class="w-16 h-0.5 bg-gold/50 mt-6 mx-auto"></div>
-        <p class="mt-6 text-charcoal/50 max-w-2xl mx-auto" style="line-height: 1.8;">Proudly serving Southern California — from the coast to the Inland Empire.</p>
+        <p class="mt-6 text-charcoal/50 max-w-2xl mx-auto" style="line-height: 1.8;">Serving businesses across Southern California for over 26 years — from Los Angeles to the Inland Empire and beyond.</p>
       </div>
 
       <!-- Top Row: 3 Areas -->
@@ -1298,7 +1278,7 @@
       <div class="reveal fade-up bg-white rounded-2xl overflow-hidden grid lg:grid-cols-5" style="box-shadow: 0 8px 48px rgba(31,31,31,0.07), 0 2px 12px rgba(31,31,31,0.04);">
         <!-- Image Side -->
         <div class="lg:col-span-2 relative min-h-[300px] lg:min-h-0">
-          <img src="https://placehold.co/600x800/6b655d/a39c91?text=HDI+Team" alt="HD Installation team" class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-110" loading="lazy">
+          <img src="project-pictures/team-photo.webp" alt="HD Installation team" class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-110" loading="lazy">
           <div class="absolute inset-0 bg-gradient-to-t from-charcoal/50 to-charcoal/10"></div>
           <div class="absolute inset-0 bg-gold/8 mix-blend-multiply"></div>
           <!-- Decorative badge -->
