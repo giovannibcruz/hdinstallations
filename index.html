@@ -8,7 +8,7 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <script>
     tailwind.config = {
       theme: {
@@ -23,8 +23,8 @@
             'gold-pale': '#E8D98E',
           },
           fontFamily: {
-            display: ['"DM Serif Display"', 'Georgia', 'serif'],
-            body: ['"Roboto"', 'system-ui', 'sans-serif'],
+            display: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+            body: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
           },
         }
       }
@@ -232,20 +232,6 @@
       }
     }
 
-    /* ===== SERVICES CAROUSEL ===== */
-    .services-track {
-      scrollbar-width: none;
-      -ms-overflow-style: none;
-      scroll-snap-type: x mandatory;
-      scroll-padding-left: 1.5rem;
-    }
-    .services-track::-webkit-scrollbar {
-      display: none;
-    }
-    #servicesTrack .bento-card {
-      scroll-snap-align: start;
-    }
-
     /* ===== TESTIMONIAL CARDS ===== */
     .testimonial-card {
       transition: box-shadow 0.3s ease;
@@ -434,7 +420,6 @@
         <a href="#services" class="nav-link text-cream/80 hover:text-gold text-sm font-medium tracking-wider uppercase">Services</a>
         <a href="#experience" class="nav-link text-cream/80 hover:text-gold text-sm font-medium tracking-wider uppercase">About</a>
         <a href="#projects" class="nav-link text-cream/80 hover:text-gold text-sm font-medium tracking-wider uppercase">Projects</a>
-        <a href="#testimonials" class="nav-link text-cream/80 hover:text-gold text-sm font-medium tracking-wider uppercase">Testimonials</a>
         <a href="#contact" class="nav-link text-cream/80 hover:text-gold text-sm font-medium tracking-wider uppercase">Contact</a>
       </div>
       <button class="lg:hidden text-cream p-2 hamburger flex flex-col items-center justify-center w-10 h-10" id="menuToggle" aria-label="Toggle menu">
@@ -448,7 +433,6 @@
         <a href="#services" class="mobile-nav text-cream hover:text-gold text-lg font-display">Services</a>
         <a href="#experience" class="mobile-nav text-cream hover:text-gold text-lg font-display">About</a>
         <a href="#projects" class="mobile-nav text-cream hover:text-gold text-lg font-display">Projects</a>
-        <a href="#testimonials" class="mobile-nav text-cream hover:text-gold text-lg font-display">Testimonials</a>
         <a href="#contact" class="mobile-nav text-cream hover:text-gold text-lg font-display">Contact</a>
       </div>
     </div>
@@ -460,7 +444,7 @@
   <section id="home" class="scroll-hero" data-scroll-hero>
     <!-- Full-screen background (fades out as media expands) -->
     <div class="scroll-hero-bg" id="heroBackground">
-      <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=1920&q=80&auto=format" alt="Background">
+      <img src="hero-bg.webp" alt="HD Installations open office project">
       <div class="absolute inset-0 bg-gradient-to-b from-charcoal/30 via-transparent to-charcoal/40"></div>
     </div>
 
@@ -507,6 +491,7 @@
             </svg>
             +1 (555) 123-4567
           </a>
+          <!-- Social media links hidden until client has profiles
           <div class="flex items-center gap-6">
             <a href="#" class="text-cream/40 hover:text-gold transition-colors duration-200" aria-label="Facebook">
               <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
@@ -518,6 +503,7 @@
               <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
             </a>
           </div>
+          -->
         </div>
       </div>
     </div>
@@ -579,7 +565,7 @@
   <section id="pain-points" class="py-24 lg:py-32 bg-cream">
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
       <div class="text-center reveal fade-up">
-        <h2 class="font-display text-4xl md:text-5xl lg:text-[3.4rem] leading-[1.12] max-w-3xl mx-auto" style="letter-spacing: -0.02em;">
+        <h2 class="font-display text-4xl md:text-5xl lg:text-[2.8rem] leading-[1.12] mx-auto font-extrabold" style="letter-spacing: -0.02em;">
           Three Ways Your Next Move Goes Wrong
         </h2>
         <div class="w-16 h-0.5 bg-gold/50 mt-6 mx-auto"></div>
@@ -622,7 +608,7 @@
   <section id="process" class="py-24 lg:py-32 bg-cream">
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
       <div class="text-center reveal fade-up">
-        <h2 class="font-display text-4xl md:text-5xl lg:text-[3.4rem] leading-[1.12]" style="letter-spacing: -0.02em;">
+        <h2 class="font-display text-4xl md:text-5xl lg:text-[3.4rem] leading-[1.12] font-extrabold" style="letter-spacing: -0.02em;">
           Your Installation. Our Responsibility.
         </h2>
         <div class="w-16 h-0.5 bg-gold/50 mt-6 mx-auto"></div>
@@ -675,161 +661,151 @@
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
       <!-- Header -->
       <div class="text-center mb-14 lg:mb-20 reveal fade-up">
-        <h2 class="font-display text-4xl md:text-5xl lg:text-[3.4rem] leading-[1.12] max-w-3xl mx-auto" style="letter-spacing: -0.02em;">
-          From Delivery to Install,<br>We've Got It Covered
+        <h2 class="font-display text-4xl md:text-5xl lg:text-[2.8rem] leading-[1.12] mx-auto font-extrabold" style="letter-spacing: -0.02em;">
+          From Delivery to Install, We've Got It Covered
         </h2>
         <div class="w-16 h-0.5 bg-gold/50 mt-6 mx-auto"></div>
       </div>
 
-      <!-- Arrow Navigation -->
-      <div class="flex justify-end gap-2 mb-8 reveal fade-up">
-        <button id="servicesPrev" class="w-10 h-10 rounded-full border border-charcoal/15 flex items-center justify-center hover:border-gold hover:text-gold transition-colors duration-300 disabled:opacity-30 disabled:cursor-not-allowed text-charcoal/40" aria-label="Previous">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
-        </button>
-        <button id="servicesNext" class="w-10 h-10 rounded-full border border-charcoal/15 flex items-center justify-center hover:border-gold hover:text-gold transition-colors duration-300 disabled:opacity-30 disabled:cursor-not-allowed text-charcoal/40" aria-label="Next">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-        </button>
-      </div>
     </div>
 
-    <!-- Services Carousel (full-width, bleeds past container) -->
-    <div class="relative">
-      <div id="servicesTrack" class="services-track flex gap-4 overflow-x-auto px-6 lg:px-8 scroll-smooth">
+      <div class="reveal fade-up max-w-7xl mx-auto mt-14 lg:mt-20 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 px-6 lg:px-8">
 
-        <!-- 1. Furniture Installation -->
-        <div class="bento-card group relative flex-shrink-0 w-[20rem] sm:w-[22rem] flex flex-col overflow-hidden rounded-xl bg-white card-shadow">
-          <div class="relative h-48 overflow-hidden">
+        <div class="group relative overflow-hidden rounded-xl border border-charcoal/8">
+          <div class="relative h-40 overflow-hidden">
             <img src="services-pictures/furniture-installation.jpg" alt="Furniture Installation" class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-110" loading="lazy">
-            <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
           </div>
-          <div class="z-10 flex flex-col gap-1.5 p-5">
-            <h3 class="text-lg font-semibold text-charcoal font-display">Furniture Installation</h3>
-            <p class="text-sm text-charcoal/45" style="line-height: 1.6;">Trained technicians install your furniture to manufacturer's specs, ensuring all components are functional and ready for day one.</p>
+          <div class="p-5">
+            <h3 class="font-display text-sm md:text-base font-semibold text-charcoal">Furniture Installation</h3>
+            <p class="text-xs text-charcoal/45 mt-1.5" style="line-height: 1.6;">Trained technicians install your furniture to manufacturer's specs, ensuring all components are functional and ready for day one.</p>
           </div>
         </div>
 
-        <!-- 2. Delivery Services -->
-        <div class="bento-card group relative flex-shrink-0 w-[20rem] sm:w-[22rem] flex flex-col overflow-hidden rounded-xl bg-white card-shadow">
-          <div class="relative h-48 overflow-hidden">
+        <div class="group relative overflow-hidden rounded-xl border border-charcoal/8">
+          <div class="relative h-40 overflow-hidden">
             <img src="services-pictures/delivery-services.jpg" alt="Delivery Services" class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-110" loading="lazy">
-            <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
           </div>
-          <div class="z-10 flex flex-col gap-1.5 p-5">
-            <h3 class="text-lg font-semibold text-charcoal font-display">Delivery Services</h3>
-            <p class="text-sm text-charcoal/45" style="line-height: 1.6;">Fleet of 26' bobtail trucks with liftgate, ready to deliver with experienced team drivers.</p>
+          <div class="p-5">
+            <h3 class="font-display text-sm md:text-base font-semibold text-charcoal">Delivery Services</h3>
+            <p class="text-xs text-charcoal/45 mt-1.5" style="line-height: 1.6;">Fleet of 26' bobtail trucks with liftgate, ready to deliver with experienced team drivers.</p>
           </div>
         </div>
 
-        <!-- 3. Project Management -->
-        <div class="bento-card group relative flex-shrink-0 w-[20rem] sm:w-[22rem] flex flex-col overflow-hidden rounded-xl bg-white card-shadow">
-          <div class="relative h-48 overflow-hidden">
+        <div class="group relative overflow-hidden rounded-xl border border-charcoal/8">
+          <div class="relative h-40 overflow-hidden">
             <img src="services-pictures/project-management.jpg" alt="Project Management" class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-110" loading="lazy">
-            <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
           </div>
-          <div class="z-10 flex flex-col gap-1.5 p-5">
-            <h3 class="text-lg font-semibold text-charcoal font-display">Project Management</h3>
-            <p class="text-sm text-charcoal/45" style="line-height: 1.6;">PM's with 30+ years of field experience handle site meetings, scheduling, and final walk-thru to ensure flawless execution.</p>
+          <div class="p-5">
+            <h3 class="font-display text-sm md:text-base font-semibold text-charcoal">Project Management</h3>
+            <p class="text-xs text-charcoal/45 mt-1.5" style="line-height: 1.6;">PM's with 30+ years of field experience handle site meetings, scheduling, and final walk-thru to ensure flawless execution.</p>
           </div>
         </div>
 
-        <!-- 4. Anti-Tip Services -->
-        <div class="bento-card group relative flex-shrink-0 w-[20rem] sm:w-[22rem] flex flex-col overflow-hidden rounded-xl bg-white card-shadow">
-          <div class="relative h-48 overflow-hidden">
+        <div class="group relative overflow-hidden rounded-xl border border-charcoal/8">
+          <div class="relative h-40 overflow-hidden">
             <img src="services-pictures/anti-tip-services.jpg" alt="Anti-Tip Services" class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-110" loading="lazy">
-            <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
           </div>
-          <div class="z-10 flex flex-col gap-1.5 p-5">
-            <h3 class="text-lg font-semibold text-charcoal font-display">Anti-Tip Services</h3>
-            <p class="text-sm text-charcoal/45" style="line-height: 1.6;">Safely fasten desks, files, bookcases, and storage — secured to wall or floor for earthquake safety.</p>
+          <div class="p-5">
+            <h3 class="font-display text-sm md:text-base font-semibold text-charcoal">Anti-Tip Services</h3>
+            <p class="text-xs text-charcoal/45 mt-1.5" style="line-height: 1.6;">Safely fasten desks, files, bookcases, and storage — secured to wall or floor for earthquake safety.</p>
           </div>
         </div>
 
-        <!-- 5. Reconfiguration -->
-        <div class="bento-card group relative flex-shrink-0 w-[20rem] sm:w-[22rem] flex flex-col overflow-hidden rounded-xl bg-white card-shadow">
-          <div class="relative h-48 overflow-hidden">
+        <div class="group relative overflow-hidden rounded-xl border border-charcoal/8">
+          <div class="relative h-40 overflow-hidden">
             <img src="services-pictures/reconfiguration.jpg" alt="Reconfiguration" class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-110" loading="lazy">
-            <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
           </div>
-          <div class="z-10 flex flex-col gap-1.5 p-5">
-            <h3 class="text-lg font-semibold text-charcoal font-display">Reconfiguration</h3>
-            <p class="text-sm text-charcoal/45" style="line-height: 1.6;">Downsize or expand your office furniture. Our team has worked with all major manufacturers.</p>
+          <div class="p-5">
+            <h3 class="font-display text-sm md:text-base font-semibold text-charcoal">Reconfiguration</h3>
+            <p class="text-xs text-charcoal/45 mt-1.5" style="line-height: 1.6;">Downsize or expand your office furniture. Our team has worked with all major manufacturers.</p>
           </div>
         </div>
 
-        <!-- 6. Service Calls & Maintenance -->
-        <div class="bento-card group relative flex-shrink-0 w-[20rem] sm:w-[22rem] flex flex-col overflow-hidden rounded-xl bg-white card-shadow">
-          <div class="relative h-48 overflow-hidden">
+        <div class="group relative overflow-hidden rounded-xl border border-charcoal/8">
+          <div class="relative h-40 overflow-hidden">
             <img src="services-pictures/service-calls-maintenance.jpg" alt="Service Calls &amp; Maintenance" class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-110" loading="lazy">
-            <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
           </div>
-          <div class="z-10 flex flex-col gap-1.5 p-5">
-            <h3 class="text-lg font-semibold text-charcoal font-display">Service Calls &amp; Maintenance</h3>
-            <p class="text-sm text-charcoal/45" style="line-height: 1.6;">Available 24 hours. Technicians carry parts and hardware — most issues fixed on the first trip.</p>
+          <div class="p-5">
+            <h3 class="font-display text-sm md:text-base font-semibold text-charcoal">Service Calls &amp; Maintenance</h3>
+            <p class="text-xs text-charcoal/45 mt-1.5" style="line-height: 1.6;">Available 24 hours. Technicians carry parts and hardware — most issues fixed on the first trip.</p>
           </div>
         </div>
 
-        <!-- 7. Relocation & Move Services -->
-        <div class="bento-card group relative flex-shrink-0 w-[20rem] sm:w-[22rem] flex flex-col overflow-hidden rounded-xl bg-white card-shadow">
-          <div class="relative h-48 overflow-hidden">
+        <div class="group relative overflow-hidden rounded-xl border border-charcoal/8">
+          <div class="relative h-40 overflow-hidden">
             <img src="services-pictures/relocation-moving.jpg" alt="Relocation &amp; Move Services" class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-110" loading="lazy">
-            <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
           </div>
-          <div class="z-10 flex flex-col gap-1.5 p-5">
-            <h3 class="text-lg font-semibold text-charcoal font-display">Relocation &amp; Move Services</h3>
-            <p class="text-sm text-charcoal/45" style="line-height: 1.6;">Comprehensive moving plans from our PMs and move technicians — your office up and running, fast.</p>
+          <div class="p-5">
+            <h3 class="font-display text-sm md:text-base font-semibold text-charcoal">Relocation &amp; Move Services</h3>
+            <p class="text-xs text-charcoal/45 mt-1.5" style="line-height: 1.6;">Comprehensive moving plans from our PMs and move technicians — your office up and running, fast.</p>
           </div>
         </div>
 
-        <!-- 8. Warehousing -->
-        <div class="bento-card group relative flex-shrink-0 w-[20rem] sm:w-[22rem] flex flex-col overflow-hidden rounded-xl bg-white card-shadow">
-          <div class="relative h-48 overflow-hidden">
+        <div class="group relative overflow-hidden rounded-xl border border-charcoal/8">
+          <div class="relative h-40 overflow-hidden">
             <img src="services-pictures/warehousing.jpg" alt="Warehousing" class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-110" loading="lazy">
-            <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
           </div>
-          <div class="z-10 flex flex-col gap-1.5 p-5">
-            <h3 class="text-lg font-semibold text-charcoal font-display">Warehousing</h3>
-            <p class="text-sm text-charcoal/45" style="line-height: 1.6;">20,000+ sq ft of 24-hour monitored storage. Product inventoried, palletized, wrapped, and tagged.</p>
+          <div class="p-5">
+            <h3 class="font-display text-sm md:text-base font-semibold text-charcoal">Warehousing</h3>
+            <p class="text-xs text-charcoal/45 mt-1.5" style="line-height: 1.6;">20,000+ sq ft of 24-hour monitored storage. Product inventoried, palletized, wrapped, and tagged.</p>
           </div>
         </div>
 
-        <!-- 9. Receiving Services -->
-        <div class="bento-card group relative flex-shrink-0 w-[20rem] sm:w-[22rem] flex flex-col overflow-hidden rounded-xl bg-white card-shadow">
-          <div class="relative h-48 overflow-hidden">
+        <div class="group relative overflow-hidden rounded-xl border border-charcoal/8">
+          <div class="relative h-40 overflow-hidden">
             <img src="services-pictures/receiving-services.jpg" alt="Receiving Services" class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-110" loading="lazy">
-            <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
           </div>
-          <div class="z-10 flex flex-col gap-1.5 p-5">
-            <h3 class="text-lg font-semibold text-charcoal font-display">Receiving Services</h3>
-            <p class="text-sm text-charcoal/45" style="line-height: 1.6;">No warehouse? We receive, inspect every carton for damage, and report before signing for your goods.</p>
+          <div class="p-5">
+            <h3 class="font-display text-sm md:text-base font-semibold text-charcoal">Receiving Services</h3>
+            <p class="text-xs text-charcoal/45 mt-1.5" style="line-height: 1.6;">No warehouse? We receive, inspect every carton for damage, and report before signing for your goods.</p>
           </div>
         </div>
 
-        <!-- 10. Decommissions -->
-        <div class="bento-card group relative flex-shrink-0 w-[20rem] sm:w-[22rem] flex flex-col overflow-hidden rounded-xl bg-white card-shadow">
-          <div class="relative h-48 overflow-hidden">
+        <div class="group relative overflow-hidden rounded-xl border border-charcoal/8">
+          <div class="relative h-40 overflow-hidden">
             <img src="services-pictures/decommissions.jpg" alt="Decommissions" class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-110" loading="lazy">
-            <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
           </div>
-          <div class="z-10 flex flex-col gap-1.5 p-5">
-            <h3 class="text-lg font-semibold text-charcoal font-display">Decommissions</h3>
-            <p class="text-sm text-charcoal/45" style="line-height: 1.6;">Dismantling, removal, and recycling. In some cases, we can find a buyer for your old furniture.</p>
+          <div class="p-5">
+            <h3 class="font-display text-sm md:text-base font-semibold text-charcoal">Decommissions</h3>
+            <p class="text-xs text-charcoal/45 mt-1.5" style="line-height: 1.6;">Dismantling, removal, and recycling. In some cases, we can find a buyer for your old furniture.</p>
           </div>
         </div>
 
-        <!-- 11. Fabric Cleaning -->
-        <div class="bento-card group relative flex-shrink-0 w-[20rem] sm:w-[22rem] flex flex-col overflow-hidden rounded-xl bg-white card-shadow">
-          <div class="relative h-48 overflow-hidden">
+        <div class="group relative overflow-hidden rounded-xl border border-charcoal/8">
+          <div class="relative h-40 overflow-hidden">
             <img src="services-pictures/fabric-cleaning.jpg" alt="Fabric Cleaning" class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-110" loading="lazy">
-            <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
           </div>
-          <div class="z-10 flex flex-col gap-1.5 p-5">
-            <h3 class="text-lg font-semibold text-charcoal font-display">Fabric Cleaning</h3>
-            <p class="text-sm text-charcoal/45" style="line-height: 1.6;">Panel systems and seating cleaned to like-new condition. Thorough results you can see.</p>
+          <div class="p-5">
+            <h3 class="font-display text-sm md:text-base font-semibold text-charcoal">Fabric Cleaning</h3>
+            <p class="text-xs text-charcoal/45 mt-1.5" style="line-height: 1.6;">Panel systems and seating cleaned to like-new condition. Thorough results you can see.</p>
           </div>
+        </div>
+
+        <div class="relative overflow-hidden rounded-xl border border-charcoal/8 bg-cream flex flex-col items-center justify-center p-8 text-center">
+          <div class="w-12 h-12 rounded-full bg-gold/10 flex items-center justify-center mb-4">
+            <svg class="w-5 h-5 text-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
+            </svg>
+          </div>
+          <h3 class="font-display text-base md:text-lg font-semibold text-charcoal">Need Something Specific?</h3>
+          <p class="text-xs text-charcoal/45 mt-1.5" style="line-height: 1.6;">Tell us about your project and we'll tailor a solution.</p>
+          <a href="#contact" class="btn-dark inline-block mt-5 px-8 py-3 bg-charcoal text-cream text-xs font-medium tracking-[0.15em] uppercase rounded-lg">
+            Request a Quote
+          </a>
         </div>
 
       </div>
-    </div>
   </section>
 
   <!-- ============================================ -->
@@ -840,7 +816,7 @@
       <div class="grid lg:grid-cols-2 gap-16 lg:gap-28 items-center">
         <!-- Text Content -->
         <div class="reveal fade-up">
-          <h2 class="font-display text-4xl md:text-5xl lg:text-[3.4rem] leading-[1.12]" style="letter-spacing: -0.02em;">
+          <h2 class="font-display text-4xl md:text-5xl lg:text-[3.4rem] leading-[1.12] font-extrabold" style="letter-spacing: -0.02em;">
             26 Years. One Standard.
           </h2>
           <div class="w-16 h-0.5 bg-gold/50 mt-6"></div>
@@ -852,32 +828,64 @@
           </p>
         </div>
 
-        <!-- Stats Grid -->
+        <!-- Anchor Stat + Trust Points -->
         <div class="reveal fade-right">
-          <div class="grid grid-cols-2 gap-8">
-            <div class="bg-white rounded-xl p-8 text-center card-shadow">
-              <div class="font-display text-4xl lg:text-5xl font-bold tracking-tight" style="letter-spacing: -0.02em;">
-                <span class="counter" data-target="26">0</span><span class="text-gold">+</span>
-              </div>
-              <div class="text-xs text-charcoal/45 mt-3 uppercase tracking-[0.2em] font-medium">Years Experience</div>
+          <!-- Big anchor stat -->
+          <div class="bg-white rounded-xl p-10 text-center card-shadow">
+            <div class="font-display text-6xl lg:text-7xl font-bold tracking-tight" style="letter-spacing: -0.03em;">
+              <span class="counter" data-target="26">0</span><span class="text-gold">+</span>
             </div>
-            <div class="bg-white rounded-xl p-8 text-center card-shadow">
-              <div class="font-display text-4xl lg:text-5xl font-bold tracking-tight" style="letter-spacing: -0.02em;">
-                <span class="counter" data-target="1200" data-format="comma">0</span><span class="text-gold">+</span>
+            <div class="text-sm text-charcoal/50 mt-3 uppercase tracking-[0.2em] font-medium">Years in Business</div>
+          </div>
+
+          <!-- Trust points -->
+          <div class="mt-8 space-y-5">
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 rounded-lg bg-gold/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                <svg class="w-5 h-5 text-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M8.25 18.75a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 0 1-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 0 0-3.213-9.193 2.056 2.056 0 0 0-1.58-.86H14.25M3.75 4.5h7.5v8.25H2.25V6a1.5 1.5 0 0 1 1.5-1.5Zm7.5 0v8.25h3l3-8.25h-6Z"/>
+                </svg>
               </div>
-              <div class="text-xs text-charcoal/45 mt-3 uppercase tracking-[0.2em] font-medium">Projects Completed</div>
+              <div>
+                <p class="text-sm font-semibold text-charcoal">Own Fleet & 20,000+ Sq Ft Warehouse</p>
+                <p class="text-xs text-charcoal/45 mt-0.5" style="line-height: 1.6;">Full control from receiving to final delivery</p>
+              </div>
             </div>
-            <div class="bg-white rounded-xl p-8 text-center card-shadow">
-              <div class="font-display text-4xl lg:text-5xl font-bold tracking-tight" style="letter-spacing: -0.02em;">
-                20k<span class="text-gold">+</span>
+
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 rounded-lg bg-gold/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                <svg class="w-5 h-5 text-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                </svg>
               </div>
-              <div class="text-xs text-charcoal/45 mt-3 uppercase tracking-[0.2em] font-medium">Sq Ft Warehouse</div>
+              <div>
+                <p class="text-sm font-semibold text-charcoal">Licensed, Bonded & DIR Registered</p>
+                <p class="text-xs text-charcoal/45 mt-0.5" style="line-height: 1.6;">CA Contractor License D34 #1034386</p>
+              </div>
             </div>
-            <div class="bg-white rounded-xl p-8 text-center card-shadow">
-              <div class="font-display text-4xl lg:text-5xl font-bold tracking-tight" style="letter-spacing: -0.02em;">
-                <span class="counter" data-target="30">0</span><span class="text-gold">+</span>
+
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 rounded-lg bg-gold/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                <svg class="w-5 h-5 text-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+                </svg>
               </div>
-              <div class="text-xs text-charcoal/45 mt-3 uppercase tracking-[0.2em] font-medium">Years PM Experience</div>
+              <div>
+                <p class="text-sm font-semibold text-charcoal">24/7 Service & Support</p>
+                <p class="text-xs text-charcoal/45 mt-0.5" style="line-height: 1.6;">Emergency calls answered, most issues fixed first trip</p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 rounded-lg bg-gold/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                <svg class="w-5 h-5 text-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>
+                </svg>
+              </div>
+              <div>
+                <p class="text-sm font-semibold text-charcoal">11 Services, One Team</p>
+                <p class="text-xs text-charcoal/45 mt-0.5" style="line-height: 1.6;">From install to decommission — no subcontractors</p>
+              </div>
             </div>
           </div>
         </div>
@@ -892,7 +900,7 @@
   <section id="team" class="py-24 lg:py-32 bg-white">
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
       <div class="text-center reveal fade-up">
-        <h2 class="font-display text-4xl md:text-5xl lg:text-[3.4rem] leading-[1.12]" style="letter-spacing: -0.02em;">
+        <h2 class="font-display text-4xl md:text-5xl lg:text-[3.4rem] leading-[1.12] font-extrabold" style="letter-spacing: -0.02em;">
           Meet Our Team
         </h2>
         <div class="w-16 h-0.5 bg-gold/50 mt-6 mx-auto"></div>
@@ -942,7 +950,7 @@
     <!-- Title -->
     <div class="max-w-7xl mx-auto px-6 lg:px-8 text-center">
       <div class="reveal fade-up">
-        <h2 class="font-display text-4xl md:text-5xl lg:text-[3.4rem] leading-[1.12]" style="letter-spacing: -0.02em;">
+        <h2 class="font-display text-4xl md:text-5xl lg:text-[3.4rem] leading-[1.12] font-extrabold" style="letter-spacing: -0.02em;">
           Our Recent Projects
         </h2>
         <div class="w-16 h-0.5 bg-gold/50 mt-6 mx-auto"></div>
@@ -1057,21 +1065,20 @@
   </section>
 
   <!-- ============================================ -->
-  <!-- TESTIMONIALS -->
+  <!-- TESTIMONIALS (hidden until client provides real testimonials) -->
   <!-- ============================================ -->
+  <!--
   <section id="testimonials" class="py-24 lg:py-32 bg-white">
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
       <div class="text-center mb-14 lg:mb-20 reveal fade-up">
-        <h2 class="font-display text-4xl md:text-5xl lg:text-[3.4rem] leading-[1.12]" style="letter-spacing: -0.02em;">
+        <h2 class="font-display text-4xl md:text-5xl lg:text-[3.4rem] leading-[1.12] font-extrabold" style="letter-spacing: -0.02em;">
           What Our Clients Say
         </h2>
         <div class="w-16 h-0.5 bg-gold/50 mt-6 mx-auto"></div>
       </div>
 
-      <!-- Testimonial Grid -->
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
 
-        <!-- Card 1 -->
         <div class="reveal fade-up testimonial-card relative overflow-hidden rounded-2xl border border-gold/10 bg-cream p-6 md:p-8">
           <div class="absolute right-6 top-6 text-6xl font-serif text-charcoal/10 leading-none select-none">"</div>
           <div class="flex flex-col gap-4 justify-between h-full">
@@ -1093,7 +1100,6 @@
           </div>
         </div>
 
-        <!-- Card 2 -->
         <div class="reveal fade-up testimonial-card relative overflow-hidden rounded-2xl border border-gold/10 bg-cream p-6 md:p-8">
           <div class="absolute right-6 top-6 text-6xl font-serif text-charcoal/10 leading-none select-none">"</div>
           <div class="flex flex-col gap-4 justify-between h-full">
@@ -1115,7 +1121,6 @@
           </div>
         </div>
 
-        <!-- Card 3 -->
         <div class="reveal fade-up testimonial-card relative overflow-hidden rounded-2xl border border-gold/10 bg-cream p-6 md:p-8">
           <div class="absolute right-6 top-6 text-6xl font-serif text-charcoal/10 leading-none select-none">"</div>
           <div class="flex flex-col gap-4 justify-between h-full">
@@ -1137,7 +1142,6 @@
           </div>
         </div>
 
-        <!-- Card 4 -->
         <div class="reveal fade-up testimonial-card relative overflow-hidden rounded-2xl border border-gold/10 bg-cream p-6 md:p-8">
           <div class="absolute right-6 top-6 text-6xl font-serif text-charcoal/10 leading-none select-none">"</div>
           <div class="flex flex-col gap-4 justify-between h-full">
@@ -1159,7 +1163,6 @@
           </div>
         </div>
 
-        <!-- Card 5 -->
         <div class="reveal fade-up testimonial-card relative overflow-hidden rounded-2xl border border-gold/10 bg-cream p-6 md:p-8">
           <div class="absolute right-6 top-6 text-6xl font-serif text-charcoal/10 leading-none select-none">"</div>
           <div class="flex flex-col gap-4 justify-between h-full">
@@ -1181,7 +1184,6 @@
           </div>
         </div>
 
-        <!-- Card 6 -->
         <div class="reveal fade-up testimonial-card relative overflow-hidden rounded-2xl border border-gold/10 bg-cream p-6 md:p-8">
           <div class="absolute right-6 top-6 text-6xl font-serif text-charcoal/10 leading-none select-none">"</div>
           <div class="flex flex-col gap-4 justify-between h-full">
@@ -1206,6 +1208,7 @@
       </div>
     </div>
   </section>
+  -->
 
   <!-- ============================================ -->
   <!-- SERVICE AREAS -->
@@ -1213,7 +1216,7 @@
   <section id="service-areas" class="py-24 lg:py-32 bg-white">
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
       <div class="text-center reveal fade-up">
-        <h2 class="font-display text-4xl md:text-5xl lg:text-[3.4rem] leading-[1.12]" style="letter-spacing: -0.02em;">
+        <h2 class="font-display text-4xl md:text-5xl lg:text-[3.4rem] leading-[1.12] font-extrabold" style="letter-spacing: -0.02em;">
           Areas We Serve
         </h2>
         <div class="w-16 h-0.5 bg-gold/50 mt-6 mx-auto"></div>
@@ -1289,7 +1292,7 @@
 
         <!-- Form Side -->
         <div class="lg:col-span-3 p-8 sm:p-10 lg:p-16">
-          <h2 class="font-display text-3xl md:text-4xl lg:text-[2.6rem]" style="letter-spacing: -0.02em;">
+          <h2 class="font-display text-3xl md:text-4xl lg:text-[2.6rem] font-extrabold" style="letter-spacing: -0.02em;">
             Have Questions?<br>Get In Touch
           </h2>
           <p class="mt-4 text-charcoal/45 text-sm" style="line-height: 1.7;">We'd love to hear about your project. Fill out the form below and we'll get back to you promptly.</p>
@@ -1388,11 +1391,10 @@
         <span class="text-cream/15 hidden sm:inline">|</span>
         <a href="#projects" class="text-cream/45 hover:text-cream px-4 transition-colors duration-200">Projects</a>
         <span class="text-cream/15 hidden sm:inline">|</span>
-        <a href="#testimonials" class="text-cream/45 hover:text-cream px-4 transition-colors duration-200">Testimonials</a>
-        <span class="text-cream/15 hidden sm:inline">|</span>
         <a href="#contact" class="text-cream/45 hover:text-cream px-4 transition-colors duration-200">Contact</a>
       </nav>
 
+      <!-- Social media links hidden until client has profiles
       <div class="flex items-center justify-center gap-7 mt-12">
         <a href="#" class="text-cream/35 hover:text-gold transition-colors duration-200" aria-label="Facebook">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
@@ -1404,6 +1406,7 @@
           <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
         </a>
       </div>
+      -->
 
       <p class="mt-10 text-cream/20 text-xs leading-relaxed max-w-lg mx-auto">
         CA Contractor License D34 Prefabricated — License #1034386<br>
@@ -1423,30 +1426,6 @@
     if (history.scrollRestoration) history.scrollRestoration = 'manual';
     window.scrollTo(0, 0);
     if (window.location.hash) history.replaceState(null, '', window.location.pathname);
-
-    // ===== SERVICES CAROUSEL =====
-    (function() {
-      const track = document.getElementById('servicesTrack');
-      const prev = document.getElementById('servicesPrev');
-      const next = document.getElementById('servicesNext');
-      if (!track || !prev || !next) return;
-
-      const scrollAmount = 380;
-
-      prev.addEventListener('click', () => {
-        track.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
-      });
-      next.addEventListener('click', () => {
-        track.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-      });
-
-      function updateArrows() {
-        prev.disabled = track.scrollLeft <= 0;
-        next.disabled = track.scrollLeft >= track.scrollWidth - track.clientWidth - 1;
-      }
-      track.addEventListener('scroll', updateArrows);
-      updateArrows();
-    })();
 
     // ===== SCROLL REVEAL =====
     const revealEls = document.querySelectorAll('.reveal');
