@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Font Pairings — Industrial & Trustworthy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;500;600;700&family=Raleway:wght@300;400;500;600;700;800&family=DM+Sans:wght@300;400;500;600;700&family=Sora:wght@300;400;500;600;700&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #111; color: #eee; padding: 40px 24px; }
+  h1 { font-family: 'Inter', sans-serif; font-size: 1.4rem; font-weight: 400; text-align: center; color: #888; margin-bottom: 12px; letter-spacing: 0.1em; text-transform: uppercase; }
+  .subtitle { text-align: center; color: #555; font-family: 'Inter', sans-serif; font-size: 0.85rem; margin-bottom: 48px; }
+
+  .options { display: flex; flex-direction: column; gap: 32px; max-width: 900px; margin: 0 auto; }
+
+  .option {
+    background: #1a1a1a;
+    border: 1px solid #2a2a2a;
+    border-radius: 16px;
+    padding: 40px;
+    cursor: pointer;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    position: relative;
+  }
+  .option:hover { border-color: #C9B968; }
+  .option.selected { border-color: #C9B968; box-shadow: 0 0 0 1px #C9B968; }
+
+  .option-label {
+    display: inline-block;
+    background: #C9B968;
+    color: #111;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    border-radius: 4px;
+    margin-bottom: 24px;
+  }
+
+  .font-name {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.75rem;
+    color: #666;
+    margin-bottom: 8px;
+    letter-spacing: 0.05em;
+  }
+
+  .preview-section { margin-top: 20px; padding-top: 20px; border-top: 1px solid #2a2a2a; }
+
+  .preview-row {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: 16px;
+    align-items: baseline;
+    margin-bottom: 16px;
+  }
+  .preview-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.6rem;
+    color: #555;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    padding-top: 4px;
+  }
+
+  .cream-bg {
+    background: #F2EDE8;
+    border-radius: 8px;
+    padding: 24px 32px;
+    margin-top: 24px;
+  }
+  .dark-bg {
+    background: #1F1F1F;
+    border-radius: 8px;
+    padding: 24px 32px;
+    margin-top: 12px;
+  }
+
+  .click-hint {
+    text-align: center;
+    color: #444;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.75rem;
+    margin-top: 40px;
+  }
+</style>
+</head>
+<body>
+
+<h1>Font Pairings</h1>
+<p class="subtitle">Industrial & Trustworthy — click the one that feels right for HD Installations</p>
+
+<div class="options">
+
+  <!-- Option A -->
+  <div class="option" data-choice="a" onclick="select(this)">
+    <div class="option-label">A</div>
+    <div class="font-name">Headings: Plus Jakarta Sans (800) &nbsp;|&nbsp; Body: Plus Jakarta Sans (400)</div>
+
+    <div class="cream-bg">
+      <div style="font-family: 'Plus Jakarta Sans'; font-weight: 800; font-size: 2.4rem; color: #1F1F1F; letter-spacing: -0.03em; line-height: 1.1;">
+        Deadlines Don't Move.<br>Neither Do We.
+      </div>
+      <div style="font-family: 'Plus Jakarta Sans'; font-weight: 400; font-size: 0.95rem; color: rgba(31,31,31,0.55); margin-top: 16px; line-height: 1.7;">
+        Southern California's trusted office furniture installation team — delivering on time for over 26 years.
+      </div>
+    </div>
+
+    <div class="preview-section">
+      <div class="preview-row">
+        <div class="preview-label">Section Title</div>
+        <div style="font-family: 'Plus Jakarta Sans'; font-weight: 700; font-size: 1.6rem; color: #eee; letter-spacing: -0.02em;">26 Years. One Standard.</div>
+      </div>
+      <div class="preview-row">
+        <div class="preview-label">Card Title</div>
+        <div style="font-family: 'Plus Jakarta Sans'; font-weight: 600; font-size: 0.95rem; color: #ccc;">Furniture Installation</div>
+      </div>
+      <div class="preview-row">
+        <div class="preview-label">Body Text</div>
+        <div style="font-family: 'Plus Jakarta Sans'; font-weight: 400; font-size: 0.8rem; color: #888; line-height: 1.6;">Trained technicians install your furniture to manufacturer's specs, ensuring all components are functional and ready for day one.</div>
+      </div>
+      <div class="preview-row">
+        <div class="preview-label">Nav / Caption</div>
+        <div style="font-family: 'Plus Jakarta Sans'; font-weight: 500; font-size: 0.75rem; color: #666; letter-spacing: 0.12em; text-transform: uppercase;">Home &nbsp;&nbsp; Services &nbsp;&nbsp; About &nbsp;&nbsp; Projects &nbsp;&nbsp; Contact</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Option B -->
+  <div class="option" data-choice="b" onclick="select(this)">
+    <div class="option-label">B</div>
+    <div class="font-name">Headings: Outfit (700) &nbsp;|&nbsp; Body: DM Sans (400)</div>
+
+    <div class="cream-bg">
+      <div style="font-family: 'Outfit'; font-weight: 700; font-size: 2.4rem; color: #1F1F1F; letter-spacing: -0.03em; line-height: 1.1;">
+        Deadlines Don't Move.<br>Neither Do We.
+      </div>
+      <div style="font-family: 'DM Sans'; font-weight: 400; font-size: 0.95rem; color: rgba(31,31,31,0.55); margin-top: 16px; line-height: 1.7;">
+        Southern California's trusted office furniture installation team — delivering on time for over 26 years.
+      </div>
+    </div>
+
+    <div class="preview-section">
+      <div class="preview-row">
+        <div class="preview-label">Section Title</div>
+        <div style="font-family: 'Outfit'; font-weight: 700; font-size: 1.6rem; color: #eee; letter-spacing: -0.02em;">26 Years. One Standard.</div>
+      </div>
+      <div class="preview-row">
+        <div class="preview-label">Card Title</div>
+        <div style="font-family: 'Outfit'; font-weight: 600; font-size: 0.95rem; color: #ccc;">Furniture Installation</div>
+      </div>
+      <div class="preview-row">
+        <div class="preview-label">Body Text</div>
+        <div style="font-family: 'DM Sans'; font-weight: 400; font-size: 0.8rem; color: #888; line-height: 1.6;">Trained technicians install your furniture to manufacturer's specs, ensuring all components are functional and ready for day one.</div>
+      </div>
+      <div class="preview-row">
+        <div class="preview-label">Nav / Caption</div>
+        <div style="font-family: 'DM Sans'; font-weight: 500; font-size: 0.75rem; color: #666; letter-spacing: 0.12em; text-transform: uppercase;">Home &nbsp;&nbsp; Services &nbsp;&nbsp; About &nbsp;&nbsp; Projects &nbsp;&nbsp; Contact</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Option C -->
+  <div class="option" data-choice="c" onclick="select(this)">
+    <div class="option-label">C</div>
+    <div class="font-name">Headings: Manrope (800) &nbsp;|&nbsp; Body: Manrope (400)</div>
+
+    <div class="cream-bg">
+      <div style="font-family: 'Manrope'; font-weight: 800; font-size: 2.4rem; color: #1F1F1F; letter-spacing: -0.03em; line-height: 1.1;">
+        Deadlines Don't Move.<br>Neither Do We.
+      </div>
+      <div style="font-family: 'Manrope'; font-weight: 400; font-size: 0.95rem; color: rgba(31,31,31,0.55); margin-top: 16px; line-height: 1.7;">
+        Southern California's trusted office furniture installation team — delivering on time for over 26 years.
+      </div>
+    </div>
+
+    <div class="preview-section">
+      <div class="preview-row">
+        <div class="preview-label">Section Title</div>
+        <div style="font-family: 'Manrope'; font-weight: 700; font-size: 1.6rem; color: #eee; letter-spacing: -0.02em;">26 Years. One Standard.</div>
+      </div>
+      <div class="preview-row">
+        <div class="preview-label">Card Title</div>
+        <div style="font-family: 'Manrope'; font-weight: 600; font-size: 0.95rem; color: #ccc;">Furniture Installation</div>
+      </div>
+      <div class="preview-row">
+        <div class="preview-label">Body Text</div>
+        <div style="font-family: 'Manrope'; font-weight: 400; font-size: 0.8rem; color: #888; line-height: 1.6;">Trained technicians install your furniture to manufacturer's specs, ensuring all components are functional and ready for day one.</div>
+      </div>
+      <div class="preview-row">
+        <div class="preview-label">Nav / Caption</div>
+        <div style="font-family: 'Manrope'; font-weight: 500; font-size: 0.75rem; color: #666; letter-spacing: 0.12em; text-transform: uppercase;">Home &nbsp;&nbsp; Services &nbsp;&nbsp; About &nbsp;&nbsp; Projects &nbsp;&nbsp; Contact</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<p class="click-hint">Click a card to select it, then let me know in the terminal</p>
+
+<script>
+function select(el) {
+  document.querySelectorAll('.option').forEach(o => o.classList.remove('selected'));
+  el.classList.add('selected');
+  // Record selection
+  fetch('/event', {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({type:'click', choice: el.dataset.choice, text: el.querySelector('.font-name').textContent, timestamp: Date.now()})
+  }).catch(() => {});
+}
+</script>
+
+</body>
+</html>
