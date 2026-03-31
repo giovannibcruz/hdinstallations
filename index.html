@@ -1676,14 +1676,48 @@
         updateHero();
       }
 
-      // Collapse hero back to initial state
+      // Collapse hero back to initial state (animated)
       function collapseHero() {
-        scrollProgress = 0;
-        mediaFullyExpanded = false;
-        cancelAnimationFrame(momentumRaf);
-        updateHero();
-        lockScroll();
-        addHeroListeners();
+        // Phase 1: smooth scroll to top
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+
+        // Wait for scroll to reach top, then animate hero closed
+        function waitForTop() {
+          if (window.scrollY > 5) {
+            requestAnimationFrame(waitForTop);
+            return;
+          }
+
+          // Phase 2: lock scroll and animate hero clip-path from 1 → 0
+          mediaFullyExpanded = false;
+          cancelAnimationFrame(momentumRaf);
+
+          document.body.style.position = 'fixed';
+          document.body.style.top = '0';
+          document.body.style.left = '0';
+          document.body.style.right = '0';
+          document.body.style.overflow = 'hidden';
+
+          const startTime = performance.now();
+          const duration = 600;
+          const startProgress = scrollProgress;
+
+          function animateClose(now) {
+            const t = Math.min((now - startTime) / duration, 1);
+            const eased = 1 - Math.pow(1 - t, 3); // ease-out cubic
+            scrollProgress = startProgress * (1 - eased);
+            updateHero();
+            if (t < 1) {
+              momentumRaf = requestAnimationFrame(animateClose);
+            } else {
+              scrollProgress = 0;
+              updateHero();
+              addHeroListeners();
+            }
+          }
+          momentumRaf = requestAnimationFrame(animateClose);
+        }
+        requestAnimationFrame(waitForTop);
       }
 
       // Expose for nav integration
