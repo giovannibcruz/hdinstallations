@@ -142,6 +142,7 @@
     .reveal {
       opacity: 0;
       transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform;
     }
     .reveal.fade-up { transform: translateY(48px); }
     .reveal.fade-left { transform: translateX(-48px); }
@@ -150,6 +151,7 @@
     .reveal.visible {
       opacity: 1;
       transform: none;
+      will-change: auto;
     }
 
     /* Stagger children — JS sets transition-delay via --i custom prop */
@@ -402,7 +404,7 @@
 
   </style>
 </head>
-<body class="font-body bg-cream text-charcoal antialiased overflow-x-hidden" style="overscroll-behavior-x: none;">
+<body class="font-body bg-cream text-charcoal antialiased overflow-x-hidden" style="overscroll-behavior-x: none; -webkit-overflow-scrolling: touch;">
 
   <!-- Scroll Progress Bar -->
   <div class="scroll-progress" id="scrollProgress"></div>
@@ -522,7 +524,7 @@
           </svg>
           <div>
             <p class="text-sm font-semibold text-charcoal">CA Licensed</p>
-            <p class="text-xs text-charcoal/40">#1034386</p>
+            <p class="text-xs text-charcoal/50">#1034386</p>
           </div>
         </div>
         <!-- Insured & Bonded -->
@@ -532,7 +534,7 @@
           </svg>
           <div>
             <p class="text-sm font-semibold text-charcoal">Insured &amp; Bonded</p>
-            <p class="text-xs text-charcoal/40">Full coverage</p>
+            <p class="text-xs text-charcoal/50">Full coverage</p>
           </div>
         </div>
         <!-- DIR Registered -->
@@ -542,7 +544,7 @@
           </svg>
           <div>
             <p class="text-sm font-semibold text-charcoal">DIR Registered</p>
-            <p class="text-xs text-charcoal/40">Prevailing wage</p>
+            <p class="text-xs text-charcoal/50">Prevailing wage</p>
           </div>
         </div>
         <!-- 26+ Years -->
@@ -552,7 +554,7 @@
           </svg>
           <div>
             <p class="text-sm font-semibold text-charcoal">26+ Years</p>
-            <p class="text-xs text-charcoal/40">In business</p>
+            <p class="text-xs text-charcoal/50">In business</p>
           </div>
         </div>
       </div>
@@ -569,7 +571,7 @@
           Three Ways Your Next Move Goes Wrong
         </h2>
         <div class="w-16 h-0.5 bg-gold/50 mt-6 mx-auto"></div>
-        <p class="mt-6 text-charcoal/50 max-w-2xl mx-auto" style="line-height: 1.8;">We've seen it happen hundreds of times.</p>
+        <p class="mt-6 text-charcoal/65 max-w-2xl mx-auto" style="line-height: 1.8;">We've seen it happen hundreds of times.</p>
       </div>
 
       <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-16 stagger">
@@ -579,7 +581,7 @@
             <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
           </svg>
           <h3 class="font-display text-lg font-semibold text-charcoal">Every Day Late Costs You Twice.</h3>
-          <p class="mt-3 text-sm text-charcoal/45" style="line-height: 1.7;">Rent doesn't pause. Neither do penalties.</p>
+          <p class="mt-3 text-sm text-charcoal/60" style="line-height: 1.7;">Rent doesn't pause. Neither do penalties.</p>
         </div>
         <!-- Pain Point 2: Too Many Vendors -->
         <div class="reveal fade-up bg-white rounded-xl p-8 card-shadow">
@@ -587,7 +589,7 @@
             <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/>
           </svg>
           <h3 class="font-display text-lg font-semibold text-charcoal">Five Vendors. Zero Accountability.</h3>
-          <p class="mt-3 text-sm text-charcoal/45" style="line-height: 1.7;">Finger-pointing starts. Your timeline pays.</p>
+          <p class="mt-3 text-sm text-charcoal/60" style="line-height: 1.7;">Finger-pointing starts. Your timeline pays.</p>
         </div>
         <!-- Pain Point 3: Team Overload -->
         <div class="reveal fade-up bg-white rounded-xl p-8 card-shadow">
@@ -595,7 +597,7 @@
             <path d="M6 18.7V21"/><path d="M18 18.7V21"/><path d="M12 12v9"/><path d="M3 8l9-5 9 5"/><path d="M3 8v4l9 5 9-5V8"/>
           </svg>
           <h3 class="font-display text-lg font-semibold text-charcoal">Your Ops Team Didn't Sign Up for This.</h3>
-          <p class="mt-3 text-sm text-charcoal/45" style="line-height: 1.7;">They'll do it — but something else won't get done.</p>
+          <p class="mt-3 text-sm text-charcoal/60" style="line-height: 1.7;">They'll do it — but something else won't get done.</p>
         </div>
       </div>
     </div>
@@ -612,7 +614,7 @@
           Your Installation. Our Responsibility.
         </h2>
         <div class="w-16 h-0.5 bg-gold/50 mt-6 mx-auto"></div>
-        <p class="mt-6 text-charcoal/50 max-w-2xl mx-auto" style="line-height: 1.8;">You have enough on your plate. Here's how we take the furniture installation off of it.</p>
+        <p class="mt-6 text-charcoal/65 max-w-2xl mx-auto" style="line-height: 1.8;">You have enough on your plate. Here's how we take the furniture installation off of it.</p>
       </div>
 
       <div class="grid md:grid-cols-3 gap-10 lg:gap-16 mt-16 lg:mt-20 stagger">
@@ -625,7 +627,7 @@
           </div>
           <span class="text-xs uppercase tracking-[0.2em] text-charcoal/30 font-medium">01</span>
           <h3 class="font-display text-xl font-semibold text-charcoal mt-3">Consult & Plan</h3>
-          <p class="mt-3 text-sm text-charcoal/45 max-w-xs mx-auto" style="line-height: 1.7;">We start by listening. Our project managers meet with you to understand the scope, walk the site, and build a clear plan — so you know exactly what to expect and when.</p>
+          <p class="mt-3 text-sm text-charcoal/60 max-w-xs mx-auto" style="line-height: 1.7;">We start by listening. Our project managers meet with you to understand the scope, walk the site, and build a clear plan — so you know exactly what to expect and when.</p>
         </div>
         <!-- Step 2 -->
         <div class="reveal fade-up text-center">
@@ -636,7 +638,7 @@
           </div>
           <span class="text-xs uppercase tracking-[0.2em] text-charcoal/30 font-medium">02</span>
           <h3 class="font-display text-xl font-semibold text-charcoal mt-3">Deliver & Handle with Care</h3>
-          <p class="mt-3 text-sm text-charcoal/45 max-w-xs mx-auto" style="line-height: 1.7;">Your furniture arrives on our trucks, handled by our crew. Every piece is inventoried, inspected, and protected. Nothing gets to your site without us knowing about it first.</p>
+          <p class="mt-3 text-sm text-charcoal/60 max-w-xs mx-auto" style="line-height: 1.7;">Your furniture arrives on our trucks, handled by our crew. Every piece is inventoried, inspected, and protected. Nothing gets to your site without us knowing about it first.</p>
         </div>
         <!-- Step 3 -->
         <div class="reveal fade-up text-center">
@@ -647,7 +649,7 @@
           </div>
           <span class="text-xs uppercase tracking-[0.2em] text-charcoal/30 font-medium">03</span>
           <h3 class="font-display text-xl font-semibold text-charcoal mt-3">Install & Walk Away Ready</h3>
-          <p class="mt-3 text-sm text-charcoal/45 max-w-xs mx-auto" style="line-height: 1.7;">Our technicians install everything to manufacturer specs and test every component. We walk the finished space with you, address any punch list items, and don't leave until you're satisfied.</p>
+          <p class="mt-3 text-sm text-charcoal/60 max-w-xs mx-auto" style="line-height: 1.7;">Our technicians install everything to manufacturer specs and test every component. We walk the finished space with you, address any punch list items, and don't leave until you're satisfied.</p>
         </div>
       </div>
     </div>
@@ -678,7 +680,7 @@
           </div>
           <div class="p-5">
             <h3 class="font-display text-sm md:text-base font-semibold text-charcoal">Furniture Installation</h3>
-            <p class="text-xs text-charcoal/45 mt-1.5" style="line-height: 1.6;">Trained technicians install your furniture to manufacturer's specs, ensuring all components are functional and ready for day one.</p>
+            <p class="text-xs text-charcoal/60 mt-1.5" style="line-height: 1.6;">Trained technicians install your furniture to manufacturer's specs, ensuring all components are functional and ready for day one.</p>
           </div>
         </div>
 
@@ -689,7 +691,7 @@
           </div>
           <div class="p-5">
             <h3 class="font-display text-sm md:text-base font-semibold text-charcoal">Delivery Services</h3>
-            <p class="text-xs text-charcoal/45 mt-1.5" style="line-height: 1.6;">Fleet of 26' bobtail trucks with liftgate, ready to deliver with experienced team drivers.</p>
+            <p class="text-xs text-charcoal/60 mt-1.5" style="line-height: 1.6;">Fleet of 26' bobtail trucks with liftgate, ready to deliver with experienced team drivers.</p>
           </div>
         </div>
 
@@ -700,7 +702,7 @@
           </div>
           <div class="p-5">
             <h3 class="font-display text-sm md:text-base font-semibold text-charcoal">Project Management</h3>
-            <p class="text-xs text-charcoal/45 mt-1.5" style="line-height: 1.6;">PM's with 30+ years of field experience handle site meetings, scheduling, and final walk-thru to ensure flawless execution.</p>
+            <p class="text-xs text-charcoal/60 mt-1.5" style="line-height: 1.6;">PM's with 30+ years of field experience handle site meetings, scheduling, and final walk-thru to ensure flawless execution.</p>
           </div>
         </div>
 
@@ -711,7 +713,7 @@
           </div>
           <div class="p-5">
             <h3 class="font-display text-sm md:text-base font-semibold text-charcoal">Anti-Tip Services</h3>
-            <p class="text-xs text-charcoal/45 mt-1.5" style="line-height: 1.6;">Safely fasten desks, files, bookcases, and storage — secured to wall or floor for earthquake safety.</p>
+            <p class="text-xs text-charcoal/60 mt-1.5" style="line-height: 1.6;">Safely fasten desks, files, bookcases, and storage — secured to wall or floor for earthquake safety.</p>
           </div>
         </div>
 
@@ -722,7 +724,7 @@
           </div>
           <div class="p-5">
             <h3 class="font-display text-sm md:text-base font-semibold text-charcoal">Reconfiguration</h3>
-            <p class="text-xs text-charcoal/45 mt-1.5" style="line-height: 1.6;">Downsize or expand your office furniture. Our team has worked with all major manufacturers.</p>
+            <p class="text-xs text-charcoal/60 mt-1.5" style="line-height: 1.6;">Downsize or expand your office furniture. Our team has worked with all major manufacturers.</p>
           </div>
         </div>
 
@@ -733,7 +735,7 @@
           </div>
           <div class="p-5">
             <h3 class="font-display text-sm md:text-base font-semibold text-charcoal">Service Calls &amp; Maintenance</h3>
-            <p class="text-xs text-charcoal/45 mt-1.5" style="line-height: 1.6;">Available 24 hours. Technicians carry parts and hardware — most issues fixed on the first trip.</p>
+            <p class="text-xs text-charcoal/60 mt-1.5" style="line-height: 1.6;">Available 24 hours. Technicians carry parts and hardware — most issues fixed on the first trip.</p>
           </div>
         </div>
 
@@ -744,7 +746,7 @@
           </div>
           <div class="p-5">
             <h3 class="font-display text-sm md:text-base font-semibold text-charcoal">Relocation &amp; Move Services</h3>
-            <p class="text-xs text-charcoal/45 mt-1.5" style="line-height: 1.6;">Comprehensive moving plans from our PMs and move technicians — your office up and running, fast.</p>
+            <p class="text-xs text-charcoal/60 mt-1.5" style="line-height: 1.6;">Comprehensive moving plans from our PMs and move technicians — your office up and running, fast.</p>
           </div>
         </div>
 
@@ -755,7 +757,7 @@
           </div>
           <div class="p-5">
             <h3 class="font-display text-sm md:text-base font-semibold text-charcoal">Warehousing</h3>
-            <p class="text-xs text-charcoal/45 mt-1.5" style="line-height: 1.6;">20,000+ sq ft of 24-hour monitored storage. Product inventoried, palletized, wrapped, and tagged.</p>
+            <p class="text-xs text-charcoal/60 mt-1.5" style="line-height: 1.6;">20,000+ sq ft of 24-hour monitored storage. Product inventoried, palletized, wrapped, and tagged.</p>
           </div>
         </div>
 
@@ -766,7 +768,7 @@
           </div>
           <div class="p-5">
             <h3 class="font-display text-sm md:text-base font-semibold text-charcoal">Receiving Services</h3>
-            <p class="text-xs text-charcoal/45 mt-1.5" style="line-height: 1.6;">No warehouse? We receive, inspect every carton for damage, and report before signing for your goods.</p>
+            <p class="text-xs text-charcoal/60 mt-1.5" style="line-height: 1.6;">No warehouse? We receive, inspect every carton for damage, and report before signing for your goods.</p>
           </div>
         </div>
 
@@ -777,7 +779,7 @@
           </div>
           <div class="p-5">
             <h3 class="font-display text-sm md:text-base font-semibold text-charcoal">Decommissions</h3>
-            <p class="text-xs text-charcoal/45 mt-1.5" style="line-height: 1.6;">Dismantling, removal, and recycling. In some cases, we can find a buyer for your old furniture.</p>
+            <p class="text-xs text-charcoal/60 mt-1.5" style="line-height: 1.6;">Dismantling, removal, and recycling. In some cases, we can find a buyer for your old furniture.</p>
           </div>
         </div>
 
@@ -788,7 +790,7 @@
           </div>
           <div class="p-5">
             <h3 class="font-display text-sm md:text-base font-semibold text-charcoal">Fabric Cleaning</h3>
-            <p class="text-xs text-charcoal/45 mt-1.5" style="line-height: 1.6;">Panel systems and seating cleaned to like-new condition. Thorough results you can see.</p>
+            <p class="text-xs text-charcoal/60 mt-1.5" style="line-height: 1.6;">Panel systems and seating cleaned to like-new condition. Thorough results you can see.</p>
           </div>
         </div>
 
@@ -799,7 +801,7 @@
             </svg>
           </div>
           <h3 class="font-display text-base md:text-lg font-semibold text-charcoal">Need Something Specific?</h3>
-          <p class="text-xs text-charcoal/45 mt-1.5" style="line-height: 1.6;">Tell us about your project and we'll tailor a solution.</p>
+          <p class="text-xs text-charcoal/60 mt-1.5" style="line-height: 1.6;">Tell us about your project and we'll tailor a solution.</p>
           <a href="#contact" class="btn-dark inline-block mt-5 px-8 py-3 bg-charcoal text-cream text-xs font-medium tracking-[0.15em] uppercase rounded-lg">
             Request a Quote
           </a>
@@ -835,7 +837,7 @@
             <div class="font-display text-6xl lg:text-7xl font-bold tracking-tight" style="letter-spacing: -0.03em;">
               <span class="counter" data-target="26">0</span><span class="text-gold">+</span>
             </div>
-            <div class="text-sm text-charcoal/50 mt-3 uppercase tracking-[0.2em] font-medium">Years in Business</div>
+            <div class="text-sm text-charcoal/65 mt-3 uppercase tracking-[0.2em] font-medium">Years in Business</div>
           </div>
 
           <!-- Trust points -->
@@ -848,7 +850,7 @@
               </div>
               <div>
                 <p class="text-sm font-semibold text-charcoal">Own Fleet & 20,000+ Sq Ft Warehouse</p>
-                <p class="text-xs text-charcoal/45 mt-0.5" style="line-height: 1.6;">Full control from receiving to final delivery</p>
+                <p class="text-xs text-charcoal/60 mt-0.5" style="line-height: 1.6;">Full control from receiving to final delivery</p>
               </div>
             </div>
 
@@ -860,7 +862,7 @@
               </div>
               <div>
                 <p class="text-sm font-semibold text-charcoal">Licensed, Bonded & DIR Registered</p>
-                <p class="text-xs text-charcoal/45 mt-0.5" style="line-height: 1.6;">CA Contractor License D34 #1034386</p>
+                <p class="text-xs text-charcoal/60 mt-0.5" style="line-height: 1.6;">CA Contractor License D34 #1034386</p>
               </div>
             </div>
 
@@ -872,7 +874,7 @@
               </div>
               <div>
                 <p class="text-sm font-semibold text-charcoal">24/7 Service & Support</p>
-                <p class="text-xs text-charcoal/45 mt-0.5" style="line-height: 1.6;">Emergency calls answered, most issues fixed first trip</p>
+                <p class="text-xs text-charcoal/60 mt-0.5" style="line-height: 1.6;">Emergency calls answered, most issues fixed first trip</p>
               </div>
             </div>
 
@@ -884,7 +886,7 @@
               </div>
               <div>
                 <p class="text-sm font-semibold text-charcoal">11 Services, One Team</p>
-                <p class="text-xs text-charcoal/45 mt-0.5" style="line-height: 1.6;">From install to decommission — no subcontractors</p>
+                <p class="text-xs text-charcoal/60 mt-0.5" style="line-height: 1.6;">From install to decommission — no subcontractors</p>
               </div>
             </div>
           </div>
@@ -904,29 +906,29 @@
           Meet Our Team
         </h2>
         <div class="w-16 h-0.5 bg-gold/50 mt-6 mx-auto"></div>
-        <p class="mt-6 text-charcoal/50 max-w-2xl mx-auto" style="line-height: 1.8;">The people behind every on-time delivery, clean install, and seamless move.</p>
+        <p class="mt-6 text-charcoal/65 max-w-2xl mx-auto" style="line-height: 1.8;">The people behind every on-time delivery, clean install, and seamless move.</p>
       </div>
 
       <div class="flex flex-wrap justify-center gap-10 md:gap-14 mt-16 reveal fade-up">
         <button class="team-portrait-btn flex flex-col items-center gap-3 group" data-member="0" aria-expanded="false">
           <img src="https://placehold.co/200x200" alt="Team Member 1" class="team-portrait w-24 h-24 md:w-28 md:h-28 rounded-full object-cover card-shadow" loading="lazy">
           <span class="text-sm font-medium text-charcoal/70 group-hover:text-charcoal transition-colors">[Name]</span>
-          <span class="text-xs text-charcoal/40">[Title]</span>
+          <span class="text-xs text-charcoal/50">[Title]</span>
         </button>
         <button class="team-portrait-btn flex flex-col items-center gap-3 group" data-member="1" aria-expanded="false">
           <img src="https://placehold.co/200x200" alt="Team Member 2" class="team-portrait w-24 h-24 md:w-28 md:h-28 rounded-full object-cover card-shadow" loading="lazy">
           <span class="text-sm font-medium text-charcoal/70 group-hover:text-charcoal transition-colors">[Name]</span>
-          <span class="text-xs text-charcoal/40">[Title]</span>
+          <span class="text-xs text-charcoal/50">[Title]</span>
         </button>
         <button class="team-portrait-btn flex flex-col items-center gap-3 group" data-member="2" aria-expanded="false">
           <img src="https://placehold.co/200x200" alt="Team Member 3" class="team-portrait w-24 h-24 md:w-28 md:h-28 rounded-full object-cover card-shadow" loading="lazy">
           <span class="text-sm font-medium text-charcoal/70 group-hover:text-charcoal transition-colors">[Name]</span>
-          <span class="text-xs text-charcoal/40">[Title]</span>
+          <span class="text-xs text-charcoal/50">[Title]</span>
         </button>
         <button class="team-portrait-btn flex flex-col items-center gap-3 group" data-member="3" aria-expanded="false">
           <img src="https://placehold.co/200x200" alt="Team Member 4" class="team-portrait w-24 h-24 md:w-28 md:h-28 rounded-full object-cover card-shadow" loading="lazy">
           <span class="text-sm font-medium text-charcoal/70 group-hover:text-charcoal transition-colors">[Name]</span>
-          <span class="text-xs text-charcoal/40">[Title]</span>
+          <span class="text-xs text-charcoal/50">[Title]</span>
         </button>
       </div>
 
@@ -1094,7 +1096,7 @@
               <img src="https://placehold.co/40x40/d4c67a/1f1f1f?text=JR" alt="James Rivera" class="w-10 h-10 rounded-full ring-2 ring-gold/20" loading="lazy">
               <div>
                 <div class="font-display font-semibold text-charcoal text-sm">James Rivera</div>
-                <div class="text-xs text-charcoal/40 tracking-wide">Facilities Manager @ TechCorp</div>
+                <div class="text-xs text-charcoal/50 tracking-wide">Facilities Manager @ TechCorp</div>
               </div>
             </div>
           </div>
@@ -1115,7 +1117,7 @@
               <img src="https://placehold.co/40x40/d4c67a/1f1f1f?text=LT" alt="Linda Tran" class="w-10 h-10 rounded-full ring-2 ring-gold/20" loading="lazy">
               <div>
                 <div class="font-display font-semibold text-charcoal text-sm">Linda Tran</div>
-                <div class="text-xs text-charcoal/40 tracking-wide">Office Manager @ Westline Properties</div>
+                <div class="text-xs text-charcoal/50 tracking-wide">Office Manager @ Westline Properties</div>
               </div>
             </div>
           </div>
@@ -1136,7 +1138,7 @@
               <img src="https://placehold.co/40x40/d4c67a/1f1f1f?text=SL" alt="Sarah Lawson" class="w-10 h-10 rounded-full ring-2 ring-gold/20" loading="lazy">
               <div>
                 <div class="font-display font-semibold text-charcoal text-sm">Sarah Lawson</div>
-                <div class="text-xs text-charcoal/40 tracking-wide">Office Manager @ Pacific Solutions</div>
+                <div class="text-xs text-charcoal/50 tracking-wide">Office Manager @ Pacific Solutions</div>
               </div>
             </div>
           </div>
@@ -1157,7 +1159,7 @@
               <img src="https://placehold.co/40x40/d4c67a/1f1f1f?text=KW" alt="Karen Wells" class="w-10 h-10 rounded-full ring-2 ring-gold/20" loading="lazy">
               <div>
                 <div class="font-display font-semibold text-charcoal text-sm">Karen Wells</div>
-                <div class="text-xs text-charcoal/40 tracking-wide">Director of Facilities @ Summit Financial</div>
+                <div class="text-xs text-charcoal/50 tracking-wide">Director of Facilities @ Summit Financial</div>
               </div>
             </div>
           </div>
@@ -1178,7 +1180,7 @@
               <img src="https://placehold.co/40x40/d4c67a/1f1f1f?text=MC" alt="Michael Chen" class="w-10 h-10 rounded-full ring-2 ring-gold/20" loading="lazy">
               <div>
                 <div class="font-display font-semibold text-charcoal text-sm">Michael Chen</div>
-                <div class="text-xs text-charcoal/40 tracking-wide">Operations Director @ Inland Group</div>
+                <div class="text-xs text-charcoal/50 tracking-wide">Operations Director @ Inland Group</div>
               </div>
             </div>
           </div>
@@ -1199,7 +1201,7 @@
               <img src="https://placehold.co/40x40/d4c67a/1f1f1f?text=PG" alt="Patricia Gomez" class="w-10 h-10 rounded-full ring-2 ring-gold/20" loading="lazy">
               <div>
                 <div class="font-display font-semibold text-charcoal text-sm">Patricia Gomez</div>
-                <div class="text-xs text-charcoal/40 tracking-wide">HR Director @ CalBridge Health</div>
+                <div class="text-xs text-charcoal/50 tracking-wide">HR Director @ CalBridge Health</div>
               </div>
             </div>
           </div>
@@ -1286,7 +1288,7 @@
           <!-- Decorative badge -->
           <div class="absolute bottom-8 left-8 bg-white/95 backdrop-blur-sm rounded-lg px-5 py-3 shadow-lg">
             <p class="font-display text-lg font-semibold text-charcoal">26+ Years</p>
-            <p class="text-charcoal/50 text-xs mt-0.5">of Trusted Service</p>
+            <p class="text-charcoal/65 text-xs mt-0.5">of Trusted Service</p>
           </div>
         </div>
 
@@ -1295,19 +1297,19 @@
           <h2 class="font-display text-3xl md:text-4xl lg:text-[2.6rem] font-extrabold" style="letter-spacing: -0.02em;">
             Have Questions?<br>Get In Touch
           </h2>
-          <p class="mt-4 text-charcoal/45 text-sm" style="line-height: 1.7;">We'd love to hear about your project. Fill out the form below and we'll get back to you promptly.</p>
+          <p class="mt-4 text-charcoal/60 text-sm" style="line-height: 1.7;">We'd love to hear about your project. Fill out the form below and we'll get back to you promptly.</p>
 
           <form class="mt-10 space-y-6" onsubmit="event.preventDefault(); alert('Thank you! Your message has been received. We will get back to you shortly.');">
             <div class="grid sm:grid-cols-2 gap-6">
               <div class="form-field">
-                <label for="name" class="block text-xs font-medium text-charcoal/50 uppercase tracking-[0.15em] mb-2.5">Full Name</label>
+                <label for="name" class="block text-xs font-medium text-charcoal/65 uppercase tracking-[0.15em] mb-2.5">Full Name</label>
                 <input
                   type="text" id="name" name="name" placeholder="John Smith"
                   class="form-input w-full px-4 py-3.5 bg-cream/50 border border-charcoal/8 rounded-lg text-sm font-body placeholder:text-charcoal/25 outline-none"
                 >
               </div>
               <div class="form-field">
-                <label for="phone" class="block text-xs font-medium text-charcoal/50 uppercase tracking-[0.15em] mb-2.5">Phone</label>
+                <label for="phone" class="block text-xs font-medium text-charcoal/65 uppercase tracking-[0.15em] mb-2.5">Phone</label>
                 <input
                   type="tel" id="phone" name="phone" placeholder="(555) 123-4567"
                   class="form-input w-full px-4 py-3.5 bg-cream/50 border border-charcoal/8 rounded-lg text-sm font-body placeholder:text-charcoal/25 outline-none"
@@ -1315,14 +1317,14 @@
               </div>
             </div>
             <div class="form-field">
-              <label for="email" class="block text-xs font-medium text-charcoal/50 uppercase tracking-[0.15em] mb-2.5">Email Address</label>
+              <label for="email" class="block text-xs font-medium text-charcoal/65 uppercase tracking-[0.15em] mb-2.5">Email Address</label>
               <input
                 type="email" id="email" name="email" placeholder="john@company.com"
                 class="form-input w-full px-4 py-3.5 bg-cream/50 border border-charcoal/8 rounded-lg text-sm font-body placeholder:text-charcoal/25 outline-none"
               >
             </div>
             <div class="form-field">
-              <label for="service" class="block text-xs font-medium text-charcoal/50 uppercase tracking-[0.15em] mb-2.5">Service Needed</label>
+              <label for="service" class="block text-xs font-medium text-charcoal/65 uppercase tracking-[0.15em] mb-2.5">Service Needed</label>
               <select
                 id="service" name="service"
                 class="form-input w-full px-4 py-3.5 bg-cream/50 border border-charcoal/8 rounded-lg text-sm font-body text-charcoal/60 outline-none appearance-none pr-10"
@@ -1343,7 +1345,7 @@
               </select>
             </div>
             <div class="form-field">
-              <label for="message" class="block text-xs font-medium text-charcoal/50 uppercase tracking-[0.15em] mb-2.5">Message</label>
+              <label for="message" class="block text-xs font-medium text-charcoal/65 uppercase tracking-[0.15em] mb-2.5">Message</label>
               <textarea
                 id="message" name="message" rows="4" placeholder="Tell us about your project..."
                 class="form-input w-full px-4 py-3.5 bg-cream/50 border border-charcoal/8 rounded-lg text-sm font-body placeholder:text-charcoal/25 outline-none resize-none"
@@ -1489,8 +1491,25 @@
         vh = window.innerHeight;
       }, { passive: true });
 
-      // Lock body scroll while hero is active (no scroll-to-0 hack)
-      document.body.style.overflow = 'hidden';
+      // Lock body scroll while hero is active (iOS-safe approach)
+      function lockBodyScroll() {
+        const scrollY = window.scrollY;
+        document.body.style.position = 'fixed';
+        document.body.style.top = `-${scrollY}px`;
+        document.body.style.left = '0';
+        document.body.style.right = '0';
+        document.body.style.overflow = 'hidden';
+      }
+      function unlockBodyScroll() {
+        const scrollY = document.body.style.top;
+        document.body.style.position = '';
+        document.body.style.top = '';
+        document.body.style.left = '';
+        document.body.style.right = '';
+        document.body.style.overflow = '';
+        window.scrollTo(0, parseInt(scrollY || '0') * -1);
+      }
+      lockBodyScroll();
 
       function updateHero() {
         const p = scrollProgress;
@@ -1532,12 +1551,11 @@
       }
 
       function unlockScroll() {
-        document.body.style.overflow = '';
+        unlockBodyScroll();
       }
 
       function lockScroll() {
-        document.body.style.overflow = 'hidden';
-        window.scrollTo(0, 0);
+        lockBodyScroll();
       }
 
       function completeExpansion() {
@@ -1686,12 +1704,17 @@
       menuToggle.classList.toggle('active', menuOpen);
     });
     document.querySelectorAll('#mobileMenu .mobile-nav').forEach(link => {
-      link.addEventListener('click', () => {
+      link.addEventListener('click', (e) => {
         menuOpen = false;
         mobileMenu.classList.remove('open');
         menuToggle.classList.remove('active');
       });
     });
+
+    // Prevent body scroll when mobile menu is open
+    mobileMenu.addEventListener('touchmove', (e) => {
+      if (menuOpen) e.stopPropagation();
+    }, { passive: false });
 
     // ===== COUNTER ANIMATION =====
     const counters = document.querySelectorAll('.counter');
@@ -1738,10 +1761,12 @@
         const offset = 80;
         if (window._scrollHero && !window._scrollHero.isExpanded()) {
           window._scrollHero.forceExpand();
-          // Small delay so the DOM updates before calculating scroll position
+          // Double rAF ensures layout has settled after hero expansion
           requestAnimationFrame(() => {
-            const top = target.getBoundingClientRect().top + window.scrollY - offset;
-            window.scrollTo({ top, behavior: 'smooth' });
+            requestAnimationFrame(() => {
+              const top = target.getBoundingClientRect().top + window.scrollY - offset;
+              window.scrollTo({ top, behavior: 'smooth' });
+            });
           });
         } else {
           const top = target.getBoundingClientRect().top + window.scrollY - offset;
