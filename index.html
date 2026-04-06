@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth overflow-x-hidden">
+<html lang="en" class="scroll-smooth overflow-x-hidden" style="overscroll-behavior-y: none;">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -262,6 +262,7 @@
       border-color: #C9B968;
       background-color: white;
       box-shadow: 0 0 0 3px rgba(201, 185, 104, 0.12);
+      scroll-margin-top: 90px;
     }
 
     /* ===== CUSTOM SELECT ===== */
@@ -308,28 +309,31 @@
 
     /* ===== MOBILE MENU ===== */
     .mobile-menu {
-      position: absolute;
-      top: 100%;
+      position: fixed;
+      top: 0;
       left: 0;
       right: 0;
-      transform: scaleY(0);
-      transform-origin: top;
+      bottom: 0;
+      z-index: 45;
+      background: #1F1F1F;
       opacity: 0;
-      overflow: hidden;
       pointer-events: none;
-      transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding-top: 60px;
     }
     .mobile-menu.open {
-      transform: scaleY(1);
       opacity: 1;
       pointer-events: auto;
     }
     .mobile-nav {
       opacity: 0;
-      transform: translateX(-16px);
+      transform: translateY(12px);
       transition: opacity 0.4s, transform 0.4s;
     }
-    .mobile-menu.open .mobile-nav { opacity: 1; transform: translateX(0); }
+    .mobile-menu.open .mobile-nav { opacity: 1; transform: translateY(0); }
     .mobile-menu.open .mobile-nav:nth-child(2) { transition-delay: 0.05s; }
     .mobile-menu.open .mobile-nav:nth-child(3) { transition-delay: 0.1s; }
     .mobile-menu.open .mobile-nav:nth-child(4) { transition-delay: 0.15s; }
@@ -343,7 +347,6 @@
     }
     .slider-infinite-scroll {
       animation: slider-scroll-right 35s linear infinite;
-      will-change: transform;
     }
     .slider-infinite-scroll:hover {
       animation-play-state: paused;
@@ -466,21 +469,21 @@
         <a href="#projects" class="nav-link text-cream/80 hover:text-gold text-sm font-medium tracking-wider uppercase">Projects</a>
         <a href="#contact" class="nav-link text-cream/80 hover:text-gold text-sm font-medium tracking-wider uppercase">Contact</a>
       </div>
-      <button class="lg:hidden text-cream p-2 hamburger flex flex-col items-center justify-center w-10 h-10" id="menuToggle" aria-label="Toggle menu" aria-expanded="false">
+      <button class="lg:hidden text-cream p-2 hamburger flex flex-col items-center justify-center w-12 h-12" id="menuToggle" aria-label="Toggle menu" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
     </div>
-    <!-- Mobile Menu -->
-    <div class="lg:hidden mobile-menu bg-charcoal border-t border-cream/10" id="mobileMenu">
-      <div class="max-w-7xl mx-auto px-6 py-8 flex flex-col gap-5">
-        <a href="#home" class="mobile-nav text-cream hover:text-gold text-lg font-display">Home</a>
-        <a href="#services" class="mobile-nav text-cream hover:text-gold text-lg font-display">Services</a>
-        <a href="#experience" class="mobile-nav text-cream hover:text-gold text-lg font-display">About</a>
-        <a href="#projects" class="mobile-nav text-cream hover:text-gold text-lg font-display">Projects</a>
-        <a href="#contact" class="mobile-nav text-cream hover:text-gold text-lg font-display">Contact</a>
-      </div>
-    </div>
   </nav>
+  <!-- Mobile Menu (outside nav for independent z-index stacking) -->
+  <div class="lg:hidden mobile-menu" id="mobileMenu">
+    <div class="flex flex-col items-center gap-8 text-center">
+      <a href="#home" class="mobile-nav text-cream hover:text-gold text-2xl font-display py-1">Home</a>
+      <a href="#services" class="mobile-nav text-cream hover:text-gold text-2xl font-display py-1">Services</a>
+      <a href="#experience" class="mobile-nav text-cream hover:text-gold text-2xl font-display py-1">About</a>
+      <a href="#projects" class="mobile-nav text-cream hover:text-gold text-2xl font-display py-1">Projects</a>
+      <a href="#contact" class="mobile-nav text-cream hover:text-gold text-2xl font-display py-1">Contact</a>
+    </div>
+  </div>
 
   <!-- ============================================ -->
   <!-- HERO SECTION — Scroll Expansion -->
@@ -488,13 +491,13 @@
   <section id="home" class="scroll-hero" data-scroll-hero>
     <!-- Full-screen background (fades out as media expands) -->
     <div class="scroll-hero-bg" id="heroBackground">
-      <img src="hero-bg.webp" alt="HD Installations open office project">
+      <img src="hero-bg.webp" alt="HD Installations open office project" fetchpriority="high">
       <div class="absolute inset-0 bg-gradient-to-b from-charcoal/30 via-transparent to-charcoal/40"></div>
     </div>
 
     <!-- Expanding media container -->
     <div class="scroll-hero-media" id="heroMedia">
-      <img src="hdinstalls-1.webp" alt="HD Installations office furniture project">
+      <img src="hdinstalls-1.webp" alt="HD Installations office furniture project" fetchpriority="high">
       <div class="scroll-hero-media-overlay" id="heroMediaOverlay"></div>
     </div>
 
@@ -521,7 +524,7 @@
           <p class="text-cream/60 text-lg max-w-xl font-light" style="line-height: 1.75;">
             Southern California's trusted office furniture installation team — delivering on time for over 26 years.
           </p>
-          <a href="#contact" class="btn-gold inline-block mt-8 px-12 py-4 bg-gold-pale text-charcoal font-semibold text-sm tracking-[0.2em] uppercase rounded-lg active:bg-gold">
+          <a href="#contact" class="btn-gold inline-block mt-8 px-8 sm:px-12 py-4 bg-gold-pale text-charcoal font-semibold text-sm tracking-[0.2em] uppercase rounded-lg active:bg-gold">
             Request a Quote
           </a>
         </div>
@@ -558,7 +561,7 @@
   <!-- ============================================ -->
   <section id="trust" class="py-10 lg:py-12 bg-cream border-b border-charcoal/6">
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
-      <div class="flex flex-wrap items-center justify-center gap-8 md:gap-14 lg:gap-20 stagger">
+      <div class="flex flex-wrap items-center justify-center gap-5 md:gap-14 lg:gap-20 stagger">
         <!-- CA Licensed -->
         <div class="reveal fade-up flex items-center gap-3">
           <svg class="w-10 h-10 text-gold flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
@@ -606,10 +609,10 @@
   <!-- ============================================ -->
   <!-- PAIN POINTS -->
   <!-- ============================================ -->
-  <section id="pain-points" class="py-24 lg:py-32 bg-cream glow-section">
+  <section id="pain-points" class="py-16 md:py-24 lg:py-32 bg-cream glow-section">
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
       <div class="text-center reveal fade-up">
-        <h2 class="font-display text-4xl md:text-5xl lg:text-[2.8rem] leading-[1.12] mx-auto font-extrabold" style="letter-spacing: -0.02em;">
+        <h2 class="font-display text-3xl md:text-4xl lg:text-[2.8rem] leading-[1.12] mx-auto font-extrabold" style="letter-spacing: -0.02em;">
           Three Ways Your Next Move Goes Wrong
         </h2>
         <div class="w-16 h-0.5 bg-gold/50 mt-6 mx-auto"></div>
@@ -649,10 +652,10 @@
   <!-- ============================================ -->
   <!-- OUR PROCESS -->
   <!-- ============================================ -->
-  <section id="process" class="py-24 lg:py-32 bg-cream">
+  <section id="process" class="py-16 md:py-24 lg:py-32 bg-cream">
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
       <div class="text-center reveal fade-up">
-        <h2 class="font-display text-4xl md:text-5xl lg:text-[3.4rem] leading-[1.12] font-extrabold" style="letter-spacing: -0.02em;">
+        <h2 class="font-display text-3xl md:text-4xl lg:text-[3.4rem] leading-[1.12] font-extrabold" style="letter-spacing: -0.02em;">
           Your Installation. Our Responsibility.
         </h2>
         <div class="w-16 h-0.5 bg-gold/50 mt-6 mx-auto"></div>
@@ -701,11 +704,11 @@
   <!-- ============================================ -->
   <!-- SERVICES SECTION -->
   <!-- ============================================ -->
-  <section id="services" class="py-24 lg:py-32 bg-white">
+  <section id="services" class="py-16 md:py-24 lg:py-32 bg-white">
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
       <!-- Header -->
       <div class="text-center mb-14 lg:mb-20 reveal fade-up">
-        <h2 class="font-display text-4xl md:text-5xl lg:text-[2.8rem] leading-[1.12] mx-auto font-extrabold" style="letter-spacing: -0.02em;">
+        <h2 class="font-display text-3xl md:text-4xl lg:text-[2.8rem] leading-[1.12] mx-auto font-extrabold" style="letter-spacing: -0.02em;">
           From Delivery to Install, We've Got It Covered
         </h2>
         <div class="w-16 h-0.5 bg-gold/50 mt-6 mx-auto"></div>
@@ -716,7 +719,7 @@
       <div class="reveal fade-up max-w-7xl mx-auto mt-14 lg:mt-20 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 px-6 lg:px-8">
 
         <div class="group relative overflow-hidden rounded-xl border border-charcoal/8">
-          <div class="relative h-40 overflow-hidden">
+          <div class="relative h-48 sm:h-40 overflow-hidden">
             <img src="services-pictures/furniture-installation.jpg" alt="Furniture Installation" class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-110" loading="lazy">
             <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
           </div>
@@ -727,7 +730,7 @@
         </div>
 
         <div class="group relative overflow-hidden rounded-xl border border-charcoal/8">
-          <div class="relative h-40 overflow-hidden">
+          <div class="relative h-48 sm:h-40 overflow-hidden">
             <img src="services-pictures/delivery-services.jpg" alt="Delivery Services" class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-110" loading="lazy">
             <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
           </div>
@@ -738,7 +741,7 @@
         </div>
 
         <div class="group relative overflow-hidden rounded-xl border border-charcoal/8">
-          <div class="relative h-40 overflow-hidden">
+          <div class="relative h-48 sm:h-40 overflow-hidden">
             <img src="services-pictures/project-management.jpg" alt="Project Management" class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-110" loading="lazy">
             <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
           </div>
@@ -749,7 +752,7 @@
         </div>
 
         <div class="group relative overflow-hidden rounded-xl border border-charcoal/8">
-          <div class="relative h-40 overflow-hidden">
+          <div class="relative h-48 sm:h-40 overflow-hidden">
             <img src="services-pictures/anti-tip-services.jpg" alt="Anti-Tip Services" class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-110" loading="lazy">
             <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
           </div>
@@ -760,7 +763,7 @@
         </div>
 
         <div class="group relative overflow-hidden rounded-xl border border-charcoal/8">
-          <div class="relative h-40 overflow-hidden">
+          <div class="relative h-48 sm:h-40 overflow-hidden">
             <img src="services-pictures/reconfiguration.jpg" alt="Reconfiguration" class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-110" loading="lazy">
             <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
           </div>
@@ -771,7 +774,7 @@
         </div>
 
         <div class="group relative overflow-hidden rounded-xl border border-charcoal/8">
-          <div class="relative h-40 overflow-hidden">
+          <div class="relative h-48 sm:h-40 overflow-hidden">
             <img src="services-pictures/service-calls-maintenance.jpg" alt="Service Calls &amp; Maintenance" class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-110" loading="lazy">
             <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
           </div>
@@ -782,7 +785,7 @@
         </div>
 
         <div class="group relative overflow-hidden rounded-xl border border-charcoal/8">
-          <div class="relative h-40 overflow-hidden">
+          <div class="relative h-48 sm:h-40 overflow-hidden">
             <img src="services-pictures/relocation-moving.jpg" alt="Relocation &amp; Move Services" class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-110" loading="lazy">
             <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
           </div>
@@ -793,7 +796,7 @@
         </div>
 
         <div class="group relative overflow-hidden rounded-xl border border-charcoal/8">
-          <div class="relative h-40 overflow-hidden">
+          <div class="relative h-48 sm:h-40 overflow-hidden">
             <img src="services-pictures/warehousing.jpg" alt="Warehousing" class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-110" loading="lazy">
             <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
           </div>
@@ -804,7 +807,7 @@
         </div>
 
         <div class="group relative overflow-hidden rounded-xl border border-charcoal/8">
-          <div class="relative h-40 overflow-hidden">
+          <div class="relative h-48 sm:h-40 overflow-hidden">
             <img src="services-pictures/receiving-services.jpg" alt="Receiving Services" class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-110" loading="lazy">
             <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
           </div>
@@ -815,7 +818,7 @@
         </div>
 
         <div class="group relative overflow-hidden rounded-xl border border-charcoal/8">
-          <div class="relative h-40 overflow-hidden">
+          <div class="relative h-48 sm:h-40 overflow-hidden">
             <img src="services-pictures/decommissions.jpg" alt="Decommissions" class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-110" loading="lazy">
             <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
           </div>
@@ -826,7 +829,7 @@
         </div>
 
         <div class="group relative overflow-hidden rounded-xl border border-charcoal/8">
-          <div class="relative h-40 overflow-hidden">
+          <div class="relative h-48 sm:h-40 overflow-hidden">
             <img src="services-pictures/fabric-cleaning.jpg" alt="Fabric Cleaning" class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-110" loading="lazy">
             <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
           </div>
@@ -855,12 +858,12 @@
   <!-- ============================================ -->
   <!-- EXPERIENCE -->
   <!-- ============================================ -->
-  <section id="experience" class="py-24 lg:py-32 bg-cream glow-section">
+  <section id="experience" class="py-16 md:py-24 lg:py-32 bg-cream glow-section">
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
       <div class="grid lg:grid-cols-2 gap-16 lg:gap-28 items-center">
         <!-- Text Content -->
         <div class="reveal fade-up">
-          <h2 class="font-display text-4xl md:text-5xl lg:text-[3.4rem] leading-[1.12] font-extrabold" style="letter-spacing: -0.02em;">
+          <h2 class="font-display text-3xl md:text-4xl lg:text-[3.4rem] leading-[1.12] font-extrabold" style="letter-spacing: -0.02em;">
             26 Years. One Standard.
           </h2>
           <div class="w-16 h-0.5 bg-gold/50 mt-6"></div>
@@ -941,10 +944,10 @@
   <!-- MEET THE TEAM (hidden until client provides photos/info) -->
   <!-- ============================================ -->
   <!--
-  <section id="team" class="py-24 lg:py-32 bg-white">
+  <section id="team" class="py-16 md:py-24 lg:py-32 bg-white">
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
       <div class="text-center reveal fade-up">
-        <h2 class="font-display text-4xl md:text-5xl lg:text-[3.4rem] leading-[1.12] font-extrabold" style="letter-spacing: -0.02em;">
+        <h2 class="font-display text-3xl md:text-4xl lg:text-[3.4rem] leading-[1.12] font-extrabold" style="letter-spacing: -0.02em;">
           Meet Our Team
         </h2>
         <div class="w-16 h-0.5 bg-gold/50 mt-6 mx-auto"></div>
@@ -990,11 +993,11 @@
   <!-- ============================================ -->
   <!-- PROJECTS / GALLERY -->
   <!-- ============================================ -->
-  <section id="projects" class="py-24 lg:py-32 bg-cream glow-section overflow-hidden">
+  <section id="projects" class="py-16 md:py-24 lg:py-32 bg-cream glow-section overflow-hidden">
     <!-- Title -->
     <div class="max-w-7xl mx-auto px-6 lg:px-8 text-center">
       <div class="reveal fade-up">
-        <h2 class="font-display text-4xl md:text-5xl lg:text-[3.4rem] leading-[1.12] font-extrabold" style="letter-spacing: -0.02em;">
+        <h2 class="font-display text-3xl md:text-4xl lg:text-[3.4rem] leading-[1.12] font-extrabold" style="letter-spacing: -0.02em;">
           Our Recent Projects
         </h2>
         <div class="w-16 h-0.5 bg-gold/50 mt-6 mx-auto"></div>
@@ -1112,10 +1115,10 @@
   <!-- TESTIMONIALS (hidden until client provides real testimonials) -->
   <!-- ============================================ -->
   <!--
-  <section id="testimonials" class="py-24 lg:py-32 bg-white">
+  <section id="testimonials" class="py-16 md:py-24 lg:py-32 bg-white">
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
       <div class="text-center mb-14 lg:mb-20 reveal fade-up">
-        <h2 class="font-display text-4xl md:text-5xl lg:text-[3.4rem] leading-[1.12] font-extrabold" style="letter-spacing: -0.02em;">
+        <h2 class="font-display text-3xl md:text-4xl lg:text-[3.4rem] leading-[1.12] font-extrabold" style="letter-spacing: -0.02em;">
           What Our Clients Say
         </h2>
         <div class="w-16 h-0.5 bg-gold/50 mt-6 mx-auto"></div>
@@ -1257,10 +1260,10 @@
   <!-- ============================================ -->
   <!-- SERVICE AREAS -->
   <!-- ============================================ -->
-  <section id="service-areas" class="py-24 lg:py-32 bg-white">
+  <section id="service-areas" class="py-16 md:py-24 lg:py-32 bg-white">
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
       <div class="text-center reveal fade-up">
-        <h2 class="font-display text-4xl md:text-5xl lg:text-[3.4rem] leading-[1.12] font-extrabold" style="letter-spacing: -0.02em;">
+        <h2 class="font-display text-3xl md:text-4xl lg:text-[3.4rem] leading-[1.12] font-extrabold" style="letter-spacing: -0.02em;">
           Areas We Serve
         </h2>
         <div class="w-16 h-0.5 bg-gold/50 mt-6 mx-auto"></div>
@@ -1319,7 +1322,7 @@
   <!-- ============================================ -->
   <!-- CONTACT / FINAL CTA -->
   <!-- ============================================ -->
-  <section id="contact" class="py-24 lg:py-32 bg-cream">
+  <section id="contact" class="py-16 md:py-24 lg:py-32 bg-cream">
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
       <div class="reveal fade-up bg-white rounded-2xl overflow-hidden grid lg:grid-cols-5" style="box-shadow: 0 8px 48px rgba(31,31,31,0.07), 0 2px 12px rgba(31,31,31,0.04);">
         <!-- Image Side -->
@@ -1427,15 +1430,15 @@
       </a>
 
       <nav class="mt-12 flex flex-wrap items-center justify-center gap-x-1 gap-y-3 text-sm">
-        <a href="#home" class="text-cream/45 hover:text-cream px-4 transition-colors duration-200">Home</a>
+        <a href="#home" class="text-cream/45 hover:text-cream px-4 py-2 transition-colors duration-200">Home</a>
         <span class="text-cream/15 hidden sm:inline">|</span>
-        <a href="#services" class="text-cream/45 hover:text-cream px-4 transition-colors duration-200">Services</a>
+        <a href="#services" class="text-cream/45 hover:text-cream px-4 py-2 transition-colors duration-200">Services</a>
         <span class="text-cream/15 hidden sm:inline">|</span>
-        <a href="#experience" class="text-cream/45 hover:text-cream px-4 transition-colors duration-200">About</a>
+        <a href="#experience" class="text-cream/45 hover:text-cream px-4 py-2 transition-colors duration-200">About</a>
         <span class="text-cream/15 hidden sm:inline">|</span>
-        <a href="#projects" class="text-cream/45 hover:text-cream px-4 transition-colors duration-200">Projects</a>
+        <a href="#projects" class="text-cream/45 hover:text-cream px-4 py-2 transition-colors duration-200">Projects</a>
         <span class="text-cream/15 hidden sm:inline">|</span>
-        <a href="#contact" class="text-cream/45 hover:text-cream px-4 transition-colors duration-200">Contact</a>
+        <a href="#contact" class="text-cream/45 hover:text-cream px-4 py-2 transition-colors duration-200">Contact</a>
       </nav>
 
       <!-- Social media links hidden until client has profiles
@@ -1647,8 +1650,9 @@
       function handleTouchMove(e) {
         const touchY = e.touches[0].clientY;
         const deltaY = touchLastY - touchY;
+        const cumulativeDelta = touchStartY - touchY;
 
-        if (mediaFullyExpanded && deltaY < -20 && window.scrollY <= 5) {
+        if (mediaFullyExpanded && cumulativeDelta < -30 && window.scrollY <= 5) {
           mediaFullyExpanded = false;
           lockScroll();
         } else if (!mediaFullyExpanded) {
@@ -1774,25 +1778,31 @@
     const menuToggle = document.getElementById('menuToggle');
     const mobileMenu = document.getElementById('mobileMenu');
     let menuOpen = false;
+    function openMenu() {
+      menuOpen = true;
+      mobileMenu.classList.add('open');
+      menuToggle.classList.add('active');
+      menuToggle.setAttribute('aria-expanded', true);
+      document.body.style.overflow = 'hidden';
+      document.addEventListener('touchmove', preventMenuScroll, { passive: false });
+    }
+    function closeMenu() {
+      menuOpen = false;
+      mobileMenu.classList.remove('open');
+      menuToggle.classList.remove('active');
+      menuToggle.setAttribute('aria-expanded', false);
+      document.body.style.overflow = '';
+      document.removeEventListener('touchmove', preventMenuScroll);
+    }
+    function preventMenuScroll(e) {
+      if (menuOpen) e.preventDefault();
+    }
     menuToggle.addEventListener('click', () => {
-      menuOpen = !menuOpen;
-      mobileMenu.classList.toggle('open', menuOpen);
-      menuToggle.classList.toggle('active', menuOpen);
-      menuToggle.setAttribute('aria-expanded', menuOpen);
+      menuOpen ? closeMenu() : openMenu();
     });
     document.querySelectorAll('#mobileMenu .mobile-nav').forEach(link => {
-      link.addEventListener('click', (e) => {
-        menuOpen = false;
-        mobileMenu.classList.remove('open');
-        menuToggle.classList.remove('active');
-        menuToggle.setAttribute('aria-expanded', false);
-      });
+      link.addEventListener('click', () => closeMenu());
     });
-
-    // Prevent body scroll when mobile menu is open
-    mobileMenu.addEventListener('touchmove', (e) => {
-      if (menuOpen) e.preventDefault();
-    }, { passive: false });
 
     // ===== COUNTER ANIMATION =====
     const counters = document.querySelectorAll('.counter');
@@ -1858,6 +1868,7 @@
     if (sliderTrack) {
       const sliderObs = new IntersectionObserver(([entry]) => {
         sliderTrack.style.animationPlayState = entry.isIntersecting ? 'running' : 'paused';
+        sliderTrack.style.willChange = entry.isIntersecting ? 'transform' : 'auto';
       });
       sliderObs.observe(sliderTrack);
     }
