@@ -8,7 +8,7 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <script>
     tailwind.config = {
       theme: {
@@ -23,7 +23,7 @@
             'gold-pale': '#E8D98E',
           },
           fontFamily: {
-            display: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+            display: ['"DM Serif Display"', 'Georgia', 'serif'],
             body: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
           },
         }
@@ -234,6 +234,15 @@
       }
     }
 
+    /* Active (tap) feedback for service cards */
+    #services .group {
+      transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.2s;
+    }
+    #services .group:active {
+      transform: scale(0.98);
+      opacity: 0.9;
+    }
+
     /* ===== TESTIMONIAL CARDS ===== */
     .testimonial-card {
       transition: box-shadow 0.3s ease;
@@ -356,6 +365,7 @@
       position: fixed;
       top: 0;
       left: 0;
+      width: 100%;
       height: 3px;
       background: linear-gradient(90deg, #C9B968, #E8D98E);
       z-index: 100;
@@ -396,6 +406,38 @@
       transform: translateY(0);
     }
 
+    /* ===== AMBIENT RADIAL GLOWS ===== */
+    .glow-section {
+      position: relative;
+      overflow: hidden;
+    }
+    .glow-section::before {
+      content: '';
+      position: absolute;
+      top: -20%;
+      left: -10%;
+      width: 60%;
+      height: 70%;
+      background: radial-gradient(ellipse at center, rgba(201, 185, 104, 0.07) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .glow-section::after {
+      content: '';
+      position: absolute;
+      bottom: -15%;
+      right: -10%;
+      width: 50%;
+      height: 60%;
+      background: radial-gradient(ellipse at center, rgba(201, 185, 104, 0.05) 0%, transparent 65%);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .glow-section > * {
+      position: relative;
+      z-index: 1;
+    }
+
     /* ===== FOCUS-VISIBLE ===== */
     a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible {
       outline: 2px solid #C9B968;
@@ -424,7 +466,7 @@
         <a href="#projects" class="nav-link text-cream/80 hover:text-gold text-sm font-medium tracking-wider uppercase">Projects</a>
         <a href="#contact" class="nav-link text-cream/80 hover:text-gold text-sm font-medium tracking-wider uppercase">Contact</a>
       </div>
-      <button class="lg:hidden text-cream p-2 hamburger flex flex-col items-center justify-center w-10 h-10" id="menuToggle" aria-label="Toggle menu">
+      <button class="lg:hidden text-cream p-2 hamburger flex flex-col items-center justify-center w-10 h-10" id="menuToggle" aria-label="Toggle menu" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
     </div>
@@ -452,7 +494,7 @@
 
     <!-- Expanding media container -->
     <div class="scroll-hero-media" id="heroMedia">
-      <img src="hdinstalls-1.jpg" alt="HD Installations office furniture project">
+      <img src="hdinstalls-1.webp" alt="HD Installations office furniture project">
       <div class="scroll-hero-media-overlay" id="heroMediaOverlay"></div>
     </div>
 
@@ -487,12 +529,12 @@
       <!-- Bottom Bar -->
       <div class="relative border-t border-cream/15 bg-charcoal/60">
         <div class="max-w-7xl mx-auto px-6 lg:px-8 py-5 flex flex-col items-center gap-4 sm:flex-row sm:justify-between">
-          <a href="tel:+15551234567" class="flex items-center gap-3 text-cream/60 hover:text-gold text-sm transition-colors duration-200">
+          <span class="flex items-center gap-3 text-cream/60 text-sm">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
             </svg>
             +1 (555) 123-4567
-          </a>
+          </span>
           <!-- Social media links hidden until client has profiles
           <div class="flex items-center gap-6">
             <a href="#" class="text-cream/40 hover:text-gold transition-colors duration-200" aria-label="Facebook">
@@ -564,7 +606,7 @@
   <!-- ============================================ -->
   <!-- PAIN POINTS -->
   <!-- ============================================ -->
-  <section id="pain-points" class="py-24 lg:py-32 bg-cream">
+  <section id="pain-points" class="py-24 lg:py-32 bg-cream glow-section">
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
       <div class="text-center reveal fade-up">
         <h2 class="font-display text-4xl md:text-5xl lg:text-[2.8rem] leading-[1.12] mx-auto font-extrabold" style="letter-spacing: -0.02em;">
@@ -680,7 +722,7 @@
           </div>
           <div class="p-5">
             <h3 class="font-display text-sm md:text-base font-semibold text-charcoal">Furniture Installation</h3>
-            <p class="text-xs text-charcoal/60 mt-1.5" style="line-height: 1.6;">Trained technicians install your furniture to manufacturer's specs, ensuring all components are functional and ready for day one.</p>
+            <p class="text-xs text-charcoal/60 mt-1.5" style="line-height: 1.7;">Trained technicians install your furniture to manufacturer's specs, ensuring all components are functional and ready for day one.</p>
           </div>
         </div>
 
@@ -691,7 +733,7 @@
           </div>
           <div class="p-5">
             <h3 class="font-display text-sm md:text-base font-semibold text-charcoal">Delivery Services</h3>
-            <p class="text-xs text-charcoal/60 mt-1.5" style="line-height: 1.6;">Fleet of 26' bobtail trucks with liftgate, ready to deliver with experienced team drivers.</p>
+            <p class="text-xs text-charcoal/60 mt-1.5" style="line-height: 1.7;">Fleet of 26' bobtail trucks with liftgate, ready to deliver with experienced team drivers.</p>
           </div>
         </div>
 
@@ -702,7 +744,7 @@
           </div>
           <div class="p-5">
             <h3 class="font-display text-sm md:text-base font-semibold text-charcoal">Project Management</h3>
-            <p class="text-xs text-charcoal/60 mt-1.5" style="line-height: 1.6;">PM's with 30+ years of field experience handle site meetings, scheduling, and final walk-thru to ensure flawless execution.</p>
+            <p class="text-xs text-charcoal/60 mt-1.5" style="line-height: 1.7;">PM's with 30+ years of field experience handle site meetings, scheduling, and final walk-thru to ensure flawless execution.</p>
           </div>
         </div>
 
@@ -713,7 +755,7 @@
           </div>
           <div class="p-5">
             <h3 class="font-display text-sm md:text-base font-semibold text-charcoal">Anti-Tip Services</h3>
-            <p class="text-xs text-charcoal/60 mt-1.5" style="line-height: 1.6;">Safely fasten desks, files, bookcases, and storage — secured to wall or floor for earthquake safety.</p>
+            <p class="text-xs text-charcoal/60 mt-1.5" style="line-height: 1.7;">Safely fasten desks, files, bookcases, and storage — secured to wall or floor for earthquake safety.</p>
           </div>
         </div>
 
@@ -724,7 +766,7 @@
           </div>
           <div class="p-5">
             <h3 class="font-display text-sm md:text-base font-semibold text-charcoal">Reconfiguration</h3>
-            <p class="text-xs text-charcoal/60 mt-1.5" style="line-height: 1.6;">Downsize or expand your office furniture. Our team has worked with all major manufacturers.</p>
+            <p class="text-xs text-charcoal/60 mt-1.5" style="line-height: 1.7;">Downsize or expand your office furniture. Our team has worked with all major manufacturers.</p>
           </div>
         </div>
 
@@ -735,7 +777,7 @@
           </div>
           <div class="p-5">
             <h3 class="font-display text-sm md:text-base font-semibold text-charcoal">Service Calls &amp; Maintenance</h3>
-            <p class="text-xs text-charcoal/60 mt-1.5" style="line-height: 1.6;">Available 24 hours. Technicians carry parts and hardware — most issues fixed on the first trip.</p>
+            <p class="text-xs text-charcoal/60 mt-1.5" style="line-height: 1.7;">Available 24 hours. Technicians carry parts and hardware — most issues fixed on the first trip.</p>
           </div>
         </div>
 
@@ -746,7 +788,7 @@
           </div>
           <div class="p-5">
             <h3 class="font-display text-sm md:text-base font-semibold text-charcoal">Relocation &amp; Move Services</h3>
-            <p class="text-xs text-charcoal/60 mt-1.5" style="line-height: 1.6;">Comprehensive moving plans from our PMs and move technicians — your office up and running, fast.</p>
+            <p class="text-xs text-charcoal/60 mt-1.5" style="line-height: 1.7;">Comprehensive moving plans from our PMs and move technicians — your office up and running, fast.</p>
           </div>
         </div>
 
@@ -757,7 +799,7 @@
           </div>
           <div class="p-5">
             <h3 class="font-display text-sm md:text-base font-semibold text-charcoal">Warehousing</h3>
-            <p class="text-xs text-charcoal/60 mt-1.5" style="line-height: 1.6;">20,000+ sq ft of 24-hour monitored storage. Product inventoried, palletized, wrapped, and tagged.</p>
+            <p class="text-xs text-charcoal/60 mt-1.5" style="line-height: 1.7;">20,000+ sq ft of 24-hour monitored storage. Product inventoried, palletized, wrapped, and tagged.</p>
           </div>
         </div>
 
@@ -768,7 +810,7 @@
           </div>
           <div class="p-5">
             <h3 class="font-display text-sm md:text-base font-semibold text-charcoal">Receiving Services</h3>
-            <p class="text-xs text-charcoal/60 mt-1.5" style="line-height: 1.6;">No warehouse? We receive, inspect every carton for damage, and report before signing for your goods.</p>
+            <p class="text-xs text-charcoal/60 mt-1.5" style="line-height: 1.7;">No warehouse? We receive, inspect every carton for damage, and report before signing for your goods.</p>
           </div>
         </div>
 
@@ -779,7 +821,7 @@
           </div>
           <div class="p-5">
             <h3 class="font-display text-sm md:text-base font-semibold text-charcoal">Decommissions</h3>
-            <p class="text-xs text-charcoal/60 mt-1.5" style="line-height: 1.6;">Dismantling, removal, and recycling. In some cases, we can find a buyer for your old furniture.</p>
+            <p class="text-xs text-charcoal/60 mt-1.5" style="line-height: 1.7;">Dismantling, removal, and recycling. In some cases, we can find a buyer for your old furniture.</p>
           </div>
         </div>
 
@@ -790,7 +832,7 @@
           </div>
           <div class="p-5">
             <h3 class="font-display text-sm md:text-base font-semibold text-charcoal">Fabric Cleaning</h3>
-            <p class="text-xs text-charcoal/60 mt-1.5" style="line-height: 1.6;">Panel systems and seating cleaned to like-new condition. Thorough results you can see.</p>
+            <p class="text-xs text-charcoal/60 mt-1.5" style="line-height: 1.7;">Panel systems and seating cleaned to like-new condition. Thorough results you can see.</p>
           </div>
         </div>
 
@@ -813,7 +855,7 @@
   <!-- ============================================ -->
   <!-- EXPERIENCE -->
   <!-- ============================================ -->
-  <section id="experience" class="py-24 lg:py-32 bg-cream">
+  <section id="experience" class="py-24 lg:py-32 bg-cream glow-section">
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
       <div class="grid lg:grid-cols-2 gap-16 lg:gap-28 items-center">
         <!-- Text Content -->
@@ -948,7 +990,7 @@
   <!-- ============================================ -->
   <!-- PROJECTS / GALLERY -->
   <!-- ============================================ -->
-  <section id="projects" class="py-24 lg:py-32 bg-cream overflow-hidden">
+  <section id="projects" class="py-24 lg:py-32 bg-cream glow-section overflow-hidden">
     <!-- Title -->
     <div class="max-w-7xl mx-auto px-6 lg:px-8 text-center">
       <div class="reveal fade-up">
@@ -1282,11 +1324,11 @@
       <div class="reveal fade-up bg-white rounded-2xl overflow-hidden grid lg:grid-cols-5" style="box-shadow: 0 8px 48px rgba(31,31,31,0.07), 0 2px 12px rgba(31,31,31,0.04);">
         <!-- Image Side -->
         <div class="lg:col-span-2 relative min-h-[300px] lg:min-h-0">
-          <img src="project-pictures/team-photo.webp" alt="HD Installation team" class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-110" loading="lazy">
+          <img src="project-pictures/team-photo.webp" alt="HD Installation team" class="w-full h-full object-cover" loading="lazy">
           <div class="absolute inset-0 bg-gradient-to-t from-charcoal/50 to-charcoal/10"></div>
           <div class="absolute inset-0 bg-gold/8 mix-blend-multiply"></div>
           <!-- Decorative badge -->
-          <div class="absolute bottom-8 left-8 bg-white/95 backdrop-blur-sm rounded-lg px-5 py-3 shadow-lg">
+          <div class="absolute bottom-8 left-8 bg-white/95 backdrop-blur-sm rounded-lg px-5 py-3 card-shadow">
             <p class="font-display text-lg font-semibold text-charcoal">26+ Years</p>
             <p class="text-charcoal/65 text-xs mt-0.5">of Trusted Service</p>
           </div>
@@ -1304,7 +1346,7 @@
               <div class="form-field">
                 <label for="name" class="block text-xs font-medium text-charcoal/65 uppercase tracking-[0.15em] mb-2.5">Full Name</label>
                 <input
-                  type="text" id="name" name="name" placeholder="John Smith"
+                  type="text" id="name" name="name" placeholder="John Smith" required
                   class="form-input w-full px-4 py-3.5 bg-cream/50 border border-charcoal/8 rounded-lg text-sm font-body placeholder:text-charcoal/25 outline-none"
                 >
               </div>
@@ -1319,7 +1361,7 @@
             <div class="form-field">
               <label for="email" class="block text-xs font-medium text-charcoal/65 uppercase tracking-[0.15em] mb-2.5">Email Address</label>
               <input
-                type="email" id="email" name="email" placeholder="john@company.com"
+                type="email" id="email" name="email" placeholder="john@company.com" required
                 class="form-input w-full px-4 py-3.5 bg-cream/50 border border-charcoal/8 rounded-lg text-sm font-body placeholder:text-charcoal/25 outline-none"
               >
             </div>
@@ -1347,7 +1389,7 @@
             <div class="form-field">
               <label for="message" class="block text-xs font-medium text-charcoal/65 uppercase tracking-[0.15em] mb-2.5">Message</label>
               <textarea
-                id="message" name="message" rows="4" placeholder="Tell us about your project..."
+                id="message" name="message" rows="4" placeholder="Tell us about your project..." required
                 class="form-input w-full px-4 py-3.5 bg-cream/50 border border-charcoal/8 rounded-lg text-sm font-body placeholder:text-charcoal/25 outline-none resize-none"
               ></textarea>
             </div>
@@ -1489,6 +1531,7 @@
         cachedMobile = window.innerWidth < 768;
         vw = window.innerWidth;
         vh = window.innerHeight;
+        scheduleHeroUpdate();
       }, { passive: true });
 
       // Lock body scroll while hero is active (iOS-safe approach)
@@ -1557,11 +1600,7 @@
       function lockScroll() {
         // Scroll to top first, then lock — hero lives at y=0
         window.scrollTo(0, 0);
-        document.body.style.position = 'fixed';
-        document.body.style.top = '0';
-        document.body.style.left = '0';
-        document.body.style.right = '0';
-        document.body.style.overflow = 'hidden';
+        lockBodyScroll();
       }
 
       function completeExpansion() {
@@ -1682,8 +1721,9 @@
         window.scrollTo({ top: 0, behavior: 'smooth' });
 
         // Wait for scroll to reach top, then animate hero closed
+        const waitStart = performance.now();
         function waitForTop() {
-          if (window.scrollY > 5) {
+          if (window.scrollY > 5 && performance.now() - waitStart < 1500) {
             requestAnimationFrame(waitForTop);
             return;
           }
@@ -1692,11 +1732,7 @@
           mediaFullyExpanded = false;
           cancelAnimationFrame(momentumRaf);
 
-          document.body.style.position = 'fixed';
-          document.body.style.top = '0';
-          document.body.style.left = '0';
-          document.body.style.right = '0';
-          document.body.style.overflow = 'hidden';
+          lockBodyScroll();
 
           const startTime = performance.now();
           const duration = 600;
@@ -1742,18 +1778,20 @@
       menuOpen = !menuOpen;
       mobileMenu.classList.toggle('open', menuOpen);
       menuToggle.classList.toggle('active', menuOpen);
+      menuToggle.setAttribute('aria-expanded', menuOpen);
     });
     document.querySelectorAll('#mobileMenu .mobile-nav').forEach(link => {
       link.addEventListener('click', (e) => {
         menuOpen = false;
         mobileMenu.classList.remove('open');
         menuToggle.classList.remove('active');
+        menuToggle.setAttribute('aria-expanded', false);
       });
     });
 
     // Prevent body scroll when mobile menu is open
     mobileMenu.addEventListener('touchmove', (e) => {
-      if (menuOpen) e.stopPropagation();
+      if (menuOpen) e.preventDefault();
     }, { passive: false });
 
     // ===== COUNTER ANIMATION =====
