@@ -248,6 +248,44 @@
       opacity: 0.9;
     }
 
+    /* ===== MOBILE SERVICE CAROUSEL ===== */
+    .services-carousel {
+      display: flex;
+      gap: 16px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scroll-padding: 0 24px;
+      padding: 0 24px 16px;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+    .services-carousel::-webkit-scrollbar { display: none; }
+    .services-carousel .service-card {
+      flex: 0 0 80%;
+      scroll-snap-align: center;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid rgba(31,31,31,0.08);
+      background: white;
+    }
+    .services-dots {
+      display: flex;
+      justify-content: center;
+      gap: 6px;
+      margin-top: 16px;
+    }
+    .services-dots .dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: rgba(31,31,31,0.15);
+      transition: background 0.3s, transform 0.3s;
+    }
+    .services-dots .dot.active {
+      background: #C9B968;
+      transform: scale(1.3);
+    }
+
     /* ===== TESTIMONIAL CARDS ===== */
     .testimonial-card {
       transition: box-shadow 0.3s ease;
@@ -721,129 +759,110 @@
 
     </div>
 
-      <div class="reveal fade-up max-w-7xl mx-auto mt-14 lg:mt-20 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 px-6 lg:px-8">
-
-        <div class="group relative overflow-hidden rounded-xl border border-charcoal/8">
-          <div class="relative h-48 sm:h-40 overflow-hidden">
-            <img src="services-pictures/furniture-installation.jpg" alt="Furniture Installation" class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-110" loading="lazy">
-            <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+      <!-- MOBILE: Horizontal swipe carousel (hidden on sm+) -->
+      <div class="sm:hidden mt-10 reveal fade-up">
+        <div class="services-carousel" id="servicesCarousel">
+          <div class="service-card">
+            <div class="relative h-44 overflow-hidden"><img src="services-pictures/furniture-installation.jpg" alt="Furniture Installation" class="w-full h-full object-cover" loading="lazy"><div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div></div>
+            <div class="p-5"><h3 class="font-display text-sm font-semibold text-charcoal">Furniture Installation</h3><p class="text-xs text-charcoal/60 mt-1.5" style="line-height:1.7;">Trained technicians install your furniture to manufacturer's specs, ensuring all components are functional and ready for day one.</p></div>
           </div>
-          <div class="p-5">
-            <h3 class="font-display text-sm md:text-base font-semibold text-charcoal">Furniture Installation</h3>
-            <p class="text-xs text-charcoal/60 mt-1.5" style="line-height: 1.7;">Trained technicians install your furniture to manufacturer's specs, ensuring all components are functional and ready for day one.</p>
+          <div class="service-card">
+            <div class="relative h-44 overflow-hidden"><img src="services-pictures/delivery-services.jpg" alt="Delivery Services" class="w-full h-full object-cover" loading="lazy"><div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div></div>
+            <div class="p-5"><h3 class="font-display text-sm font-semibold text-charcoal">Delivery Services</h3><p class="text-xs text-charcoal/60 mt-1.5" style="line-height:1.7;">Fleet of 26' bobtail trucks with liftgate, ready to deliver with experienced team drivers.</p></div>
           </div>
-        </div>
-
-        <div class="group relative overflow-hidden rounded-xl border border-charcoal/8">
-          <div class="relative h-48 sm:h-40 overflow-hidden">
-            <img src="services-pictures/delivery-services.jpg" alt="Delivery Services" class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-110" loading="lazy">
-            <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+          <div class="service-card">
+            <div class="relative h-44 overflow-hidden"><img src="services-pictures/project-management.jpg" alt="Project Management" class="w-full h-full object-cover" loading="lazy"><div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div></div>
+            <div class="p-5"><h3 class="font-display text-sm font-semibold text-charcoal">Project Management</h3><p class="text-xs text-charcoal/60 mt-1.5" style="line-height:1.7;">PM's with 30+ years of field experience handle site meetings, scheduling, and final walk-thru to ensure flawless execution.</p></div>
           </div>
-          <div class="p-5">
-            <h3 class="font-display text-sm md:text-base font-semibold text-charcoal">Delivery Services</h3>
-            <p class="text-xs text-charcoal/60 mt-1.5" style="line-height: 1.7;">Fleet of 26' bobtail trucks with liftgate, ready to deliver with experienced team drivers.</p>
+          <div class="service-card">
+            <div class="relative h-44 overflow-hidden"><img src="services-pictures/anti-tip-services.jpg" alt="Anti-Tip Services" class="w-full h-full object-cover" loading="lazy"><div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div></div>
+            <div class="p-5"><h3 class="font-display text-sm font-semibold text-charcoal">Anti-Tip Services</h3><p class="text-xs text-charcoal/60 mt-1.5" style="line-height:1.7;">Safely fasten desks, files, bookcases, and storage — secured to wall or floor for earthquake safety.</p></div>
           </div>
-        </div>
-
-        <div class="group relative overflow-hidden rounded-xl border border-charcoal/8">
-          <div class="relative h-48 sm:h-40 overflow-hidden">
-            <img src="services-pictures/project-management.jpg" alt="Project Management" class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-110" loading="lazy">
-            <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+          <div class="service-card">
+            <div class="relative h-44 overflow-hidden"><img src="services-pictures/reconfiguration.jpg" alt="Reconfiguration" class="w-full h-full object-cover" loading="lazy"><div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div></div>
+            <div class="p-5"><h3 class="font-display text-sm font-semibold text-charcoal">Reconfiguration</h3><p class="text-xs text-charcoal/60 mt-1.5" style="line-height:1.7;">Downsize or expand your office furniture. Our team has worked with all major manufacturers.</p></div>
           </div>
-          <div class="p-5">
-            <h3 class="font-display text-sm md:text-base font-semibold text-charcoal">Project Management</h3>
-            <p class="text-xs text-charcoal/60 mt-1.5" style="line-height: 1.7;">PM's with 30+ years of field experience handle site meetings, scheduling, and final walk-thru to ensure flawless execution.</p>
+          <div class="service-card">
+            <div class="relative h-44 overflow-hidden"><img src="services-pictures/service-calls-maintenance.jpg" alt="Service Calls &amp; Maintenance" class="w-full h-full object-cover" loading="lazy"><div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div></div>
+            <div class="p-5"><h3 class="font-display text-sm font-semibold text-charcoal">Service Calls &amp; Maintenance</h3><p class="text-xs text-charcoal/60 mt-1.5" style="line-height:1.7;">Available 24 hours. Technicians carry parts and hardware — most issues fixed on the first trip.</p></div>
           </div>
-        </div>
-
-        <div class="group relative overflow-hidden rounded-xl border border-charcoal/8">
-          <div class="relative h-48 sm:h-40 overflow-hidden">
-            <img src="services-pictures/anti-tip-services.jpg" alt="Anti-Tip Services" class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-110" loading="lazy">
-            <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+          <div class="service-card">
+            <div class="relative h-44 overflow-hidden"><img src="services-pictures/relocation-moving.jpg" alt="Relocation &amp; Move Services" class="w-full h-full object-cover" loading="lazy"><div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div></div>
+            <div class="p-5"><h3 class="font-display text-sm font-semibold text-charcoal">Relocation &amp; Move Services</h3><p class="text-xs text-charcoal/60 mt-1.5" style="line-height:1.7;">Comprehensive moving plans from our PMs and move technicians — your office up and running, fast.</p></div>
           </div>
-          <div class="p-5">
-            <h3 class="font-display text-sm md:text-base font-semibold text-charcoal">Anti-Tip Services</h3>
-            <p class="text-xs text-charcoal/60 mt-1.5" style="line-height: 1.7;">Safely fasten desks, files, bookcases, and storage — secured to wall or floor for earthquake safety.</p>
+          <div class="service-card">
+            <div class="relative h-44 overflow-hidden"><img src="services-pictures/warehousing.jpg" alt="Warehousing" class="w-full h-full object-cover" loading="lazy"><div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div></div>
+            <div class="p-5"><h3 class="font-display text-sm font-semibold text-charcoal">Warehousing</h3><p class="text-xs text-charcoal/60 mt-1.5" style="line-height:1.7;">20,000+ sq ft of 24-hour monitored storage. Product inventoried, palletized, wrapped, and tagged.</p></div>
           </div>
-        </div>
-
-        <div class="group relative overflow-hidden rounded-xl border border-charcoal/8">
-          <div class="relative h-48 sm:h-40 overflow-hidden">
-            <img src="services-pictures/reconfiguration.jpg" alt="Reconfiguration" class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-110" loading="lazy">
-            <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+          <div class="service-card">
+            <div class="relative h-44 overflow-hidden"><img src="services-pictures/receiving-services.jpg" alt="Receiving Services" class="w-full h-full object-cover" loading="lazy"><div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div></div>
+            <div class="p-5"><h3 class="font-display text-sm font-semibold text-charcoal">Receiving Services</h3><p class="text-xs text-charcoal/60 mt-1.5" style="line-height:1.7;">No warehouse? We receive, inspect every carton for damage, and report before signing for your goods.</p></div>
           </div>
-          <div class="p-5">
-            <h3 class="font-display text-sm md:text-base font-semibold text-charcoal">Reconfiguration</h3>
-            <p class="text-xs text-charcoal/60 mt-1.5" style="line-height: 1.7;">Downsize or expand your office furniture. Our team has worked with all major manufacturers.</p>
+          <div class="service-card">
+            <div class="relative h-44 overflow-hidden"><img src="services-pictures/decommissions.jpg" alt="Decommissions" class="w-full h-full object-cover" loading="lazy"><div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div></div>
+            <div class="p-5"><h3 class="font-display text-sm font-semibold text-charcoal">Decommissions</h3><p class="text-xs text-charcoal/60 mt-1.5" style="line-height:1.7;">Dismantling, removal, and recycling. In some cases, we can find a buyer for your old furniture.</p></div>
+          </div>
+          <div class="service-card">
+            <div class="relative h-44 overflow-hidden"><img src="services-pictures/fabric-cleaning.jpg" alt="Fabric Cleaning" class="w-full h-full object-cover" loading="lazy"><div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div></div>
+            <div class="p-5"><h3 class="font-display text-sm font-semibold text-charcoal">Fabric Cleaning</h3><p class="text-xs text-charcoal/60 mt-1.5" style="line-height:1.7;">Panel systems and seating cleaned to like-new condition. Thorough results you can see.</p></div>
           </div>
         </div>
+        <div class="services-dots" id="servicesDots"></div>
+        <!-- Mobile CTA below carousel -->
+        <div class="mt-8 mx-6 text-center">
+          <a href="#contact" class="btn-dark inline-block px-8 py-3 bg-charcoal text-cream text-xs font-medium tracking-[0.15em] uppercase rounded-lg">
+            Request a Quote
+          </a>
+        </div>
+      </div>
+
+      <!-- DESKTOP: Original grid (hidden on mobile) -->
+      <div class="hidden sm:grid reveal fade-up max-w-7xl mx-auto mt-14 lg:mt-20 sm:grid-cols-2 lg:grid-cols-4 gap-5 px-6 lg:px-8">
 
         <div class="group relative overflow-hidden rounded-xl border border-charcoal/8">
-          <div class="relative h-48 sm:h-40 overflow-hidden">
-            <img src="services-pictures/service-calls-maintenance.jpg" alt="Service Calls &amp; Maintenance" class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-110" loading="lazy">
-            <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
-          </div>
-          <div class="p-5">
-            <h3 class="font-display text-sm md:text-base font-semibold text-charcoal">Service Calls &amp; Maintenance</h3>
-            <p class="text-xs text-charcoal/60 mt-1.5" style="line-height: 1.7;">Available 24 hours. Technicians carry parts and hardware — most issues fixed on the first trip.</p>
-          </div>
+          <div class="relative h-40 overflow-hidden"><img src="services-pictures/furniture-installation.jpg" alt="Furniture Installation" class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-110" loading="lazy"><div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div></div>
+          <div class="p-5"><h3 class="font-display text-sm md:text-base font-semibold text-charcoal">Furniture Installation</h3><p class="text-xs text-charcoal/60 mt-1.5" style="line-height:1.7;">Trained technicians install your furniture to manufacturer's specs, ensuring all components are functional and ready for day one.</p></div>
         </div>
-
         <div class="group relative overflow-hidden rounded-xl border border-charcoal/8">
-          <div class="relative h-48 sm:h-40 overflow-hidden">
-            <img src="services-pictures/relocation-moving.jpg" alt="Relocation &amp; Move Services" class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-110" loading="lazy">
-            <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
-          </div>
-          <div class="p-5">
-            <h3 class="font-display text-sm md:text-base font-semibold text-charcoal">Relocation &amp; Move Services</h3>
-            <p class="text-xs text-charcoal/60 mt-1.5" style="line-height: 1.7;">Comprehensive moving plans from our PMs and move technicians — your office up and running, fast.</p>
-          </div>
+          <div class="relative h-40 overflow-hidden"><img src="services-pictures/delivery-services.jpg" alt="Delivery Services" class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-110" loading="lazy"><div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div></div>
+          <div class="p-5"><h3 class="font-display text-sm md:text-base font-semibold text-charcoal">Delivery Services</h3><p class="text-xs text-charcoal/60 mt-1.5" style="line-height:1.7;">Fleet of 26' bobtail trucks with liftgate, ready to deliver with experienced team drivers.</p></div>
         </div>
-
         <div class="group relative overflow-hidden rounded-xl border border-charcoal/8">
-          <div class="relative h-48 sm:h-40 overflow-hidden">
-            <img src="services-pictures/warehousing.jpg" alt="Warehousing" class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-110" loading="lazy">
-            <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
-          </div>
-          <div class="p-5">
-            <h3 class="font-display text-sm md:text-base font-semibold text-charcoal">Warehousing</h3>
-            <p class="text-xs text-charcoal/60 mt-1.5" style="line-height: 1.7;">20,000+ sq ft of 24-hour monitored storage. Product inventoried, palletized, wrapped, and tagged.</p>
-          </div>
+          <div class="relative h-40 overflow-hidden"><img src="services-pictures/project-management.jpg" alt="Project Management" class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-110" loading="lazy"><div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div></div>
+          <div class="p-5"><h3 class="font-display text-sm md:text-base font-semibold text-charcoal">Project Management</h3><p class="text-xs text-charcoal/60 mt-1.5" style="line-height:1.7;">PM's with 30+ years of field experience handle site meetings, scheduling, and final walk-thru to ensure flawless execution.</p></div>
         </div>
-
         <div class="group relative overflow-hidden rounded-xl border border-charcoal/8">
-          <div class="relative h-48 sm:h-40 overflow-hidden">
-            <img src="services-pictures/receiving-services.jpg" alt="Receiving Services" class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-110" loading="lazy">
-            <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
-          </div>
-          <div class="p-5">
-            <h3 class="font-display text-sm md:text-base font-semibold text-charcoal">Receiving Services</h3>
-            <p class="text-xs text-charcoal/60 mt-1.5" style="line-height: 1.7;">No warehouse? We receive, inspect every carton for damage, and report before signing for your goods.</p>
-          </div>
+          <div class="relative h-40 overflow-hidden"><img src="services-pictures/anti-tip-services.jpg" alt="Anti-Tip Services" class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-110" loading="lazy"><div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div></div>
+          <div class="p-5"><h3 class="font-display text-sm md:text-base font-semibold text-charcoal">Anti-Tip Services</h3><p class="text-xs text-charcoal/60 mt-1.5" style="line-height:1.7;">Safely fasten desks, files, bookcases, and storage — secured to wall or floor for earthquake safety.</p></div>
         </div>
-
         <div class="group relative overflow-hidden rounded-xl border border-charcoal/8">
-          <div class="relative h-48 sm:h-40 overflow-hidden">
-            <img src="services-pictures/decommissions.jpg" alt="Decommissions" class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-110" loading="lazy">
-            <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
-          </div>
-          <div class="p-5">
-            <h3 class="font-display text-sm md:text-base font-semibold text-charcoal">Decommissions</h3>
-            <p class="text-xs text-charcoal/60 mt-1.5" style="line-height: 1.7;">Dismantling, removal, and recycling. In some cases, we can find a buyer for your old furniture.</p>
-          </div>
+          <div class="relative h-40 overflow-hidden"><img src="services-pictures/reconfiguration.jpg" alt="Reconfiguration" class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-110" loading="lazy"><div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div></div>
+          <div class="p-5"><h3 class="font-display text-sm md:text-base font-semibold text-charcoal">Reconfiguration</h3><p class="text-xs text-charcoal/60 mt-1.5" style="line-height:1.7;">Downsize or expand your office furniture. Our team has worked with all major manufacturers.</p></div>
         </div>
-
         <div class="group relative overflow-hidden rounded-xl border border-charcoal/8">
-          <div class="relative h-48 sm:h-40 overflow-hidden">
-            <img src="services-pictures/fabric-cleaning.jpg" alt="Fabric Cleaning" class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-110" loading="lazy">
-            <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
-          </div>
-          <div class="p-5">
-            <h3 class="font-display text-sm md:text-base font-semibold text-charcoal">Fabric Cleaning</h3>
-            <p class="text-xs text-charcoal/60 mt-1.5" style="line-height: 1.7;">Panel systems and seating cleaned to like-new condition. Thorough results you can see.</p>
-          </div>
+          <div class="relative h-40 overflow-hidden"><img src="services-pictures/service-calls-maintenance.jpg" alt="Service Calls &amp; Maintenance" class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-110" loading="lazy"><div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div></div>
+          <div class="p-5"><h3 class="font-display text-sm md:text-base font-semibold text-charcoal">Service Calls &amp; Maintenance</h3><p class="text-xs text-charcoal/60 mt-1.5" style="line-height:1.7;">Available 24 hours. Technicians carry parts and hardware — most issues fixed on the first trip.</p></div>
         </div>
-
+        <div class="group relative overflow-hidden rounded-xl border border-charcoal/8">
+          <div class="relative h-40 overflow-hidden"><img src="services-pictures/relocation-moving.jpg" alt="Relocation &amp; Move Services" class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-110" loading="lazy"><div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div></div>
+          <div class="p-5"><h3 class="font-display text-sm md:text-base font-semibold text-charcoal">Relocation &amp; Move Services</h3><p class="text-xs text-charcoal/60 mt-1.5" style="line-height:1.7;">Comprehensive moving plans from our PMs and move technicians — your office up and running, fast.</p></div>
+        </div>
+        <div class="group relative overflow-hidden rounded-xl border border-charcoal/8">
+          <div class="relative h-40 overflow-hidden"><img src="services-pictures/warehousing.jpg" alt="Warehousing" class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-110" loading="lazy"><div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div></div>
+          <div class="p-5"><h3 class="font-display text-sm md:text-base font-semibold text-charcoal">Warehousing</h3><p class="text-xs text-charcoal/60 mt-1.5" style="line-height:1.7;">20,000+ sq ft of 24-hour monitored storage. Product inventoried, palletized, wrapped, and tagged.</p></div>
+        </div>
+        <div class="group relative overflow-hidden rounded-xl border border-charcoal/8">
+          <div class="relative h-40 overflow-hidden"><img src="services-pictures/receiving-services.jpg" alt="Receiving Services" class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-110" loading="lazy"><div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div></div>
+          <div class="p-5"><h3 class="font-display text-sm md:text-base font-semibold text-charcoal">Receiving Services</h3><p class="text-xs text-charcoal/60 mt-1.5" style="line-height:1.7;">No warehouse? We receive, inspect every carton for damage, and report before signing for your goods.</p></div>
+        </div>
+        <div class="group relative overflow-hidden rounded-xl border border-charcoal/8">
+          <div class="relative h-40 overflow-hidden"><img src="services-pictures/decommissions.jpg" alt="Decommissions" class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-110" loading="lazy"><div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div></div>
+          <div class="p-5"><h3 class="font-display text-sm md:text-base font-semibold text-charcoal">Decommissions</h3><p class="text-xs text-charcoal/60 mt-1.5" style="line-height:1.7;">Dismantling, removal, and recycling. In some cases, we can find a buyer for your old furniture.</p></div>
+        </div>
+        <div class="group relative overflow-hidden rounded-xl border border-charcoal/8">
+          <div class="relative h-40 overflow-hidden"><img src="services-pictures/fabric-cleaning.jpg" alt="Fabric Cleaning" class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-110" loading="lazy"><div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div></div>
+          <div class="p-5"><h3 class="font-display text-sm md:text-base font-semibold text-charcoal">Fabric Cleaning</h3><p class="text-xs text-charcoal/60 mt-1.5" style="line-height:1.7;">Panel systems and seating cleaned to like-new condition. Thorough results you can see.</p></div>
+        </div>
         <div class="relative overflow-hidden rounded-xl border border-charcoal/8 bg-cream flex flex-col items-center justify-center p-8 text-center">
           <div class="w-12 h-12 rounded-full bg-gold/10 flex items-center justify-center mb-4">
             <svg class="w-5 h-5 text-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
@@ -851,10 +870,8 @@
             </svg>
           </div>
           <h3 class="font-display text-base md:text-lg font-semibold text-charcoal">Need Something Specific?</h3>
-          <p class="text-xs text-charcoal/60 mt-1.5" style="line-height: 1.6;">Tell us about your project and we'll tailor a solution.</p>
-          <a href="#contact" class="btn-dark inline-block mt-5 px-8 py-3 bg-charcoal text-cream text-xs font-medium tracking-[0.15em] uppercase rounded-lg">
-            Request a Quote
-          </a>
+          <p class="text-xs text-charcoal/60 mt-1.5" style="line-height:1.7;">Tell us about your project and we'll tailor a solution.</p>
+          <a href="#contact" class="btn-dark inline-block mt-5 px-8 py-3 bg-charcoal text-cream text-xs font-medium tracking-[0.15em] uppercase rounded-lg">Request a Quote</a>
         </div>
 
       </div>
@@ -1884,6 +1901,34 @@
         }
       });
     });
+
+    // ===== SERVICES CAROUSEL DOT INDICATORS =====
+    (() => {
+      const carousel = document.getElementById('servicesCarousel');
+      const dotsContainer = document.getElementById('servicesDots');
+      if (!carousel || !dotsContainer) return;
+      const cards = carousel.querySelectorAll('.service-card');
+      // Create dots
+      cards.forEach((_, i) => {
+        const dot = document.createElement('div');
+        dot.className = 'dot' + (i === 0 ? ' active' : '');
+        dotsContainer.appendChild(dot);
+      });
+      const dots = dotsContainer.querySelectorAll('.dot');
+      // Update active dot on scroll
+      let scrollRaf = false;
+      carousel.addEventListener('scroll', () => {
+        if (scrollRaf) return;
+        scrollRaf = true;
+        requestAnimationFrame(() => {
+          const scrollLeft = carousel.scrollLeft;
+          const cardWidth = cards[0].offsetWidth + 16; // card width + gap
+          const activeIndex = Math.round(scrollLeft / cardWidth);
+          dots.forEach((d, i) => d.classList.toggle('active', i === activeIndex));
+          scrollRaf = false;
+        });
+      }, { passive: true });
+    })();
 
     // ===== PAUSE INFINITE SLIDER WHEN OFFSCREEN =====
     const sliderTrack = document.querySelector('.slider-infinite-scroll');
