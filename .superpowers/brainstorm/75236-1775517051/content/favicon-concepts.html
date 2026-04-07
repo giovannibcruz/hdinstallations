@@ -1,0 +1,70 @@
+<h2>Favicon Direction</h2>
+<p class="subtitle">Which approach best represents HD Installations? Favicons are 32x32px — simplicity is key.</p>
+
+<div class="cards">
+  <div class="card" data-choice="monogram" onclick="toggleSelect(this)">
+    <div class="card-image" style="display:flex;align-items:center;justify-content:center;min-height:200px;background:#1F1F1F;">
+      <!-- Monogram: HD letters -->
+      <div style="position:relative;">
+        <svg width="120" height="120" viewBox="0 0 120 120">
+          <rect width="120" height="120" rx="16" fill="#1F1F1F"/>
+          <text x="60" y="78" text-anchor="middle" font-family="Georgia, serif" font-size="64" font-weight="bold" fill="#C9B968">HD</text>
+        </svg>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>A — Monogram "HD"</h3>
+      <p>Classic serif monogram in gold on charcoal. Clean, professional, reads well at small sizes. Matches the DM Serif Display branding on the site.</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="lettermark" onclick="toggleSelect(this)">
+    <div class="card-image" style="display:flex;align-items:center;justify-content:center;min-height:200px;background:#C9B968;">
+      <!-- Lettermark: H with geometric accent -->
+      <svg width="120" height="120" viewBox="0 0 120 120">
+        <rect width="120" height="120" rx="16" fill="#C9B968"/>
+        <text x="60" y="82" text-anchor="middle" font-family="Georgia, serif" font-size="72" font-weight="bold" fill="#1F1F1F">H</text>
+        <rect x="82" y="28" width="8" height="8" rx="2" fill="#1F1F1F" opacity="0.4"/>
+      </svg>
+    </div>
+    <div class="card-body">
+      <h3>B — Bold "H" on Gold</h3>
+      <p>Single letter on gold background. Maximum simplicity — extremely legible at favicon size. Inverts the site's color hierarchy for tab distinction.</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="icon" onclick="toggleSelect(this)">
+    <div class="card-image" style="display:flex;align-items:center;justify-content:center;min-height:200px;background:#1F1F1F;">
+      <!-- Icon: Abstract furniture/building mark -->
+      <svg width="120" height="120" viewBox="0 0 120 120">
+        <rect width="120" height="120" rx="16" fill="#1F1F1F"/>
+        <!-- Simplified desk/table icon -->
+        <rect x="28" y="42" width="64" height="6" rx="2" fill="#C9B968"/>
+        <rect x="32" y="48" width="6" height="32" rx="1" fill="#C9B968"/>
+        <rect x="82" y="48" width="6" height="32" rx="1" fill="#C9B968"/>
+        <!-- Small accent -->
+        <rect x="50" y="48" width="20" height="4" rx="1" fill="#C9B968" opacity="0.4"/>
+      </svg>
+    </div>
+    <div class="card-body">
+      <h3>C — Abstract Furniture Icon</h3>
+      <p>Minimal desk/table silhouette in gold on charcoal. Communicates the industry at a glance. Risk: may be too abstract at 16x16px.</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="shield" onclick="toggleSelect(this)">
+    <div class="card-image" style="display:flex;align-items:center;justify-content:center;min-height:200px;background:#1F1F1F;">
+      <!-- Shield with HD -->
+      <svg width="120" height="120" viewBox="0 0 120 120">
+        <rect width="120" height="120" rx="16" fill="#1F1F1F"/>
+        <!-- Shield shape -->
+        <path d="M60 20 L90 35 L90 65 Q90 90 60 100 Q30 90 30 65 L30 35 Z" fill="none" stroke="#C9B968" stroke-width="4"/>
+        <text x="60" y="72" text-anchor="middle" font-family="Georgia, serif" font-size="32" font-weight="bold" fill="#C9B968">HD</text>
+      </svg>
+    </div>
+    <div class="card-body">
+      <h3>D — Shield Monogram</h3>
+      <p>HD letters inside a shield outline. References the trust/licensed/bonded messaging on the site. Adds visual weight but may be busy at small sizes.</p>
+    </div>
+  </div>
+</div>

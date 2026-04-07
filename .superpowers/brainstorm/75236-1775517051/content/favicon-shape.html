@@ -1,0 +1,64 @@
+<h2>Favicon Shape</h2>
+<p class="subtitle">How should the "HD" monogram be framed? Here's how each looks at actual favicon size (32px) and enlarged.</p>
+
+<div class="cards">
+  <div class="card" data-choice="rounded-square" onclick="toggleSelect(this)">
+    <div class="card-image" style="display:flex;align-items:center;justify-content:center;gap:32px;min-height:180px;background:#F2EDE8;">
+      <!-- Large preview -->
+      <svg width="100" height="100" viewBox="0 0 100 100">
+        <rect width="100" height="100" rx="18" fill="#1F1F1F"/>
+        <text x="50" y="66" text-anchor="middle" font-family="Georgia, serif" font-size="52" font-weight="bold" fill="#C9B968">HD</text>
+      </svg>
+      <!-- Actual size -->
+      <div style="text-align:center;">
+        <svg width="32" height="32" viewBox="0 0 100 100">
+          <rect width="100" height="100" rx="18" fill="#1F1F1F"/>
+          <text x="50" y="66" text-anchor="middle" font-family="Georgia, serif" font-size="52" font-weight="bold" fill="#C9B968">HD</text>
+        </svg>
+        <div style="font-size:11px;color:#888;margin-top:6px;">32px actual</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>A — Rounded Square</h3>
+      <p>The modern standard. Matches how iOS, Android, and browsers render app icons. Comfortable, familiar, professional.</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="circle" onclick="toggleSelect(this)">
+    <div class="card-image" style="display:flex;align-items:center;justify-content:center;gap:32px;min-height:180px;background:#F2EDE8;">
+      <svg width="100" height="100" viewBox="0 0 100 100">
+        <circle cx="50" cy="50" r="48" fill="#1F1F1F"/>
+        <text x="50" y="66" text-anchor="middle" font-family="Georgia, serif" font-size="48" font-weight="bold" fill="#C9B968">HD</text>
+      </svg>
+      <div style="text-align:center;">
+        <svg width="32" height="32" viewBox="0 0 100 100">
+          <circle cx="50" cy="50" r="48" fill="#1F1F1F"/>
+          <text x="50" y="66" text-anchor="middle" font-family="Georgia, serif" font-size="48" font-weight="bold" fill="#C9B968">HD</text>
+        </svg>
+        <div style="font-size:11px;color:#888;margin-top:6px;">32px actual</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>B — Circle</h3>
+      <p>Softer, more approachable. Works well in browser tabs but wastes corner space — letters need to be slightly smaller to fit.</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="no-bg" onclick="toggleSelect(this)">
+    <div class="card-image" style="display:flex;align-items:center;justify-content:center;gap:32px;min-height:180px;background:#F2EDE8;">
+      <svg width="100" height="100" viewBox="0 0 100 100">
+        <text x="50" y="72" text-anchor="middle" font-family="Georgia, serif" font-size="60" font-weight="bold" fill="#1F1F1F">HD</text>
+      </svg>
+      <div style="text-align:center;">
+        <svg width="32" height="32" viewBox="0 0 100 100">
+          <text x="50" y="72" text-anchor="middle" font-family="Georgia, serif" font-size="60" font-weight="bold" fill="#1F1F1F">HD</text>
+        </svg>
+        <div style="font-size:11px;color:#888;margin-top:6px;">32px actual</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>C — No Background</h3>
+      <p>Just the letters, transparent background. Adapts to any browser theme (light/dark). Minimal and clean, but less distinctive in a crowded tab bar.</p>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,98 @@
+<h2>Mobile Services Layout</h2>
+<p class="subtitle">The current layout stacks 12 cards vertically — over 4 full screens of scrolling on a phone. Here are 3 ways to fix that.</p>
+
+<div class="options">
+  <div class="option" data-choice="accordion" onclick="toggleSelect(this)">
+    <div class="letter">A</div>
+    <div class="content">
+      <h3>Accordion List</h3>
+      <p>Show service names as a compact list. Tap one to expand and see the photo + description. Only one open at a time. Goes from ~3,400px of scroll to ~600px. The desktop grid stays unchanged.</p>
+      <div style="margin-top:12px;padding:16px;background:#f5f2ed;border-radius:12px;font-size:13px;">
+        <div style="padding:12px 0;border-bottom:1px solid rgba(0,0,0,0.06);display:flex;justify-content:space-between;align-items:center;">
+          <span style="font-weight:600;">Furniture Installation</span>
+          <span style="color:#C9B968;">+</span>
+        </div>
+        <div style="padding:12px 0;border-bottom:1px solid rgba(0,0,0,0.06);">
+          <div style="display:flex;justify-content:space-between;align-items:center;">
+            <span style="font-weight:600;">Delivery Services</span>
+            <span style="color:#C9B968;">−</span>
+          </div>
+          <div style="margin-top:8px;color:#666;font-size:12px;line-height:1.6;">Fleet of 26' bobtail trucks with liftgate, ready to deliver with experienced team drivers.</div>
+        </div>
+        <div style="padding:12px 0;border-bottom:1px solid rgba(0,0,0,0.06);display:flex;justify-content:space-between;align-items:center;">
+          <span style="font-weight:600;">Project Management</span>
+          <span style="color:#C9B968;">+</span>
+        </div>
+        <div style="padding:12px 0;border-bottom:1px solid rgba(0,0,0,0.06);display:flex;justify-content:space-between;align-items:center;">
+          <span style="font-weight:600;">Anti-Tip Services</span>
+          <span style="color:#C9B968;">+</span>
+        </div>
+        <div style="padding:12px 0;display:flex;justify-content:space-between;align-items:center;">
+          <span style="font-weight:600;">+ 7 more services</span>
+          <span style="color:#999;font-size:11px;">tap to expand</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="option" data-choice="horizontal-scroll" onclick="toggleSelect(this)">
+    <div class="letter">B</div>
+    <div class="content">
+      <h3>Horizontal Swipe Carousel</h3>
+      <p>Cards scroll sideways instead of vertically. Shows 1.2 cards at a time so the user knows there's more. A small dot indicator shows position. Section height stays fixed at ~1 screen. Desktop grid unchanged.</p>
+      <div style="margin-top:12px;padding:16px;background:#f5f2ed;border-radius:12px;font-size:13px;overflow:hidden;">
+        <div style="display:flex;gap:12px;">
+          <div style="min-width:200px;background:white;border-radius:8px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,0.06);">
+            <div style="height:80px;background:linear-gradient(135deg,#d4c67a33,#1f1f1f22);"></div>
+            <div style="padding:10px;">
+              <div style="font-weight:600;font-size:12px;">Furniture Installation</div>
+              <div style="color:#888;font-size:11px;margin-top:4px;">Trained technicians install...</div>
+            </div>
+          </div>
+          <div style="min-width:200px;background:white;border-radius:8px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,0.06);opacity:0.5;">
+            <div style="height:80px;background:linear-gradient(135deg,#d4c67a22,#1f1f1f11);"></div>
+            <div style="padding:10px;">
+              <div style="font-weight:600;font-size:12px;">Delivery Services</div>
+              <div style="color:#888;font-size:11px;margin-top:4px;">Fleet of 26' bobtail...</div>
+            </div>
+          </div>
+        </div>
+        <div style="display:flex;justify-content:center;gap:6px;margin-top:12px;">
+          <div style="width:8px;height:8px;border-radius:50%;background:#C9B968;"></div>
+          <div style="width:8px;height:8px;border-radius:50%;background:#ccc;"></div>
+          <div style="width:8px;height:8px;border-radius:50%;background:#ccc;"></div>
+          <div style="width:8px;height:8px;border-radius:50%;background:#ccc;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="option" data-choice="compact-grid" onclick="toggleSelect(this)">
+    <div class="letter">C</div>
+    <div class="content">
+      <h3>2-Column Compact Grid</h3>
+      <p>Show services as a tight 2x6 grid on mobile — just the image and title, no description text. Tap a card to see the full description in a small modal/popup. Cuts scroll distance by ~60%.</p>
+      <div style="margin-top:12px;padding:16px;background:#f5f2ed;border-radius:12px;font-size:13px;">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+          <div style="background:white;border-radius:8px;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,0.06);">
+            <div style="height:50px;background:linear-gradient(135deg,#d4c67a33,#1f1f1f22);"></div>
+            <div style="padding:6px 8px;font-weight:600;font-size:11px;">Installation</div>
+          </div>
+          <div style="background:white;border-radius:8px;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,0.06);">
+            <div style="height:50px;background:linear-gradient(135deg,#d4c67a22,#1f1f1f11);"></div>
+            <div style="padding:6px 8px;font-weight:600;font-size:11px;">Delivery</div>
+          </div>
+          <div style="background:white;border-radius:8px;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,0.06);">
+            <div style="height:50px;background:linear-gradient(135deg,#d4c67a33,#1f1f1f22);"></div>
+            <div style="padding:6px 8px;font-weight:600;font-size:11px;">Management</div>
+          </div>
+          <div style="background:white;border-radius:8px;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,0.06);">
+            <div style="height:50px;background:linear-gradient(135deg,#d4c67a22,#1f1f1f11);"></div>
+            <div style="padding:6px 8px;font-weight:600;font-size:11px;">Anti-Tip</div>
+          </div>
+        </div>
+        <div style="text-align:center;color:#999;font-size:11px;margin-top:8px;">+ 8 more in grid</div>
+      </div>
+    </div>
+  </div>
+</div>
