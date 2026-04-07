@@ -454,7 +454,7 @@
 
   </style>
 </head>
-<body class="font-body bg-cream text-charcoal antialiased overflow-x-hidden" style="overscroll-behavior-x: none; -webkit-overflow-scrolling: touch;">
+<body class="font-body bg-cream text-charcoal antialiased overflow-x-hidden" style="overscroll-behavior-x: none;">
 
   <!-- Scroll Progress Bar -->
   <div class="scroll-progress" id="scrollProgress"></div>
@@ -1626,6 +1626,8 @@
       }
 
       function addHeroListeners() {
+        // Remove first to prevent stacking on repeated collapseHero calls
+        removeHeroListeners();
         window.addEventListener('wheel', handleWheel, { passive: false });
         window.addEventListener('touchstart', handleTouchStart, { passive: true });
         window.addEventListener('touchmove', handleTouchMove, { passive: false });
@@ -1633,7 +1635,7 @@
       }
 
       function handleWheel(e) {
-        if (mediaFullyExpanded && e.deltaY < 0 && window.scrollY <= 5) {
+        if (mediaFullyExpanded && e.deltaY < -5 && window.scrollY <= 2) {
           mediaFullyExpanded = false;
           lockScroll();
           e.preventDefault();
@@ -1645,22 +1647,37 @@
         }
       }
 
+      let heroReEntryCandidate = false;
+      let heroReEntryChecked = false;
+
       function handleTouchStart(e) {
         cancelAnimationFrame(momentumRaf);
         touchStartY = e.touches[0].clientY;
         touchLastY = touchStartY;
         touchVelocity = 0;
+        // Only consider re-entry if hero is expanded and we're at the very top
+        heroReEntryCandidate = mediaFullyExpanded && window.scrollY <= 2;
+        heroReEntryChecked = false;
       }
 
       function handleTouchMove(e) {
         const touchY = e.touches[0].clientY;
         const deltaY = touchLastY - touchY;
-        const cumulativeDelta = touchStartY - touchY;
 
-        if (mediaFullyExpanded && cumulativeDelta < -30 && window.scrollY <= 5) {
-          mediaFullyExpanded = false;
-          lockScroll();
-        } else if (!mediaFullyExpanded) {
+        // Check re-entry exactly once, on first move of a new gesture
+        if (heroReEntryCandidate && !heroReEntryChecked) {
+          heroReEntryChecked = true;
+          heroReEntryCandidate = false;
+          const initialDirection = touchStartY - touchY;
+          // Only re-enter if first move is clearly downward (finger pulling page down)
+          if (initialDirection < -15) {
+            mediaFullyExpanded = false;
+            lockScroll();
+            return;
+          }
+        }
+
+        if (!mediaFullyExpanded) {
           e.preventDefault();
           // Uniform sensitivity — 0.004 per px for smooth, predictable feel
           scrollProgress = Math.min(Math.max(scrollProgress + deltaY * 0.004, 0), 1);
